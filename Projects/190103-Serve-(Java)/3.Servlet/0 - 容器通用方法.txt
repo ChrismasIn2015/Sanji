@@ -1,0 +1,40 @@
+【容器启动阶段】
+加载web.xml
+创建公共对象ServletContext(N-1)
+	从Servlet获得：getServletContext
+	公共资源编辑：set/get/removeAttribute(String, Object)
+	向其他Servlet转发请求：getRequestDispatcher(String path)
+	编辑Servlet日志：log(String, 异常类)
+创建FilterConfig → 创建Filter对象：调用init
+加载特殊的Servlet
+--------------------------------------------------------------------------
+【容器运行阶段】
+加载Servlet
+创建配置对象ServletConfig(1-1)→关联ServletContext
+	获得Servlet初始信息：getServletConfig()：ServletConfig
+	可以通过编辑web.xml来准备初始<K,V>已备使用
+创建Servlet对象
+	调用init(ServletConfig conf)方法进行初始化
+当容器收到访问特定Servlet请求：
+	创建ServletRequest/Response对象
+		请求正文长度：getContentLength()
+		请求正文类型：getContentType()
+		请求正文输入流：getInputStream
+		请求正文包装流：getReader()：BufferedReader
+		服务器IP/主机名/端口号：getLocalAddr/Name/Port
+		请求参数名(code=1&demo=2)：getParameter(String)
+		请求解码：setCharacterEncoding("UTF-8");
+		获得Cookie：getCookies：获得所有Cookie
+		------------------------------
+		编辑正文类型：setContentType("text/html;charset=UTF-8");
+		编辑正文字符编码：setCharacterEncoding("UTF-8");
+		编辑正文：getWriter()：PrintWriter()
+		添加Cookie：addCookie(Cookie)
+		禁止缓存：setHeader("Cache-Control","no-cache")
+	根据不同请求方式调用相应Servlet的service()方法
+	发送响应结果，销毁RequestResponse对象
+--------------------------------------------------------------------------
+【容器终止阶段】
+调用Servlet的destory()方法：释放资源，销毁Servlet对象及相关对象
+销毁所有运行时Filter - 释放Web应用所有资源
+

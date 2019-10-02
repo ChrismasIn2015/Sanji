@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图</title>
+		<link type="text/css"rel="stylesheet" href="css/04-demo.css">
+	</head>
+	<body>
+		<div class="win">
+			<div class="box">
+				<img src="img/01.jpg">
+				<img src="img/02.jpg">
+				<img src="img/03.jpg">
+				<img src="img/01.jpg">
+			</div>
+			<a class="move L"><</a>
+			<a class="move R">></a>
+			<div class="pointer"></div>
+		</div>
+	</body>
+	<script>
+		/*下面这段代码根据win自动设置box和img*/
+		var win = Math.round(parseFloat(window.getComputedStyle(document.querySelector(".win")).width));
+		var pics = document.querySelectorAll(".box img");
+		var box = document.querySelector(".box");
+		var set = function(){
+			box.style.width = win*pics.length +"px";
+			for(var i=0;i<pics.length;i++){
+				pics[i].style.width = win+"px";
+				/*在point下添加a*/
+				if(i<pics.length-1){
+					var a = document.createElement("a");
+					/*这里需要自己设置宽度*/
+					a.style.width = "40px";
+					var winA = document.getElementsByClassName("pointer")[0];
+					winA.appendChild(a);
+					winA.firstElementChild.className="active";
+				}
+			}
+		}();
+		 /*这个函数能平滑移动一张图片,-1是右边，1是左边*/
+		var index = 0;
+		var isActive = false;
+		var begin = null;
+		var timer = null;
+		function move(v){
+			if(isActive)return;
+			isActive = true;
+			clearInterval(timer);
+			
+			index -= v;
+			if(index==-1){
+				box.style.left = (pics.length-1)*win*-1 +"px";
+				index=(pics.length-1)-1;
+				v=1;
+			}
+			var begin = box.offsetLeft;
+			timer = setInterval(function(){
+				box.style.left = (box.offsetLeft + 6*v) +"px";
+				if(Math.abs(begin-box.offsetLeft) >= win){
+					box.style.left = (win*index*-1) +"px";
+					clearInterval(timer);
+					isActive = false;
+					
+					if(index==pics.length-1){
+						box.style.left = 0 +"px";
+						index=0;
+					}
+					
+					change();
+					return;
+				}
+			},5)
+		}
+		/*自动滑动计时器*/
+		var timer02 = setInterval(function(){
+			move(-1);
+		},2000)
+		/*根据index变色*/
+		var points = document.getElementsByClassName("pointer")[0].children;
+		function change(){
+			for(var i=0;i<points.length;i++){
+				points[i].className="";
+			}
+			points[index].className="active";
+		}
+		/*为左右移动按钮绑定函数*/
+		var right = document.querySelector(".R");
+		right.onclick = function(){
+			move(-1);
+		}
+		var left = document.querySelector(".L");
+		left.onclick = function(){
+			move(1);
+		}
+		/*为pointer绑定函数*/
+		for(var i=0;i<points.length;i++){
+			(function(x){
+				points[x].onclick = function(){
+					clearInterval(timer);
+					box.style.left = (x*win*-1)+"px";
+					index = x;
+					change();
+				};
+			})(i);
+		}
+	</script>
+</html>

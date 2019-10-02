@@ -1,0 +1,8 @@
+GET
+
+POST
+
+PUT：文档上传
+
+DELETE：远程删除
+

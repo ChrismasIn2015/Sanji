@@ -1,0 +1,88 @@
+﻿-------------------------------------------------------------------------------------
+自动关闭资源
+	try(声明/创建资源)｛ 资源使用; ｝
+-------------------------------------------------------------------------------------
+InputStream【字节流：8bit - byte】←
+	✿ByteArrayInputStream
+	✿FileInputStream
+	FilterInputStream（包装In/OutputStream）
+		✿BufferedInputStream：512字节
+		✿DataInputStream
+		LineNumberInputStream
+		PushbackInputStream
+	✿ObjectInputStream（包装In/OutputStream）
+		读取：readObject()：Object
+	PipedInputStream
+	SequenceInputStream
+	✿StringBufferInputStream
+读取
+	read()：int：1字节
+	read(char[])：int：读取length个字节到数组中,返回实际读取的字节数
+估计
+	available()：int
+废弃
+	skip(n：long)：long
+-------------------------------------------------------------------------------------
+OutputStream【字节流:8bit - byte】→
+	✿ByteArrayOutputStream
+	✿FileOutputStream
+	FilterOutputStream（包装In/OutputStream）
+		✿BufferedOutputStream
+		✿DataOutputStream
+		PrintStream
+	✿ObjectOutputStream（包装In/OutputStream）
+		写入：writeObject(Object)：void
+	PipedOutputStream
+编辑
+	write(int)：写入(byte)int字节
+	write(byte[])：把数组写入
+-------------------------------------------------------------------------------------
+Reader【字符流：16bit-char】
+	BufferedReader
+		LineNumberReader
+	CharArrayReader
+	FilterReader
+	PushbackReader
+	InputStreamReader（连接字节流）
+	FileReader
+	PipedReader
+	StringReader
+读取
+	read()
+-------------------------------------------------------------------------------------
+Writer【字符流：16bit-char】
+	BufferedWriter
+	CharArrayWriter
+	FilterWriter
+	OutputStreamWriter（连接字节流）
+		FileWriter
+	PipedWriter
+	PrintWriter
+	StringWriter
+输出
+	print()
+-------------------------------------------------------------------------------------
+文件：java.io.File：
+	●目录/文件：File(String path)
+	●存在：exists()
+	●判断：isDirectory()/isFile
+	●创建目录
+		mkdir()/mkdirs
+获取器：从目标中获取
+	java.util.Scanner(数据来源)：close()
+	Scanner(File/String)：构造
+	useDelimiter(String)：Scanner：默认分隔符是空格
+	hasNext()
+	next()：String：不读取分隔符
+	nextLine()：String
+	nextInt()：int
+		delete():删除
+	●创建文件
+		creatFile()
+		list():String[]：返回目录所有文件
+		listFile():File[]
+	●返回路径
+		getAbsolutePath()：String
+		getPath()：String
+		getName()：返回最后名称
+		getParent()：返回文件名目录iter

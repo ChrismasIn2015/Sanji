@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的BootStrap笔记</title>
+		
+		<!-- bootstrap引入 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- JQ -->
+		<script src="js/JQuery/JQuery.js"></script>
+		
+		<link rel="icon" href="img/logo.png" sizes="199x196">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<!--
+			页面导读
+			该页面主要通过id分割页面,构成如下
+			hwq-main:主要用于设置全局样式:1200px
+				hwq01:最顶部的导航条
+				#hwq02:超高横条页面简介:相对于hwq-main定位
+				hwq03:内容区
+					content:内容区
+						content-block:每次更新的内容
+					menu:菜单
+			#hwq04:页尾：开起了浮动,始终在最下边
+		-->
+		<div id="hwq-main">
+			
+			
+			
+			
+			<!-- ******************************************************(id=hwq01:最顶部的导航条)***** -->
+			<div id="hwq01">
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="basic-style.html">基本样式</a></li>
+					<li><a href="component.html">组件</a></li>
+					<li><a href="#">BootStrap</a></li>
+				</ul>
+			</div>
+			<!-- ******************************************************(id=hwq01:最顶部的导航条结束)***** -->
+			
+			
+			
+			<!-- ******************************************************(id=hwq02:超高横条页面简介)***** -->
+			<div id="hwq02">
+				<!--下面的div相对body脱离了文档流,相对于hwq-main定位 -->
+				<div>
+					<!--下面的div单独设置了1200px -->
+					<div>
+						<p><b>组件</b>
+						<br>这个页面主要包含一些BootStrap组件
+						<br>需要在头部引入JQ.js，在尾部引入核心BootstrapJS文件
+					</div>
+				</div>
+			</div>
+			<!-- ******************************************************(id=hwq02:超高横条页面简介结束)***** -->
+			
+			
+			
+			
+			
+			<!-- ******************************************************(id=hwq03:内容区)***** -->
+			<!--用于撑起由于浮动引起的高度坍缩:250px -->
+			<div id="hwq02-clear"></div>
+			
+			<div id="hwq03">
+				<div id="content">
+					
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					<div class="content-block">
+						<h1 id="a01">1.按钮组
+						
+						<!-- 代码展示N -->
+						<h2 id="a011">按钮分组</h2>
+						<p class="pp">使用class="btn-group"来组合按钮，在通过class="btn-toolbar"进行大分组
+						<div class="code-show">
+							<div class="btn-toolbar" role="toolbar" aria-label="...">
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">（默认样式）Default</button>
+								  <button type="button" class="btn btn-default">（默认样式）Default</button></div>
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">（默认样式）Default</button>
+								  <button type="button" class="btn btn-default">（默认样式）Default</button></div>
+							</div>
+						</div>
+							<br>
+						<div class="code-text">
+							<xmp>
+							<div class="btn-toolbar" role="toolbar" aria-label="...">
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">（默认样式）Default</button>
+								  <button type="button" class="btn btn-default">（默认样式）Default</button></div>
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">（默认样式）Default</button>
+								  <button type="button" class="btn btn-default">（默认样式）Default</button></div>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a012">按钮组大小</h2>
+						<p class="pp">使用class="btn-group btn-group-lg/sm/xs"设置按钮组大小
+						<div class="code-show">
+							  <div class="btn-group btn-group-lg" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group btn-group-sm" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group btn-group-xs" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+						</div>
+						<br>	
+						<div class="code-text">
+							<xmp>
+							  <div class="btn-group btn-group-lg" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group btn-group-sm" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							  <br>
+							  <div class="btn-group btn-group-xs" role="group" aria-label="...">
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+								  <button type="button" class="btn btn-default">BUTTON</button>
+							  </div>
+							  <br>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a013">组合按钮</h2>
+						<div class="code-show">
+							<div class="btn-group" role="group" aria-label="...">
+							  <button type="button" class="btn btn-default">1</button>
+							  <button type="button" class="btn btn-default">2</button>
+					
+							  <div class="btn-group" role="group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								  Dropdown
+								  <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+								  <li><a href="#">Dropdown link</a></li>
+								  <li><a href="#">Dropdown link</a></li>
+								</ul>
+							  </div>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<div class="btn-group" role="group" aria-label="...">
+							  <button type="button" class="btn btn-default">1</button>
+							  <button type="button" class="btn btn-default">2</button>
+					
+							  <div class="btn-group" role="group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								  Dropdown
+								  <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+								  <li><a href="#">Dropdown link</a></li>
+								  <li><a href="#">Dropdown link</a></li>
+								</ul>
+							  </div>
+							</div>
+							</xmp>
+						</div>
+					</div>
+					
+					
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					<div class="content-block">
+						<h1 id="a02">2.下拉框
+						
+						<!-- 代码展示N -->
+						<h2 id="a021">普通下拉菜单</h2>
+						<div class="code-show">
+							<div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Dropdown
+								<span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Dropdown
+								<span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>	
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a022">为按钮添加下拉样式</h2>
+						<p class="pp">改变下拉按钮class属性，再添加内联caret分割
+						<div class="code-show">
+							<!-- Single button -->
+							<div class="btn-group">
+							  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Action 
+								<span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<!-- Single button -->
+							<div class="btn-group">
+							  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Action 
+								<span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>
+								
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a023">再多一些分割样式</h2>
+						<p class="pp">添加了新button，sr-only
+						<div class="code-show">
+							<!-- Split button -->
+							<div class="btn-group">
+							  <button type="button" class="btn btn-danger">Action</button>
+							  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<!-- Split button -->
+							<div class="btn-group">
+							  <button type="button" class="btn btn-danger">Action</button>
+							  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							  </ul>
+							</div>
+							</xmp>
+						</div>
+					</div>
+					
+					
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					<div class="content-block">
+						<h1 id="a03">3.导航条
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a031">分页标签</h2>
+						<p class="pp">class="nav nav-tabs"
+						<div class="code-show">
+							<ul class="nav nav-tabs">
+							  <li role="presentation" class="active"><a>Home</a></li>
+							  <li role="presentation"><a>Profile</a></li>
+							  <li role="presentation"><a>Messages</a></li>
+							</ul>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<ul class="nav nav-tabs">
+							  <li role="presentation" class="active"><a>Home</a></li>
+							  <li role="presentation"><a>Profile</a></li>
+							  <li role="presentation"><a>Messages</a></li>
+							</ul>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a032">胶囊分页</h2>
+						<p class="pp">class="nav nav-pills"
+						<div class="code-show">
+							<ul class="nav nav-pills">
+							  <li role="presentation" class="active"><a>Home</a></li>
+							  <li role="presentation"><a>Profile</a></li>
+							  <li role="presentation"><a>Messages</a></li>
+							</ul>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<ul class="nav nav-pills">
+							  <li role="presentation" class="active"><a>Home</a></li>
+							  <li role="presentation"><a>Profile</a></li>
+							  <li role="presentation"><a>Messages</a></li>
+							</ul>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a033">组合式的水平导航条</h2>
+						<div class="code-show">
+							<nav class="navbar navbar-default">
+							  <div class="container-fluid">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+								  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								  </button>
+								  <a class="navbar-brand" >Brand</a>
+								</div>
+
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								  <ul class="nav navbar-nav">
+									<li class="active"><a>Link <span class="sr-only">(current)</span></a></li>
+									<li><a>Link</a></li>
+									<li class="dropdown">
+									  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+									  <ul class="dropdown-menu">
+										<li><a>Action</a></li>
+										<li><a>Another action</a></li>
+										<li><a>Something else here</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>Separated link</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>One more separated link</a></li>
+									  </ul>
+									</li>
+								  </ul>
+								  <form class="navbar-form navbar-left">
+									<div class="form-group">
+									  <input type="text" class="form-control" placeholder="Search">
+									</div>
+									<button type="submit" class="btn btn-default">Submit</button>
+								  </form>
+								  <ul class="nav navbar-nav navbar-right">
+									<li><a>Link</a></li>
+									<li class="dropdown">
+									  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+									  <ul class="dropdown-menu">
+										<li><a>Action</a></li>
+										<li><a>Another action</a></li>
+										<li><a>Something else here</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>Separated link</a></li>
+									  </ul>
+									</li>
+								  </ul>
+								</div><!-- /.navbar-collapse -->
+							  </div><!-- /.container-fluid -->
+							</nav>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<nav class="navbar navbar-default">
+							  <div class="container-fluid">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+								  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								  </button>
+								  <a class="navbar-brand" >Brand</a>
+								</div>
+
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								  <ul class="nav navbar-nav">
+									<li class="active"><a>Link <span class="sr-only">(current)</span></a></li>
+									<li><a>Link</a></li>
+									<li class="dropdown">
+									  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+									  <ul class="dropdown-menu">
+										<li><a>Action</a></li>
+										<li><a>Another action</a></li>
+										<li><a>Something else here</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>Separated link</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>One more separated link</a></li>
+									  </ul>
+									</li>
+								  </ul>
+								  <form class="navbar-form navbar-left">
+									<div class="form-group">
+									  <input type="text" class="form-control" placeholder="Search">
+									</div>
+									<button type="submit" class="btn btn-default">Submit</button>
+								  </form>
+								  <ul class="nav navbar-nav navbar-right">
+									<li><a>Link</a></li>
+									<li class="dropdown">
+									  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+									  <ul class="dropdown-menu">
+										<li><a>Action</a></li>
+										<li><a>Another action</a></li>
+										<li><a>Something else here</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a>Separated link</a></li>
+									  </ul>
+									</li>
+								  </ul>
+								</div><!-- /.navbar-collapse -->
+							  </div><!-- /.container-fluid -->
+							</nav>
+							</xmp>
+						</div>
+					</div>
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					<div class="content-block">
+						<h1 id="a04">4.一些小工具</h1>
+						
+						<!-- 代码展示N -->
+						<h2 id="a041">路径导航</h2>
+						<div class="code-show">
+							<ol class="breadcrumb">
+							  <li><a href="#">Home</a></li>
+							  <li class="active">Library</a></li>
+							</ol>
+							<ol class="breadcrumb">
+							  <li><a href="#">Home</a></li>
+							  <li><a href="#">Library</a></li>
+							  <li class="active">Data</li>
+							</ol>
+						</div>
+							<br>
+						<div class="code-text">
+							<xmp>
+							<ol class="breadcrumb">
+							  <li><a href="#">Home</a></li>
+							  <li class="active">Library</a></li>
+							</ol>
+							<ol class="breadcrumb">
+							  <li><a href="#">Home</a></li>
+							  <li><a href="#">Library</a></li>
+							  <li class="active">Data</li>
+							</ol>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a042">分页按钮</h2>
+						<div class="code-show">
+							<nav aria-label="Page navigation">
+							  <ul class="pagination">
+								<li>
+								  <a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								  </a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+								  <a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								  </a>
+								</li>
+							  </ul>
+							</nav>
+							<br>
+						</div>
+						<br>	
+						<div class="code-text">
+							<xmp>
+							<nav aria-label="Page navigation">
+							  <ul class="pagination">
+								<li>
+								  <a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								  </a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+								  <a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								  </a>
+								</li>
+							  </ul>
+							</nav>
+							<br>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a043">徽章</h2>
+						<div class="code-show">
+							<a href="#">Inbox <span class="badge">42</span></a>
+							<br>
+							<br>
+							<button class="btn btn-primary" type="button">
+							  Messages <span class="badge">4</span>
+							</button>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<a href="#">Inbox <span class="badge">42</span></a>
+							<br>
+							<br>
+							<button class="btn btn-primary" type="button">
+							  Messages <span class="badge">4</span>
+							</button>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a044">巨幕</h2>
+						<div class="code-show">
+							<div class="jumbotron">
+							  <h3>Hello, world!</h1>
+							  <p>...</p>
+							  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<a href="#">Inbox <span class="badge">42</span></a>
+							<br>
+							<br>
+							<button class="btn btn-primary" type="button">
+							  Messages <span class="badge">4</span>
+							</button>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a045">连接缩略图</h2>
+						<div class="code-show">
+							<div class="row">
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<div class="row">
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							  <div class="col-xs-6 col-md-3">
+								<a class="thumbnail">
+								  <img src="img/logo.png" alt="...">
+								</a>
+							  </div>
+							</div>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a046">警告框</h2>
+						<div class="code-show">
+							<div class="alert alert-success" role="alert">警告</div>
+							<div class="alert alert-info" role="alert">警告</div>
+							<div class="alert alert-warning" role="alert">警告</div>
+							<div class="alert alert-danger" role="alert">警告</div>
+							<div class="alert alert-warning alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<strong>警告!</strong> 可以关闭
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<div class="alert alert-success" role="alert">警告</div>
+							<div class="alert alert-info" role="alert">警告</div>
+							<div class="alert alert-warning" role="alert">警告</div>
+							<div class="alert alert-danger" role="alert">警告</div>
+							<div class="alert alert-warning alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<strong>警告!</strong> 可以关闭
+							</div>
+							</xmp>
+						</div>
+						
+						
+						
+						<!-- 代码展示N -->
+						<h2 id="a047">进度条</h2>
+						<p class="pp">添加了active，增加了运动效果
+						<div class="code-show">
+							<div class="progress">
+							  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+								<span class="sr-only">45% Complete</span>
+							  </div>
+							</div>
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+							<div class="alert alert-success" role="alert">警告</div>
+							<div class="alert alert-info" role="alert">警告</div>
+							<div class="alert alert-warning" role="alert">警告</div>
+							<div class="alert alert-danger" role="alert">警告</div>
+							<div class="alert alert-warning alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<strong>警告!</strong> 可以关闭
+							</div>
+							</xmp>
+						</div>
+						
+						
+						
+						
+					</div>
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+				</div><!-- ******************************************************(hwq03:content结束)***** -->
+				
+				
+				
+				<!-- ******************************************************(hwq03:menu)***** -->
+				<div id="menu">
+					<ul>
+						<li><div></div><a href="#">JS错误1</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+					</ul>
+					<ul>
+						<li><div></div><a href="#">JS错误2</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+					</ul>
+					<ul>
+						<li><div></div><a href="#">JS错误3</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+					</ul>
+					<ul>
+						<li><div></div><a href="#">JS错误4</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+						<li><div></div><a href="#">JS错误</a></li>
+					</ul>
+					<ul>
+						<li><div></div><a href="#">返回顶部</a></li>
+					</ul>
+				</div><!-- ******************************************************(hwq03:menu结束)***** -->
+			</div><!-- ******************************************************(hwq03结束)***** -->
+		</div><!-- ******************************************************(hwq-main结束)***** -->
+		
+		
+		
+		
+		<!-- ******************************************************(id=hwq04:页尾)***** -->
+		<div id="hwq04">
+			<div class="hwq-04text">
+				<div><a>我的github仓库</a></div>
+				<div><a>我的笔记</a></div>
+				<p>Designed and built with all the love in the world by 
+				@mdo and @fat. Maintained by the core team with the help 
+				of our contributors.本项目源码受 MIT开源协议保护，
+				文档受 CC BY 3.0 开源协议保护。</p>
+			</div>
+		</div><!-- ******************************************************(id=hwq04:页尾结束)***** -->
+	</body>
+	<script src="js/index.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>

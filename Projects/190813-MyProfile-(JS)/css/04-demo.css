@@ -1,0 +1,54 @@
+.win{
+	width:500px;
+	height:300px;
+	margin:100px auto 0px auto;
+	position: relative;
+	overflow:hidden;
+}
+.box{
+	height:100%;
+	position: absolute;
+	font-size: 0px;
+}
+.win img{
+	display:inline-block;
+	height:300px;
+}
+/*设置左右按钮*/
+.move{
+	display: inline-block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background-color: #00FFFF;
+	color:hotpink;
+	cursor:pointer;
+	position: absolute;
+	top:135px;
+}
+.move:hover{
+	background-color: #F0F8FF;
+	opacity: 0.3;
+}
+.L{left:5%;}
+.R{right:5%;}
+/*设置小点*/
+.pointer{
+	position: absolute;
+	width:80%;
+	left: 9%;
+	font-size:0px;
+	bottom: 15px;
+	text-align: center;
+}
+.pointer a{
+	display:inline-block;
+	height:20px;
+	cursor: pointer;
+	margin-right:1%;
+	background-color: yellow;
+}
+.pointer .active{
+	background-color: red;
+}

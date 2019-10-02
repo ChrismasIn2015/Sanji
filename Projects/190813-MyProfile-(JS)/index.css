@@ -1,0 +1,386 @@
+*{
+	margin: 0px;
+	padding:0px;
+}
+.pageWindow{
+	width:100%;
+	height:100%;
+	display:inline-block;
+	position: fixed;
+}
+.pageContainer{
+	width:100%;
+	height:100%;
+	/* top:-100%; */
+	position: absolute;
+	font-size: 0px;
+}
+.page{
+	width:100%;
+	height:100%;
+	display: inline-block;
+	font-size: 16px;
+}
+.clearfix:before,.clearfix:after{content:"";display:table;clear:both;}
+/* ****************************************具体页面 */
+.p0{
+	background-color: #61f2f5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap:wrap;
+}
+.pointDown{
+	position: absolute;
+	bottom: 0px;
+	width: 0px;
+	height: 0px;
+	border-top: 50px solid #c83660;
+	border-left: 50px solid rgba(0,0,0,0);
+	border-right: 50px solid rgba(0,0,0,0);
+	border-bottom: 50px solid rgba(0,0,0,0);
+	animation: pointFloat 1s infinite;
+	box-sizing: border-box;
+}
+.up{
+	position: absolute;
+	bottom: 0px;
+	width: 0px;
+	height: 0px;
+	border-top: 50px solid rgba(0,0,0,0);
+	border-left: 50px solid rgba(0,0,0,0);
+	border-right: 50px solid rgba(0,0,0,0);
+	border-bottom: 50px solid #c83660;
+	animation: pointFloat 1s infinite;
+	box-sizing: border-box;
+}
+@keyframes pointFloat{
+	0% {bottom: 0px;}
+	50% {bottom: 30px;}
+	100%{bottom: 0px;}
+}
+.msg0{
+	line-height: 60px;
+	text-align: center;
+	color:#c83660;
+}
+.msg0 h1{
+	color:#c83660;
+	border: 4px solid #c83660;
+	padding: 10px 60px;
+	font-size:60px;
+	margin-bottom:40px;
+	cursor: default;
+}
+.msg0 a{
+	text-decoration: none;
+	color:#c83660;
+}
+.a0:hover{
+	background-color: #C83660;
+}
+.msg0 a:hover{
+	color:#61f2f5;
+}
+/* ****************************************具体页面 */
+.p1{
+	background-color: #badfdb;
+}
+.menu{
+	width:20%;
+	height:100%;
+	float:left;
+	margin-top:60px;
+}
+.menuBtn{
+	text-align: center;
+	font-size: 20px;
+	line-height: 60px;
+	color: #C83660;
+	transition: all 0.2s;
+}
+.menuBtn:hover{
+	background-color: #C83660;
+	color: white;
+	cursor: pointer;
+}
+.menuBtn:hover .menuCon{ 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.menuCon{
+	display: none;
+	width:80%;
+	height:100%;
+	top:100%;
+	left:20%;
+	position: absolute;
+	background-color: #C83660;
+	cursor: default;
+}
+/* 搜索框 */
+.menuCon_ser{
+	width:40%;
+	height:60px;
+	text-align: center;
+	font-size: 20px;
+	line-height: 40px;
+	color:#C83660;
+	border: 0px;
+	border-radius: 5px;
+	animation: serWidth 0.5s linear;
+}
+@keyframes serWidth{
+	from{width:0%}
+	to{width:40%}
+}
+.serBtn{
+	margin-left: 10px;
+	padding:10px;
+	line-height: 40px;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.serBtn:hover{
+	color:#C83660;
+	background-color: #BADFDB;
+}
+/* 导航条 */
+.nav{
+	width:80%;
+	height:60px;
+	transition: width 0.2s;
+	background-color: #BADFDB;
+	padding:5px;
+	border-radius: 5px;
+	animation: NavWidth 0.5s linear;
+}
+@keyframes NavWidth{
+	from{width:0%}
+	to{width:80%}
+}
+.navBtn{
+	display: inline-block;
+	float:left;
+	width:10%;
+	line-height: 60px;
+	margin-left: 10px;
+	transition: all 0.2s;
+	border-radius: 5px;
+	color: #C83660;
+}
+.navBtn:hover{
+	color:#BADFDB;
+	background-color: #C83660;
+	cursor: pointer;
+}
+/* 菜单 */
+.menuWin{
+	width:400px;
+}
+._menu{
+	background-color: #BADFDB;
+	color:#C83660;
+	width:20%;
+	display:block;
+}
+._menu:hover{
+	color:#BADFDB;
+	background-color: #C83660;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s;
+}
+._menu:hover ._menuCon{
+	display: inline-block;
+}
+._menuCon{
+	width:100%;
+	display: none;
+	position: absolute;
+	background-color: #49BEB7;
+	left:100%;
+}
+._menuBtn{
+	width:200%;
+	background-color: #BADFDB;
+	color:#C83660;
+}
+._menuBtn:hover{
+	width:300%;
+	background-color: #BADFDB;
+	color:#C83660;
+	transition: all 0.2s;
+	background-color: #C83660;
+	color:#BADFDB;
+}
+/* 轮播图 */
+.picRun{
+	line-height: 40px;
+	text-decoration: none;
+	font-size: 20px;
+	color:#BADFDB;
+	border: #BADFDB 2px solid;
+	padding:10px;
+	
+	animation: picFloat 1s infinite;
+}
+.picRun:hover{
+	animation: none;
+	color: #C83660;
+	background-color: #BADFDB;
+}
+@keyframes picFloat{
+	0% { margin-top:20px; }
+	50% { margin-top:0px; }
+	100%{ margin-top:20px; }
+}
+/* 选项卡 */
+.board{
+	background-color: #BADFDB;
+	display: inline-block;
+	width:60%;
+	font-size: 20px;
+	margin-bottom: 40%;
+	position: relative;
+}
+.boardBtn{
+	color:#C83660;
+	display: inline-block;
+	height:50px;
+	line-height: 50px;
+	width:10%;
+	float: left;
+}
+.boardBtn:hover{
+	background-color: #C83660;
+	color:#BADFDB;
+}
+.boardBtn:hover .boardCon{
+	z-index: 1;
+}
+.boardCon{
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:600%;
+	background-color: #61F2F5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:#C83660;
+	font-size: 40px;
+	font-weight: 2000;
+}
+.boardCon div{
+	animation: picFloat 1s infinite;
+}
+/* 内容栏 */
+.item{
+	border-radius: 5%;
+	display: inline-block;
+	width:400px;
+	height:320px;
+	background-color: #BADFDB;
+	overflow: hidden;
+	transition: all 1s;
+}
+.item:hover{
+	display: inline-block;
+	height:550px;
+	transition: all 1s;
+}
+.item:{
+	height:500px;
+	transition: all 1s;
+}
+.item img{
+	width:100%;
+	position: relative;
+}
+.itemMsg{
+	font-size: 20px;
+	color:#C83660;
+	height:180px;
+	background-color: #BADFDB;
+}
+.itemMsg div{
+	line-height:60px;
+}
+.itemMsg div:hover{
+	background-color: #C83660;
+	color:#BADFDB;
+	transition: all 0.5s;
+}
+
+
+/* 提示信息 */
+.UIcon{
+	width:80%;
+	height:100%;
+	float:left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	color:#C83660;
+}
+.UIcon .UIMsg{
+	border: solid #C83660 2px;
+	padding:10px 20px;
+	animation: 1s infinite picFloat;
+	cursor: default;
+}
+/* ****************************************具体页面 */
+.p2{
+	background-color: #49beb7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.p2 p,.p3 p{
+	font-size: 55px;
+	line-height: 55px;
+	color: #F6D365;
+	font-weight: bold;
+}
+.p3{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.p3 p{
+	text-align: center;
+	color:#49beb7;
+	animation: picFloat 1s infinite;
+}
+.myPro{
+	width:80%;
+	height:40%;
+}
+.myPro a{
+	text-align: center;
+	float: left;
+	vertical-align: top;
+	padding:7%;
+	margin-top:2%;
+	margin-left: 1%;
+	font-size: 200%;
+	font-weight: bold;
+	border: #49beb7 solid 10px;
+	color: #49beb7;
+	background-color: #F6D365;cursor: pointer;
+	text-decoration: none;
+}
+.myPro a:hover{
+	transition: all 0.3s;
+	border: #F6D365 solid 10px;
+	color: #F6D365;
+	background-color: #49beb7;
+}
+/* ****************************************具体页面 */
+.p3{
+	background-color: #f6d365;
+}

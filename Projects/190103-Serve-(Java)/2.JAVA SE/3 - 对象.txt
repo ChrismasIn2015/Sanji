@@ -1,0 +1,43 @@
+1.继承
+	关键字:extends:子类能使用父类能访问的属性行为
+	关键字:super:代指父类
+	构造方法链:调用自身前会调用父类构造方法
+	方法:
+		1.重载overload:方法名相同,参数名不同
+		2.继承重写override:完全相同
+2.多态
+	面向接口编程：解耦：重构有优势：但方法被局限在接口里
+	本质:父类型的对象可以引用子类型的对象
+		Object o = new 子类型;
+	声明类型/实际引用类型
+		动态绑定:声明类型调用哪个方法由实际类型决定
+	父类型不仅有一个实例
+	Object o = new Student();
+	Student s = o//错误:编译器认为o是Object类型
+		向上转换:子类的实例永远是父类的实例
+		向下转换:Student s = (Student)o || o instanceof Student:运算
+3.异常
+	1.由方法抛出/由try:catch语句抛出并处理
+	2.类型
+		Error:虚拟机抛出系统异常
+		Exception:程序语法等/外部异常:必检异常
+		RuntimeException:运行错误bug
+4.接口
+	本质:定义类的共同行为	
+	关键字:interface定义,implement实现
+	java为所有类定义了●Comparable接口
+				compareTo(Object)方法由类实现
+	●克隆对象:Cloneable接口：标记接口
+		clone();//Object实现
+5.抽象类
+	关键字:abstract
+6.泛型
+	优点:能够在编译时发现错误
+	泛型类:class ArrayList<E>{}:只接受E类型的参数
+	泛型接口:interface
+	类型受限：
+		1.非受限通配<?> // ? extends Object
+		2.受限通配<? extends T>
+		3.下限通配<? super T>
+	泛型方法:public statice <E> void name(E e){}
+	

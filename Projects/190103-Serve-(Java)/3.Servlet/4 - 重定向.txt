@@ -1,0 +1,8 @@
+步骤
+	1.浏览器访问Serve1
+	2.收到302：其他URL
+	3.浏览器访问Serve2
+	4.收到结果
+重定向：request信息丢失，需要重新添加
+	request.serAttribute(K,V);
+	response.sendRedirect("servletpath");

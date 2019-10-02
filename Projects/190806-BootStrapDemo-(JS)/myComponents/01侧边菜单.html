@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/*
+				下拉菜单主要算法
+				1.主要由触摸div-展示div按钮-隐藏菜单div+a组成
+				2.触摸div设置inline-block宽高限制大小
+				3.使展示div按钮（块元素）使其充填满触摸div
+				4.让整个隐藏菜单脱离文档流（内联）,设置父子条件样式
+			*/
+		   .down{
+			   position: relative;
+			   display: inline-block;
+			   width:120px;
+			   height: 40px;
+		   }
+		   .down-btn{
+			   /*按钮的样式*/
+			   line-height: 40px;
+			   text-align: center;
+			   background-color: #FFFF00;
+			   cursor: pointer;
+		   }
+		   .menu{
+			   position: absolute;
+			   display: none;
+		   }
+		   .menu a{
+			   /*a的连接样式*/
+			   text-decoration: none;
+			   text-align: center;
+			   line-height: 40px;
+			   background-color: #00FFFF;
+			   display:block;
+			   width:100px;
+			   height:40px;
+		   }
+		   .menu a:hover{
+			   background-color: red;
+		   }
+		   /*条件样式*/
+		   .down:hover .menu{
+		   		display: block;
+		   }
+		   /*侧边菜单设置*/
+		   #right{
+			   top:0px;
+			   left:120px;
+		   }
+		</style>
+	</head>
+	<body>
+		<h1>高度坍缩测试</h1>
+		<div class="down">
+			<div class="down-btn">下拉菜单按钮</div>
+			<div class="menu">
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+			</div>
+		</div>
+		<div class="down">
+			<div class="down-btn">侧边菜单按钮</div>
+			<div class="menu" id="right">
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+			</div>
+		</div>
+		<div class="down">
+			<div class="down-btn">侧边菜单按钮</div>
+			<div class="menu" id="right">
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+				<a href="#">菜单</a>
+			</div>
+		</div>
+		<h1>高度坍缩测试</h1>
+	</body>
+</html>

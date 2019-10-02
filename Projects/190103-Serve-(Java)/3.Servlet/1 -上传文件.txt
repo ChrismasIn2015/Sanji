@@ -1,0 +1,60 @@
+不管正文属于什么数据类型，容器都把请求包装成HttpServletRequest对象
+-------------------------------------------------------------------------------
+
+特殊：对于multipart/form-data数据类型，可以使用
+	1.commons-fileupload.jar（依赖2）
+	2.commons-io.jar
+来处理上传文件事项：把multipart/form-data数据分拆成FileItem对象来进行处理
+
+//基于硬盘创建文件编辑工厂
+DiskFileItemFactory factory = new DiskFileItemFactory();
+factory.setSizeThreshold(4*1024);//设置存储缓冲区：4K
+factory.setRepository(new File(path));//设置目标目录
+
+//创建获取文件的上传处理器
+ServletFileUpload upload = new ServletFileUpload(factory);
+upload.setSizeMax(4*1024*1024);//允许上传的最大文件大小4M
+
+//解析FileItem请求(表单/非表单: formfield)
+List items = upload.parseRequest(request)：List<FileItem>
+
+//处理
+Iterator iter = items.iterator();
+while(iter.hasNext()){
+	FileItem item = (FileItem)iter.next();
+	if(item.isFileItem()){	处理普通表单}
+	else { 处理文件}
+}
+
+//处理文件
+String name = item.getName()：获得包含路径的文件名字：demo.txt
+int index = filename.lastIndexOf("\\");
+name = name.substring(index+1, name.length);//获得文件名字
+long size = item.getSize();
+File target = new File("目标路径"+name);
+item.write(target);
+-------------------------------------------------------------------------------
+FileItem类的常用方法：
+
+1.  boolean isFormField()
+
+2.  String getName()
+	getName方法用于获得文件上传字段中的文件名。
+
+3.  String getFieldName()
+	getFieldName方法用于返回表单标签name属性的值。
+	如上例中<input type="text" name="column" />的value。
+
+4.  void write(File file)
+        write方法用于将FileItem对象中保存的主体内容保存到某个指定的文件中。它主要用途是将上传的文件内容保存在本地文件系统中。
+
+5.  String getString()
+      getString方法用于将FileItem对象中保存的数据流内容以一个字符串返回，它有两个重载的定义形式：
+      public java.lang.String getString()
+      public java.lang.String getString(java.lang.String encoding)
+
+9.  InputStream getInputStream()
+    以流的形式返回上传文件的数据内容。
+
+10. long getSize()
+      返回该上传文件的大小（以字节为单位）。

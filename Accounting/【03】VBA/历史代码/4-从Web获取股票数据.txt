@@ -1,0 +1,41 @@
+
+
+
+
+'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@这个过程用来新增一个工作表=股票原始数据查询@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Public Sub addStock(code As String)
+    
+    'Dim wb As Workbook
+    'Set wb = Workbooks.Open("C:\Users\Wqao\Desktop\Economy\【03】VBA\数据库\1.电气设备.xlsx")
+    
+    '下面是添加查询表
+    Application.WindowState = xlNormal
+    ActiveWorkbook.Queries.Add Name:=code, Formula:= _
+        "let" & Chr(13) & "" & Chr(10) & "    源 = Csv.Document(Web.Contents(""http://quotes.money.163.com/service/chddata.html?code=0" & code & "&start=20010101&end=20181231&fields=TCLOSE""),[Delimiter="","", Columns=4, Encoding=936, QuoteStyle=QuoteStyle.None])," & Chr(13) & "" & Chr(10) & "    提升的标题 = Table.PromoteHeaders(源, [PromoteAllScalars=true])," & Chr(13) & "" & Chr(10) & "    更改的类型 = Table.TransformColumnTypes(提升的标题,{{""日期"", type date}, {""股票代码"", type" & _
+        " text}, {""名称"", type text}, {""收盘价"", type number}})" & Chr(13) & "" & Chr(10) & "in" & Chr(13) & "" & Chr(10) & "    更改的类型" & _
+        ""
+    ActiveWorkbook.Worksheets.Add
+    ActiveSheet.Name = code
+    
+    With ActiveSheet.ListObjects.Add(SourceType:=0, Source:= _
+        "OLEDB;Provider=Microsoft.Mashup.OleDb.1;Data Source=$Workbook$;Location=" & code & ";Extended Properties=""""" _
+        , Destination:=Range("$A$1")).QueryTable
+        .CommandType = xlCmdSql
+        .CommandText = Array("SELECT * FROM [" & code & "]")
+        .RowNumbers = False
+        .FillAdjacentFormulas = False
+        .PreserveFormatting = True
+        .RefreshOnFileOpen = False
+        .BackgroundQuery = True
+        .RefreshStyle = xlInsertDeleteCells
+        .SavePassword = False
+        .SaveData = True
+        .AdjustColumnWidth = True
+        .RefreshPeriod = 0
+        .PreserveColumnInfo = True
+        .Refresh BackgroundQuery:=False
+    End With
+    'wb.Close True
+    
+End Sub
+

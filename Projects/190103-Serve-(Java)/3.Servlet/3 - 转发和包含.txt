@@ -1,0 +1,8 @@
+一个Servlet无法调用另外一个Servlet的service()方法
+
+准备
+	ServletContext/ServletRequest.getRequestDispatcher(绝对路径/绝对路径、相对路径)
+请求转发
+	dispatcher.forward(request, response);
+请求包含
+	保留输出数据

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的BootStrap笔记</title>
+		
+		<!-- bootstrap引入 -->
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+		
+		<link rel="icon" href="img/logo.png" sizes="199x196">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<!--
+			页面导读
+			该页面主要通过id分割页面,构成如下
+			hwq-main:主要用于设置全局样式:1200px
+				hwq01:最顶部的导航条
+				#hwq02:超高横条页面简介:相对于hwq-main定位
+				hwq03:内容区
+					contents:内容区
+						content-block:每次更新的内容
+					menu:菜单
+			#hwq04:页尾：开起了浮动,始终在最下边
+		-->
+		<div id="hwq-main">
+			
+			
+			
+			
+			<!-- ******************************************************(id=hwq01:最顶部的导航条)***** -->
+			<div id="hwq01">
+				<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="style.html">基本样式</a></li>
+					<li><a href="#">组件</a></li>
+					<li><a href="#">BootStrap</a></li>
+				</ul>
+			</div>
+			<!-- ******************************************************(id=hwq01:最顶部的导航条结束)***** -->
+			
+			
+			
+			<!-- ******************************************************(id=hwq02:超高横条页面简介)***** -->
+			<div id="hwq02">
+				<!--下面的div相对body脱离了文档流,相对于hwq-main定位 -->
+				<div>
+					<!--下面的div单独设置了1200px -->
+					<div>
+						<p><b>起步</b>
+						<br>这个页面主要介绍了使用BootStrap的几种方法
+					</div>
+				</div>
+			</div>
+			<!-- ******************************************************(id=hwq02:超高横条页面简介结束)***** -->
+			
+			
+			
+			
+			
+			<!-- ******************************************************(id=hwq03:内容区)***** -->
+			<!--用于撑起由于浮动引起的高度坍缩:250px -->
+			<div id="hwq02-clear"></div>
+			
+			<div id="hwq03">
+				<div id="content">
+					
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					<div class="content-block">
+						<h1 id="a-01">1.按钮
+						
+						<!-- 代码展示N -->
+						<h2>普通按钮</h2>
+						<div class="code-show">
+							
+						</div>
+						<br>
+						<div class="code-text">
+							<xmp>
+								
+							</xmp>
+						</div>
+					</div>
+					
+					
+					<!-- ------------------------------------------------------------------------------------------------内容更新 -->
+					
+				</div><!-- ******************************************************(hwq03:content结束)***** -->
+				
+				
+				
+				<!-- ******************************************************(hwq03:menu)***** -->
+				<div id="menu">
+					<ul>
+						<li><div></div><a href="#a-01">下载</a></li>
+						<li><div></div><a href="#bs-downs">文件下载</a></li>
+						<li><div></div><a href="#a-02">免费CDN服务</a></li>
+					</ul>
+					<ul>
+						<li><a href="#">返回顶部</a></li>
+					</ul>
+				</div><!-- ******************************************************(hwq03:menu结束)***** -->
+			</div><!-- ******************************************************(hwq03结束)***** -->
+		</div><!-- ******************************************************(hwq-main结束)***** -->
+		
+		
+		
+		
+		<!-- ******************************************************(id=hwq04:页尾)***** -->
+		<div id="hwq04">
+			<div class="hwq-04text">
+				<div><a>我的github仓库</a></div>
+				<div><a>我的笔记</a></div>
+				<p>Designed and built with all the love in the world by 
+				@mdo and @fat. Maintained by the core team with the help 
+				of our contributors.本项目源码受 MIT开源协议保护，
+				文档受 CC BY 3.0 开源协议保护。</p>
+			</div>
+		</div><!-- ******************************************************(id=hwq04:页尾结束)***** -->
+	</body>
+	<script src="js/index.js"></script>
+</html>

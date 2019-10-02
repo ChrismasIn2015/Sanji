@@ -1,0 +1,12 @@
+复制数组
+	copyOf(source, source.length+1) : new array[]
+排序
+	sort/parallelSort
+查找
+	binarySearch
+比较
+	equals(a,b)：检查两个数组内容是否相等
+充填
+	fill(list,value)
+显示内容
+	toString(list)：[values..]

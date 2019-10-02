@@ -1,0 +1,23 @@
+OutputStream out;
+InputStream in;
+
+String filename = request.getParameter("code");
+
+//读取本地文件流
+in = getServletContext().getResourceAsStream("/store/"+filename);
+int length = in.available();//估计字节流
+
+//设置响应正文MIME
+response.setContentType("application/foce-download");
+response.setHeader("Content-Length", String.valueOf(length));
+response.setHeader("Content-Disposition", "attachment;filename=\"+filename+"\");
+
+//发送
+out = response.getOutputStream();
+int byteRead = 0;
+byte[] buffer = new byte[512];
+while((bytesRead = in.read(buffer)) != -1){
+	out.write(buffer, 0 , byteRead);
+}
+in.close();
+out.close();
