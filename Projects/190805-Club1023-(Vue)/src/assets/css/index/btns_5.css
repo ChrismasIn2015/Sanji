@@ -1,0 +1,31 @@
+
+.loginBtns_05{
+    width:130px;
+    margin-bottom:20px;
+
+    position: fixed;
+    right: 20px;
+    bottom:0px;
+    z-index: 1;
+}
+.btn{
+    width:100px;
+    height:30px;
+    border-radius: 20px;
+    border:white 2px solid;
+    margin: 10px auto auto;
+    display: block;
+    /* 字体 */
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color:black;
+}
+.btn:hover{
+    background-color:white;
+    color: black;
+}
