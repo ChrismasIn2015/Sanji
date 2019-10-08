@@ -7,15 +7,13 @@ import { getGoodsList } from './service';
 
 
 const Model: ModelType = {
-  namespace: 'goodsList', // 名称
+  namespace: 'goodsList', // 表示在全局 state 上的 key
 
-  state: {
-    // 表格【更新后】的渲染数据 StateType: { list: listStateType<单元>[] }
+  state: { // state 是初始值
     list: [],
   },
 
-  effects: {
-    // 异步处理
+  effects: { // 异步处理逻辑
     *fetchReports({ payload }, { call, put }) {
       const response = yield call(getGoodsList, payload);
       yield put({
@@ -25,8 +23,7 @@ const Model: ModelType = {
     },
   },
 
-  reducers: {
-    // 同步处理
+  reducers: { // 接收 action，同步更新 state
     getReports(state, action) {
       return {
         ...state,

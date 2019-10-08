@@ -91,7 +91,7 @@ React组件
 
 
 
-# 3.Ant Design Pro
+# 3.后台管理系统
 
 ```
 管理系统中的右侧菜单
@@ -102,28 +102,49 @@ React组件
 ## UMI
 
 ```
-UMI是一个 - 接受第三方框架插拔的脚手架 (蚂蚁金服)
-create-umi
-    project
-    	通用模式：是否启用 TypeScript/umi-plugin-react
-    ant-design-pro
-    	仅包含 ant-design-pro 布局的脚手架，具体页面可通过 umi block 添加
+通过 UMI 来快速搭建 React 应用脚手架 (蚂蚁金服)
+    npm create umi
+    ant design pro: 企业级中后台前端/设计解决方案
+    - 使用了 Dva 进行状态管理
 ```
 
+## Dva
+
 ```
-重要的目录
-	mock                           // mock 文件所在目录，基于 express
-    config
-        config.js                  // umi 配置，同 .umirc.js，二选一
-    src                            // 源码目录，可选
-        layouts/index.js           // 全局布局
-        pages                      // 页面目录，里面的文件即路由
-            404.js                 // 404 页面
-            page1.js               // 页面 1，任意命名，导出 react 组件
-            page2.js               // 页面 2，任意命名
-        global.css                 // 约定的全局样式文件，自动引入，也可以用 global.less
-        global.js                  // 可以在这里加入 polyfill
-        app.js                     // 运行时配置文件
+dva 首先是一个基于 redux 和 redux-saga 的数据流方案，
+然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，
+所以也可以理解为一个轻量级的应用框架。
+
+============================================================
+1.定义路由-组件页
+2.编写 UI component
+3.编写 Models
+	- 包含同步更新state的 reducers / 函数式更改state
+	- 处理异步逻辑的 effects
+4.在路由-组件页中添加 Connect
+
+============================================================
+dva 在组件内部更改 state
+    通过 dispatch 函数调用一个 action
+        dispatch({ 
+            type: 'add', // 调用Models内的 reducers / effects
+            payload: {} // 需要传递的信息
+        })
+
+============================================================
+Dva
+	数据的改变发生通常是通过用户交互行为或者浏览器行为（如路由跳转等）触发的，
+	当此类行为会改变数据的时候可以通过 dispatch 发起一个 action
+	如果是同步行为会直接通过 Reducers 改变 State
+	如果是异步行为（副作用）会先触发 Effects 然后流向 Reducers 最终改变 State
 ```
 
-## 
+## 我的步骤
+
+```
+    1.git clone https://github.com/ant-design/ant-design-pro.git
+    2.安装依赖 npm install
+进入了展示界面
+============================================================
+```
+
