@@ -1,62 +1,60 @@
 # 1.React
 
+## 基础
+
 ```
-React元素
-	1.变量可以嵌入标签中 或者标签的属性中
-	2.Babel 把JSX语法转译为 React.createElement()
-	3.React元素本质上是一个JS对象，在渲染后变成DOM
-	4.已渲染的元素是不可变的 更新UI需要传入全新元素 ReactDOM只更新局部元素
-	
-	# 通常JSX元素
-		1.HTML标签 const com = <HTML> {value} </HTML>
-		2.自定义标签 const com = <Me> {value} </Me>
-	# 渲染React元素到DOM中
-		ReactDOM.render( 组件, document.getElementById('root') )
-		
+ReactDOM.render( JSX-Tree, document.getElementById('root') )
+	- 渲染React元素到DOM中, 通常只渲染一次 
+	- 调用后DOM不可改变, 除非重新使用 render, 只更新变更的部分
+
 ===================================================================
-React组件
-	1.返回JSX元素集合
-	2.在实际应用<Welcome name='me'/>时候
-		会将属性封装为对象 { name:'me' } 通过 props 传递给原组件函数
-		最终通过函数创建组件
-	3.ES6 Class 中 this.props 与函数组件 props 一致
-	
-	# 函数式组件
-		function Welcome(props) { return JSX }
-	# ES6组件 (推荐)
-		class Welcome extends React.Component { // this.props
-			render() { return JSX } }
+React元素
+	0.元素通常由 JSX表达式 构成
+    	- 可以通过单括号{}插入变量/函数/注释
+    	- JSX ==(Babel)=> React.createElement('HTML'): 本质上是一个JS对象
+    1.组件-元素集合
+    	- 函数式 function Welcome(props) { return JSX }
+    	- ES6 class Welcome extends React.Component { render() { return JSX } }
+    	# 在class中需要使用this.props
+    	1.1 使用组件<UI>
+    		- ReactDOM.render 解析 <Welcome name='me'/>
+    		- 把 { name:'me' } 封装进props(只读) 再调用原函数 Welcome 返回 HTML
+    		- 最后 ReactDOM.render 进行DOM渲染
+    	1.2 组件的生命周期
+            - componentDidMount(){} 方法会在组件已经被渲染到 DOM 中后运行
+            - componentWillUnmount(){} 方法会在组件被删除后运行
+    		
 			
 ===================================================================
 组件状态
-	1.在 class 内部添加 class构造函数
-	2.componentDidMount() 方法会在组件已经被渲染到 DOM 中后运行
-	3.componentWillUnmount() 方法会在组件被删除后运行
-	4.通过 this.setState( newState ) 来更新组件状态
-		- setState 是异步的, 不能依赖旧state的值
-		- setState((state(旧), props(新)) => { }) 是同步的
-	5.组件只能向子组件传递 state => props
-	
-	# ES6组件 (推荐)
-		class Welcome extends React.Component { // this.props
-			constructor( props ) {
-                super(props);
-                this.state = { ? };
-              }
-			render() { return JSX } }
+	1.在 class 内部添加构造函数
+		constructor(props) {
+			super(props);
+			this.state = {date: new Date()};
+		}
+	2.通过 this.setState( newState ) 来更新组件状态
+		- this.setState 直接更改 satae 可能是异步的, 通过函数 return newState 是同步的
+		- state 的更新会被合并
+	3.父组件只能向子组件传递状态 state => props
 			
-===================================================================	
-技巧
-	1.条件渲染 
-		- 声明变量 通过if语句进行选择渲染
-		- && 运算符之后的JSX根据运算符之前的变量进行渲染
-	2.通过返回null阻止渲染
-	3.列表渲染 - array.map((val) => JSX) // 需要设置key
-	4.双向绑定/受控组件 - 使表单value与state绑定/onChange时间更新state
-	5.状态提升 - 共享的state放置到父组件中
+===================================================================
+0.事件绑定 
+	- 绑定事件最好为 onClick={this.callBack()}
+	- 如果为 onClick={this.callBack} 必须在构造函数中对 回调函数绑定 .bind(this)
+1.条件渲染
+    - render前 声明变量 通过if语句进行选择渲染
+    - render中 && 运算符之后的JSX根据运算符之前的变量进行渲染 / 三元表达式
+	- 通过返回null阻止渲染
+2.列表渲染
+	- let array; array.map((value) => JSX) // 元素上需要设置key属性
+4.受控组件
+5.状态提升
+	- 将共享的state放置到父组件中
 ===================================================================	
 脚手架 Create React App
 ```
+
+## Redux
 
 # 2.TypeScript
 
@@ -144,7 +142,7 @@ Dva
 ```
     1.git clone https://github.com/ant-design/ant-design-pro.git
     2.安装依赖 npm install
-进入了展示界面
+进入了Demo展示界面
 ============================================================
 ```
 

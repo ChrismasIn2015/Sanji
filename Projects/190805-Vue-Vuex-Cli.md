@@ -168,27 +168,11 @@ var vm = new Vue({
 ## 状态管理 - vuex
 
 ```
-公共数据管理 
-1.创建仓库
-	Vue.use(Vuex);
-	const store = new Vuex.Store({
-      state: {name:...},//数据库
-      getters: { nameDel : state=>{}}//计算属性
-      mutations: {//同步方法库
-      	nameAdd(state,其他参数){},...}
-      }),\
-2.使用仓库
-	导入 import store.js
-	根组件注册 store:store,
-	子组件访问数据: this.$store.state.name //一般在组件computed中访问store
-	更改数据: store.commit('nameAdd')
-3.异步方法库
-	注册 actions:{ nameSet({ commit }){commit('nameAdd')},... }//可以是异步方法
-	使用 store.dispatch('nameSet')//因为异步所以可以批量分发
-4.多个仓库管理
-	const store = new Vuex.Store({
-		modules:{
-			storeA,....}})
+npm install vuex --save
+1.创建仓库入口 /store/index.js
+	Vue.use(Vuex)
+	export default Vuex.Store({ modules: {} })
+2.
 ```
 
 # Vue-cli
