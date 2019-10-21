@@ -8,12 +8,19 @@ import { NormalTree, NormalTreeNode } from './lib/normalTree'
 
 export default {
   created () {
-    let tree = new NormalTree()
-    tree.insert('root', new NormalTreeNode('1', 1))
-    tree.insert('root', new NormalTreeNode('1', 1))
-    tree.insert('root', new NormalTreeNode('2', 1))
-    tree.insert('2', new NormalTreeNode('3', 4))
-    tree.insert('3', new NormalTreeNode('4', 5))
+    let tree = new NormalTree(1) // contains root
+    tree.insert(1, new NormalTreeNode(2))
+    // tree.insert(1, new NormalTreeNode(3))
+    // tree.insert(1, new NormalTreeNode(4))
+    // tree.insert(1, new NormalTreeNode(5))
+    // tree.insert(1, new NormalTreeNode(6))
+
+    // tree.insert(2,new NormalTreeNode(7))
+    // tree.insert(2,new NormalTreeNode(8))
+    // tree.insert(2,new NormalTreeNode(9))
+    // tree.insert(2,new NormalTreeNode(10))
+    // tree.insert(2,new NormalTreeNode(11))
+    
     console.log(tree)
   }
 }
