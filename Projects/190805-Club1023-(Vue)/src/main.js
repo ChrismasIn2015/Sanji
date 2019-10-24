@@ -23,14 +23,14 @@
 //使用VUE
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router/router.js';
 
 Vue.config.productionTip = false
 
-import router from './router/router.js';
 new Vue({
 
   render: h => h(App),//函数式地添加一个模板,添加到#app下面
 
-  router: router,
+  router
 
 }).$mount('#app')//绑定对应的#app标签
