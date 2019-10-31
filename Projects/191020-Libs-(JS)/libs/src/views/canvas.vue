@@ -7,45 +7,70 @@
 <script>
 export default {
     mounted () {
-        // 1.
-        let canvas = document.getElementById("myCanvas");
-        canvas.width = 800;
-        canvas.height = 600;
-        let context = canvas.getContext("2d"); // 1.1 创建一个状态
-        context.beginPath() // 1.2 保留原状态 新状态开始====================================================
-
-        // # 绘制
-        // # 绘制线段
-        // context.strokeStyle = '#124324' // 直线样式
-        // context.lineWidth = 5 // 宽度
-        // context.stroke() // 绘制直线
-        
-        // # 充填
-        // context.fillStyle = "#FF0000" // 充填样式
-        // context.fill() // 进行充填
-
-        // 2. 设置状态 => 执行状态/绘制
-
-        // 2.1 设置直线状态
-        // context.moveTo(100, 100) // 起点
-        // context.lineTo(200, 200) // 终点
-
-        // 2.2 设置矩形状态
-        // context.fillRect(0,0,100,100); // 从左上原点/宽高/绘制矩形 rectangle
-
-        // 2.3 设置圆状态
-        let centerx = 100, centery = 100, radius = 100 // 圆心/半径
-        let startAngle = 0
-        let endingAngle = (Math.PI) // 弧度值 = 东->西边 = 0->Math.PI
-        context.strokeStyle = '#888888' // 直线样式
-        context.lineWidth = 1 // 宽度
-        let anticlockwise = false // (可选)是否要逆时针
-        // context.arc( centerx, centery, radius, startAngle, endingAngle, false )
-        context.arc( centerx, centery, radius, startAngle, endingAngle, false )
-        context.stroke() // 绘制直线
-
-        
-        // context.closePath() // 1.2 (可选)保留原状态/新状态开始/会自动封闭线段====================================================
+		// 1. prepare
+		let canvas = document.getElementById("myCanvas");
+		canvas.width = 1200;
+		canvas.height = 600;
+		let context = canvas.getContext("2d");
+		
+		// 2.
+		var mousePos = [0, 0];
+		var nodes = []; // 存储星星
+		var edges = []; // 存储边
+		
+		// 3 设置自适应
+		window.onresize = function () {
+			canvasEl.width = document.body.clientWidth
+			canvasEl.height = canvasEl.clientHeight;
+			if (nodes.length == 0) {
+				constructNodes();
+			}
+			render();
+		};
+		window.onresize();
+		
+		// 4
+		function constructNodes() {
+			for (var i = 0; i < 100; i++) {
+				var node = {
+					drivenByMouse: i == 0,
+					x: Math.random() * canvasEl.width,
+					y: Math.random() * canvasEl.height,
+					vx: Math.random() * 1 - 0.5,
+					vy: Math.random() * 1 - 0.5,
+					radius: Math.random() > 0.9 ? 3 + Math.random() * 3 : 1 + Math.random() * 3,
+				};
+				nodes.push(node);
+			}
+			nodes.forEach(function (e) {
+				nodes.forEach(function (e2) {
+					if (e == e2) { return; }
+					var edge = {
+						from: e,
+						to: e2,
+					}
+					addEdge(edge);
+				});
+			});
+		}
+		
+		// 5
+		function addEdge(edge) {
+			var ignore = false;
+			edges.forEach(function (e) {
+				if (e.from == edge.from && e.to == edge.to) {
+					ignore = true;
+				}
+				if (e.to == edge.from && e.from == edge.to) {
+					ignore = true;
+				}
+			});
+			if (!ignore) {
+				edges.push(edge);
+			}
+		}
+		
+		// 6
     }
 }
 </script>

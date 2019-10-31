@@ -19,112 +19,49 @@
 ## 基础
 
 ```
-    data: {msg...},
-    methods: {fun},
-    computed: {fun对}: 计算属性(本质是返回复杂return会产生复用缓存),
-    watch: { "data.msg":fun } : 监听data，路由$route.path...
 ***********************************************************************************
-    v-bind/:class="i"/{style:boolean}
-    v-on/@click.prevent="fun"
-        //阻止(点击a刷新页面)默认行为.prevent//阻止冒泡.stop
-    v-if/v-show="i(boolean)"
-    v-model="i"(双向数据绑定)
+# 创建一个Vue应用
+	var vm = new Vue({
+		el: '#app' // 绑定DOM结点作为这个Vue根实例(特有)
+		templete: "HTML" // 绑定模板作为组件
+		data / computed / methods
+	})
+# 已为 #app 绑定Vue实例, 可以在其HTML中使用 Vue 语法
+
 ***********************************************************************************
-    v-for="i in data/methods/整数"
-    v-for="(value,index) in item/数组"
-    v-for="(value,key,index) in item/对象"
-	# 使用:key="a.id" 保证数据唯一性
-	
-# 在vm实例中想获取data/methods等其他模块必须通过this.a/$data.a来进行访问
-# 可以通过vm.$refs.name获取DOM元素(绑定了ref属性),也可以获得其中的数据/方法
-***********************************************************************************
-v-model 自动更新原理
-	# 工具: 为target对象设置访问器对象属性(里面保存了仅访问器使用的数据)
-		Object.defineProperty(target, name, {get:fun,set(val):fun})
-		# 赋值 target.name="" 就是调用set方法(赋的值是参数)
-		# get/set的this指向target对象
-	# 工具: 劫持DOM
-		DocumentFragment.append(dom)
-		当DOM.appendChild(DocumentFragment)时,会删除原来的DOM
-		我们只需要获取含有'v-model'的结点就可以了
-	2.初始化
-		- 创建Vue对象,初始化VM.data
-			# 为VM设置访问器/将data设置为访问器属性
-		- 遍历DOM,遍历出所有v-model子节点,进行劫持返回新DOM
-		- v-model子节点.value = VM.data(触发了访问器get方法)
-	3.视图更新(事件触发)-data更新
-		- 遍历DOM,遍历出所有v-model子节点,进行劫持返回新DOM
-		# 劫持时绑定事件
-		# 触发事件：VM.data = v-model子节点.value(触发了访问器set方法)
-			- set方法 1.更新data 2.作为发布者通知更新
-	4.发布者通知更新
-		- 遍历DOM,遍历出所有v-model子节点,进行劫持返回新DOM
-		# 劫持时初始化一个订阅者对象
-			- 在构造方法中从VM.data获取数据(触发了访问器get方法)
-			- 在构造方法中有更新方法通过.nodeValue更新视图
-			# 触发get方法时把这个订阅者放入订阅者队列
-			# 触发set方法时触发订阅者队列中所有订阅者的更新方法
+VM生命周期
+	Vue实例 -> 初始化一个空对象/默认事件/函数 → beforeCreate
+    data/methods → created
+    编译<template> → beforeMount
+    <template>替换到浏览器中 → mounted 页面渲染完毕
+    → beforeUpdate 数据更新:页面根据data已经进行了变换
+    → update 启动 
+    → destory 启动
 ```
 
 ## 组件 - component
 
 ```
-VM生命周期
-        1.创建一个Vue实例
-        2.初始化一个空对象/默认事件/函数 
-    → beforeCreate 启动
-        3.初始化我们的data/methods
-    → created 启动
-        4.开始编译模板<template>放到内存中(虚拟DOM)
-    → beforeMount 启动
-        5.把内存中编译好的模板<template>中(虚拟DOM)替换到浏览器中(需要el:'#id')
-    → mounted 页面渲染完毕
-    → beforeUpdate 启动
-        6.数据更新:页面根据data已经进行了变换(不一定要v-model)
-    → update 启动
-    → destory 启动
 ***********************************************************************************
-VUE虚拟DOM
-    原生JS或JQ操作DOM时，浏览器会从构建DOM树开始从头到尾执行一遍流程。
-    用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在JS对象(虚拟DOM)上，
-    操作内存中的JS对象的速度显然要更快，
-    等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。
-***********************************************************************************
-1.创建模板
-	<template id="#"><div>只能有一个根结点</div></template>
-2.新建组件对象
-	# var name = {template:"#id"}
-	# export default {}
-3.注册组件
-    全局: Vue.component("nameX",name)
-	局部: import name/component:{ "nameX":name, ...}
-4.使用组件
-	<name-X></name-X>
-***********************************************************************************
-# 使用父组件数据
-    1.子组件对象中添加 props:["中间变量"]
-    实际<name-x v-bind:中间变量=父数据>
-    2.子组件改变父组件数据
-        <template v-on:click="子方法">
-        methods:{子方法:function(){this.$emit("中间变量"，参数1...);}}
-        实际<name-x v-on:"中间变量"=父方法>
-# 使用子组件数据
-	1.父组件直接使用 this.$refs.name.fun/data + 实际<name-x ref='name'>
-# 兄弟组件：创建一个新Vue的实例，让各个兄弟共用同一个事件机制
-	创建空模板：export default new Vue()
-    接收数据:
-    	import emptyVue
-    	mounted(){//数据渲染完毕
-            emptyVue.$on("中间变量",(参数)=>{回调})}//注册事件
-	发送数据：
-    	import emptyVue
-        <template v-on:click="子方法">
-        methods:{子方法:function(){emptyVue.$emit("中间变量"，参数...);}}//触发事件
-```
-
-## 函数组件 - render
-
-```
+组件是可以复用的 Vue 实例
+	1. 组件控制模板字符串"<templete>"/单vue文件
+	2. 注册
+		全局: Vue.component('component', {..详见基础..})
+		局部: components: { 'component': {..详见基础..} } （常用）
+	3. 动态组件
+		3.1 <component :is="currentTabComponent"></component>
+		3.2 ('component', {
+			render: (createElement) => { return createElement(...) }
+		})
+	# createElement(
+		'HTML/Component-Name', // 必填
+		{ data / computed / methods  }, // 可选
+		['String', 'createElement(...)'] // 可选
+	)
+	
+	
+	
+	
 # 通常使用HTML语言来创建模板语法
 # 函数式模板-render函数通过传入函数,返回一个createElement函数的调用结果,创建虚拟DOM
 var vm = new Vue({
@@ -134,7 +71,28 @@ var vm = new Vue({
     }
     # 返回一个虚拟DOM树替换VM
     # 简写:render: c => c(...);
-});
+})
+
+***********************************************************************************
+# 使用父组件
+    1.数据
+    	父: <name-x :中间变量=父数据>
+    	子: props:["中间变量"]
+    2.方法
+        父: <name-x v-on:"中间变量"=父方法>
+        子: <template v-on:click="子方法">
+        this.$emit("中间变量"，参数1...)
+        
+# 使用子组件数据
+	数据/方法
+		父: <name-x ref='name'>
+		this.$refs.name.fun/data
+		
+# 兄弟组件：
+	创建一个新Vue的实例，让各个兄弟共用同一个事件机制
+	创建空模板：export default new Vue()
+	注册: mounted() => emptyVue.$on("中间变量",(参数)=>{回调})}//注册事件
+	触发: emptyVue.$emit("中间变量"，参数...)
 ```
 
 ## 路由 - router
