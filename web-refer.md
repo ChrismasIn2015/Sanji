@@ -1,7 +1,6 @@
-# Html
+# 1.Html
 
 ```
-
 浏览器渲染过程
     1.用HTML分析器，分析HTML元素，构建一颗DOM树
     	- onload函数触发
@@ -32,7 +31,7 @@
             重置reset/下拉select+option
 ```
 
-# CSS
+# 2.CSS
 
 ### 通用
 
@@ -189,7 +188,7 @@ rem布局
 
 
 
-# JavaScript
+# 3.JavaScript
 
 ## 加载过程
 
@@ -576,3 +575,7 @@ JSON
 ```
 
 # 浏览器
+
+# 4.数据结构
+
+# 5.算法
