@@ -2,6 +2,8 @@
 import canvas from '@/views/canvas.vue'
 import tree from '@/views/tree.vue'
 import index from '@/views/index.vue'
+import doc from '@/views/doc.vue'
+
 // 2.  创建路由明细
 const myRoutes = {
     mode:'history',
@@ -20,6 +22,11 @@ const myRoutes = {
             path:'/tree',
             name:'tree',
             component:tree,
+        },
+        {
+            path:'/doc',
+            name:'doc',
+            component:doc,
         }
     ]
 }

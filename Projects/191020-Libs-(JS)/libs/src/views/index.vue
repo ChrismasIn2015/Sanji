@@ -1,16 +1,26 @@
 <template>
   <div class='index'>
-      <div class="index-item" @click="goto('tree')">Tree</div>
-      <div class="index-item" @click="goto('canvas')">Canvas</div>
+      <div class="index-item" v-for='(item, index) in entry' :key='index' @click="goto(item.route)">{{ item.name }}</div>
   </div>
 </template>
 
 <script>
+
 export default {
-    methods: {
-        goto (index) {
-            this.$router.push( { name: index} )
+    data () {
+        return {
+            entry: [
+                { name: 'Tree', route: 'tree' },
+                { name: 'Canvas', route: 'canvas' },
+                { name: 'Doc', route: 'doc' },
+            ]
         }
+    },
+    created () {
+        
+    },
+    methods: {
+        goto (route) { this.$router.push(route) }
     }
 }
 </script>

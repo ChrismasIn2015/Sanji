@@ -67,7 +67,8 @@
     	空格转义字符 &nbsp
     	默认: 
     		换行符无效 / 多个空格会被合并为一个 / 句子自动换行 / 单词超出边界
-    	Block-换行: word-wrap: break-word
+    	Block-换行: 
+    		word-wrap: break-word
     	裁剪: 
     		white-space: nowrap;
     		text-overflow: ellipsis;
