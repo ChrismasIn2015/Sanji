@@ -30,6 +30,7 @@ html, body{
   color: white;
   box-sizing: border-box;
   border: 1px white solid;
+  z-index: 1;
 }
 /* 裁剪 */
 .text-cut{
