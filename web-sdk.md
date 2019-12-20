@@ -1,126 +1,182 @@
 # 1.前端的发展
 
+## 开发工具
+
+### == Vue ==
+
+```javascript
+# 特点
+	传统：DOM增删改查(JQuery)
+	MVVM：虚拟DOM高效更新 / 数据绑定 / 组件化开发
+	
+# 版本
+	普通版本 npm i vue -g
+	脚手架 npm i @vue/cli
+	安装说明书：https://cn.vuejs.org/v2/guide/installation.html
+	
+# VM实例
+	## 生命周期
+		beforeCreate => 初始化事件/生命周期
+		created 
+			=> 根据el:#app调用 vm.$mount("#app")
+			=> 根据template编译到 vm.render 中
+		beforeMount => vm.$el = DOM
+		mounted => beforeUpdate <=> update => vm.$destroy()
+		destroyed
+```
+
+### 安装说明
+
+```
+* 编译器C：
+	C/R版本可以处理 挂载模板字符串 场景
+	R版本需要通过 webpack/vue-loader 预编译成JS
+	因为R版本相比C/R完整版体积要小大约 30%，所以应该尽可能R版本。
+```
+
+|      |        UMD         |        CommonJS        |    ES Module 1     |        ES Module 2        |
+| :--: | :----------------: | :--------------------: | :----------------: | :-----------------------: |
+|      |    *** script**    | *** 配合老的打包工具** | *** 配合打包工具** | **script&type="module" ** |
+|      |     （未压缩）     |       （未压缩）       |     （未压缩）     |        （未压缩）         |
+| C/R  |       vue.js       |     vue.common.js      |     vue.esm.js     |    vue.esm.browser.js     |
+|  R   |   vue.runtime.js   | vue.runtime.common.js  | vue.runtime.esm.js |                           |
+|      |     （已压缩）     |    （打包工具压缩）    |  （打包工具压缩）  |        （已压缩）         |
+| C/R  |     vue.min.js     |                        |                    |  vue.esm.browser.min.js   |
+|  R   | vue.runtime.min.js |                        |                    |                           |
+
+### 手动脚手架
+
+```
+1.lib/vue.min.js
+2.npm -save-dev/webpack
+```
+
+
+
 ## 浏览器的限制
 
 ```
-目前的浏览器只支持 HTML/CSS/JavaScript 为基础的页面
+# 介绍
+    目前的浏览器(内嵌渲染引擎/JS引擎)只支持 HTML/CSS/JavaScript 为基础的页面
+    - JS引擎有语法标准(ECMAScript)，而高级语法需要转译
+    * 模块化需求
+    	原生HTML通过直接引用CSS/图片/JS代码形式无法适应大规模开发
+    	于是通过模块化把一个复杂的系统分解到多个模块以方便编码
+        1.CommonJS规范 - require同步加载/modules.exports暴露接口
+        2.AMD规范 - 需要第三方库requireJS
+        3.ES6 / import/export 目前无法直接运行在大部分 JavaScript 运行环境下
+    	目前的模块化方案都需要工具转译为 HTML/CSS/JavaScript
+    * 框架语法需要转译
+        React JSX 语法需要转译
+        Vue 组件系统包含大量新语法 需要转译
+    * 新语言需要转译
+    	TypeScript/SCSS 无法直接执行
+```
 
-==============================================================
-1.模块化需要转译
-    原生HTML通过直接引用CSS/图片/JS代码形式无法适应大规模开发
-    于是通过模块化把一个复杂的系统分解到多个模块以方便编码
-    1.CommonJS规范 - require同步加载/modules.exports暴露接口
-    2.AMD规范 - 需要第三方库requireJS
-    3.ES6标准 - import/export 目前无法直接运行在大部分 JavaScript 运行环境下
-	- 目前的模块化方案都需要工具转译为 HTML/CSS/JavaScript 
-2.新框架需要转译
-    React JSX 语法需要转译
-    Vue 组件系统包含大量新语法 需要转译
-3.新语言需要转译
-	TypeScript/SCSS 无法直接执行
+### == Webpack ==
 
-==============================================================
-不断出现的 模块化/新语言/新框架 需求
-我们需要构建工具，在编写完代码后生成能在线上运行的代码
-通过webpack，我们能就能一次性满足
-    模块合并：在采用模块化的项目里会有很多个模块和文件，需要构建功能把模块分类合并成一个文件。
+```javascript
+# 介绍
+    不断出现的 模块化/新语言/新框架 需求
+    我们需要构建工具，在编写完代码后生成能在线上运行的代码
+
+# 目标
+    模块合并：通过构建功能一次HTTP请求完所有需要的图片/等资源(bundle.js)
     代码转换：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等。
     文件优化：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等。
     代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载。
     自动刷新：监听本地源代码的变化，自动重新构建、刷新浏览器。
     代码校验：在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。
     自动发布：更新完代码后，自动构建出线上发布代码并传输给发布系统。
+
+# /dist/index.html( <= bundle script) # Step 3 后不需要
+# /src/index.js
+# webpack-config.js
+# package.json
+	"start": "webpack-dev-server --open"
+	"build": "webpack" 或 "webpack --config webpack-config.js"
 ```
 
-## Webpack
+### 使用流程
 
 ```javascript
-// webpack-config.js
+# Step 1 基础功能 =============================================================
+    	npm init 
+		npm install webpack -save-dev
+		npm install webpack-cli -save-dev
+		需要设置项目目录 
+        	package.json
+        	/dist/index.html( <= bundle script) # Step 3 后不需要
+        	/src/index.js
+# Step 2 加载样式/图片 =========================================================
+	需要加载样式 npm install style-loader css-loader -save-dev
+	需要加载图片 npm install
+# Step 3 自动生成 dist/Html 入口文件 ============================================
+	需要自动生成创建html入口文件
+	为html文件中引入的外部资源每次compile后的hash，防止引用缓存的外部文件问题
+    npm install html-webpack-plugin -save-dev
+# Step 4 打包前清空 dist 目录 ===================================================
+	npm install clean-webpack-plugin --save-dev
+# Step 5 服务器模式 ======================================================
+	能够重新进行build加载（刷新了页面）npm install --save-dev webpack-dev-server
+	能够进行热更新（不刷新页面）
+    	/src/index.js（入口文件）：if (module.hot) { module.hot.accept(); }
+```
 
-const path = require('path');
+### webpack.config.js
+
+```javascript
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin"); # Step 3
+const CleanWebpackPlugin = require("clean-webpack-plugin"); # Step 4
+
 module.exports = {
-  // -------------------- 1.基础功能 --------------------
-  entry: './main.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-  },
-  // -------------------- 2.文件解析 - Loader --------------------
-  module: {
-    rules: [
-      {
-        test: /\.css$/, // 用正则去匹配要用该 loader 转换的 CSS 文件
-        use: ['style-loader', 'css-loader?minimize'],
-      }
+    # Step 1 基础功能 ======================================================
+    # 补充
+    mode: "development", // * 打包模式
+    devtool: "inline-source-map", // * 错误定位
+    # 打包路径
+    entry: "./src/index.js",
+    output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+    # Step 5 服务器模式：能够重新进行build加载（刷新了页面）
+    devServer: {
+    	contentBase: { "./dist" },
+        port: 8080,
+        hot: true, // * 局部刷新时需要开起
+    },
+    # 打包内容
+    module: {
+        rules: [
+            # Step 2 加载样式/图片 ==========================================
+            # 打包导入的样式
+            { test: /\.css$/, use: ["style-loader", "css-loader"] },
+            # 打包导入的图片
+            // - url-loader 依赖于 file-loader 用于图片优化/base64
+            // - base64 <= options.limit(bit) <=  Img // 8192bit = 1024b = 1kb
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                    use: [
+                        { loader: "file-loader" },
+                        { loader: "url-loader", options: { limit: 8192 } }
+                    ]
+            }
+		]
+	},
+    # 外部插件
+    plugins: [
+        # Step 3 自动生成 dist/Html 入口文件 ==================================
+        new HtmlWebpackPlugin({
+            title: "MyLib",
+            template: "./src/packTemplate.html" // 导出的模板
+            // favicon: "path/to/yourfile.ico" // Link图标
+        }),
+        # Step 4 打包前清空 dist 目录 =========================================
+        new CleanWebpackPlugin()
     ]
-  }j
-  // -------------------- 3.功能拓展 - plugins --------------------
-  plugins: [
-    new htmlWebpackPlugins({
-    	template: path.join(__dirname,'./src/index.html'),
-        filename: 'index.html'
-	})
-  ]
-  // -------------------- 配置结束 --------------------
 };
-```
-
-### 模块化
-
-```
-模块化
-    默认命令 webpack './src/main.js' './dist/bundle.js' 
-    优化
-    	配置 webpack.congig.js 文件
-        const path = require('path')
-        module.export = { 
-        	entry: path.join(__dirname,'./src/main.js'),
-        	output: {
-        		path.join(__dirname,'./dist),
-        		filename: 'bundle.js'
-        	}
-        }
-        命令行输入 webpack 就能直接输出目标文件
-        
-==============================================================
-最终
-得到可以直接引用的资源 <srcipt src='../dist/bundle.js'> 
-```
-
-### 热门插件
-
-```
-
-==============================================================
-html-webpack-plugin (npm)
-	可以生成HTML入口文件
-    1.先进行webpack-dev-serve (npm) 配置
-    2.修改webpack.config.json
-    	const htmlWebpackPlugins = require('html-webpack-plugin')
-    	,plugins:[
-   			new htmlWebpackPlugins({
-    			template: path.join(__dirname,'./src/index.html'),
-    			filename: 'index.html'
-    		})
-    	]
-    在build后生成一个 html 文件，并且已经引用了相关的资源
-	
-==============================================================
-webpack-dev-server (npm) 官方
-	启动服务器
-    1.修改 package.json 添加新 npm 命令
-    	scripts { dev : webpack-dev-server contentBase src ---port 8080 }
-    2.本地服务器启动优化
-        修改webpack.config.json
-        devServe:{
-        	open:true, (是否自动打开浏览器)
-        	port:8080,
-        	contentBase:'src', (指mainJS需要的资源都在这)
-        }
-    3.页面不需要引用标签文件/自动加载bundle内存webpack-dev-serve (npm)
-    4.最终
-        启动了一个使用express的Http服务器
-        会实时的编译src，但是最后的编译的文件保存在内存中
 ```
 
 # 2.Js跨平台
@@ -146,35 +202,121 @@ NodeJS 是一个基于 V8 JS编译器的 JS 运行环境，使得JS能在不同�
 - 数据库服务
 	1.MySQL
 	2.MongoDB
+	3.Sqlite
 ```
 
-## npm (插件) 
+## = npm
 
 ```
 淘宝镜像
 	$ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-初始化目标包目录
+初始化包管理文件
 	$ npm init -y // 产生 package.json
+	
 搜索模块
 	$ npm search
+	
 安装
-	$ npm install name
-        全局 - g : 将安装包放在 /usr/local 下或者你 node 的安装目录/可以直接在命令行里使用
-        本地 - d/空 : 将安装包放在 ./node_modules 下
-        - s 更新到package.json
+	$ npm install moduleName 命令
+        1. 安装模块到项目node_modules目录下。
+        2. 不会将模块依赖写入devDependencies或dependencies 节点。
+        3. 运行 npm install 初始化项目时不会下载模块。
+        
+    $ npm install -g moduleName 命令
+        1. 安装模块到全局，不会在项目node_modules目录中保存模块包。
+        2. 不会将模块依赖写入devDependencies或dependencies 节点。
+        3. 运行 npm install 初始化项目时不会下载模块。
+        
+    $ npm install -save moduleName 命令
+        1. 安装模块到项目node_modules目录下。
+        2. 会将模块依赖写入dependencies 节点。
+        3. 运行 npm install 初始化项目时，会将模块下载到项目目录下。
+        4. 运行npm install --production
+        或者注明NODE_ENV变量值为production时，会自动下载模块到node_modules目录中。
+        
+    $ npm install -save-dev moduleName 命令
+        1. 安装模块到项目node_modules目录下。
+        2. 会将模块依赖写入devDependencies 节点。
+        3. 运行 npm install 初始化项目时，会将模块下载到项目目录下。
+        4. 运行npm install --production
+        或者注明NODE_ENV变量值为production时，不会自动下载模块到node_modules目录中。
+        
 删除包
-	$ npm /uninstall/r/emove name
-配置
-    package.json
-    - 全局命令	"scripts"
-    - 项目依赖	"dependencies"
-==========================================================================
+	$ npm uninstall/remove name
+	
 当导入一个包时：require('vue')
     1.找到对应的 node_modules
     2.找到require的包文件夹
     3.根据package.json找到需要的JS库文件
 ```
+
+
+
+## Electron
+
+```
+# 介绍
+	Electron基于Node使用JS调用丰富的原生(操作系统)API来创造桌面应用 
+	本质上是Node应用程序 可以使用Node.js API
+	=>
+        const fs = require('fs')
+        const root = fs.readdirSync('/')
+        console.log(root)
+        
+# 安装
+	npm init -y
+	npm install electron -g
+	package.json 
+		=> "main": main.js
+		=> "start": "electron ."
+		
+# 项目结构
+	- package.json :设置main为入口JS
+	- main.js
+	- index.html
+	
+# 运行原理
+	Electron使用了Chromium来展示web页面,使用了其多进程架构
+	主进程
+		=> package.json /main.js
+	渲染进程
+		=> 每个web页面/BrowserWindow对象
+		
+# 与Vue一同开发
+	- 对于Electron本质上是页面，运行在渲染进程中
+```
+
+## 基础
+
+```
+# 主进程: main.js
+        => 引用Node/Electron模块
+            const electron = require('electron')
+            const { app, BrowserWindow } = require('electron')
+            * 在命令行中进行打印 console.log()
+            * 窗口对象实例对应多窗口，通常存储在自定义数组中
+            * 窗口关闭时最好回收对应的实例内存 
+                ** win.on('closed', () => { win = null })
+                ** app.on('window-all-closed', () => { 
+                        process.platform !== 'darwin' ? app.quit():"" 
+                    })
+        => 创建浏览器窗口
+            function createWindow () {
+                let win = new BrowserWindow({ 
+                    width: 800, height: 600, 
+                    webPreferences: { nodeIntegration: true } 
+                })
+                win.loadFile('index.html')
+            }
+            * 打开win渲染进程控制台 win.webContents.openDevTools()
+        => 在应用上注册事件
+            app.on('ready', createWindow)
+ 
+ # 渲染进程: src/js/... 
+```
+
+
 
 # 3.版本控制
 
