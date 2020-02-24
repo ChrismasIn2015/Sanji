@@ -1,0 +1,11 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html,
+body,
+#app {
+    height: 100%;
+    background-color: $common-back;
+}
