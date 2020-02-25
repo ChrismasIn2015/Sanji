@@ -1,24 +1,8 @@
 <template>
   <div class="common-input">
     <!-- 1.none 普通输入框 -->
-    <input
-      v-model="inputValue"
-      @focus.stop="inputWarn = ''"
-      @blur.stop="inputVerify"
-      :class="{'warn-input': inputWarn}"
-      :placeholder="state.holder"
-      v-if="state.type==='none'"
-      :type="state.plus === 'btn' ? 'number' : 'text'"
-    />
-    <input
-      v-model="inputValue"
-      @focus.stop="inputWarn = ''"
-      @blur.stop="inputVerify"
-      type="password"
-      :class="{'warn-input': inputWarn}"
-      :placeholder="state.holder"
-      v-if="state.type==='pass'"
-    />
+    <input v-model="inputValue" @focus.stop="inputWarn = ''" @blur.stop="inputVerify" :class="{'warn-input': inputWarn}" :placeholder="state.holder" :type="state.type" v-show="tagSwitch === 'input'" />
+    <textarea v-model="inputValue" @focus.stop="inputWarn = ''" @blur.stop="inputVerify" :class="{'warn-input': inputWarn}" :placeholder="state.holder" :type="state.type" v-show="tagSwitch === 'textarea'" />
     <div class="input-warn" v-show="inputWarn">{{ inputWarn }}</div>
     <!-- 2.btn 普通输入框+右侧按钮 -->
     <div class="input-btn" v-if="state.plus === 'btn' && state.type==='none'"></div>
@@ -47,6 +31,16 @@ export default {
       inputWarn: ""
     };
   },
+  computed: {
+    tagSwitch() {
+      switch (this.state.type) {
+        case "textarea":
+          return "textarea";
+        default:
+          return "input";
+      }
+    }
+  },
   methods: {
     inputVerify() {
       // 不允许为空
@@ -58,7 +52,7 @@ export default {
         }
       }
       // 验证密码
-      if (this.state.type === "pass") {
+      if (this.state.type === "password") {
         if (this.inputValue.length < 6 || /^\d+$/.test(this.inputValue)) {
           this.inputWarn = "请输入至少6位数字+字母";
         }
@@ -80,7 +74,8 @@ export default {
 <style lang="scss">
 .common-input {
   position: relative;
-  input {
+  input,
+  textarea {
     border: 1px solid $common-tip-lower;
     transition: all 0.2s;
     padding: 0.5rem;
@@ -90,6 +85,7 @@ export default {
       border: 1px solid $common-main;
       box-shadow: 0px 0px 2px 0px $common-main;
     }
+    resize: none; // for textarea
   }
   .input-warn {
     position: absolute;

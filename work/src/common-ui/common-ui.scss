@@ -4,7 +4,7 @@
 }
 .flex-x-reverse {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row-reverse;
 }
 .flex-y {
   display: flex;
@@ -45,6 +45,7 @@
 
 // # 常用组件设置
 .common-link {
+  display: inline;
   color: $common-main !important;
   cursor: pointer;
   &:hover {
@@ -58,9 +59,10 @@
   background-color: $common-main;
   cursor: pointer;
   text-align: center;
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   transition: all 0.2s;
-  border-radius: 0.19rem;
+  border-radius: 0.2rem;
   border: 1px solid transparent;
   &:hover {
     background-color: white;
@@ -69,80 +71,19 @@
   }
 }
 
-// ************************************ old ************************************
-.form-btn {
-  color: white;
-  background-color: $common-main;
-  text-align: center;
-  line-height: 40px;
-  height: 40px;
-  padding: 0px 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  &:hover {
-    background-color: white;
-    color: $common-main;
-    border: 1px solid $common-main;
-  }
-}
-.form-btn-toggle {
-  background-color: white;
+.common-btn-toggle {
+  display: inline-block;
   color: $common-main;
+  background-color: $common-white;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
   border: 1px solid $common-main;
-  text-align: center;
-  line-height: 40px;
-  height: 40px;
-  margin-top: 40px;
-  cursor: pointer;
-  transition: all 0.2s;
-  border-radius: 5px;
   &:hover {
-    color: white;
+    color: $common-white;
     background-color: $common-main;
-    border: 1px solid transparent;
   }
-}
-.form-btn-blue {
-  background-color: rgb(38, 132, 255);
-  color: white;
-  border: 1px solid transparent;
-  &:hover {
-    color: rgb(38, 132, 255);
-    background-color: white;
-    border: 1px solid rgb(38, 132, 255);
-  }
-}
-.form-btn-grange {
-  background-color: rgb(234, 167, 16);
-  color: white;
-  border: 1px solid transparent;
-  &:hover {
-    color: rgb(234, 167, 16);
-    background-color: white;
-    border: 1px solid rgb(234, 167, 16);
-  }
-}
-.form-btn-red {
-  background-color: red;
-  color: white;
-  border: 1px solid transparent;
-  &:hover {
-    color: red;
-    background-color: white;
-    border: 1px solid red;
-  }
-}
-.red {
-  color: red;
-}
-.green {
-  color: $common-main;
-}
-.bc-red {
-  background-color: red;
-}
-.bc-green {
-  background-color: $common-main;
 }
