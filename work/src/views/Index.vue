@@ -43,11 +43,12 @@
         <img class="nav-item bar-btn" src="../static/images/logo-green.png" alt @click.stop="barListShow = !barListShow" />
       </div>
       <!-- 面包屑 -->
-      <div class="con-routes flex-middle-y">{{ barVector[0] }}</div>
+      <div class="con-routes flex-middle-y">{{ tarBarRoutes }}</div>
       <!-- 内容区 -->
       <div class="con-components">
-        <indexTools v-show="barVector[0] === 0" />
-        <qrCodeCreate ref="qrCodeCreate" v-show="barVector[0] === 2 && barVector[1] === 0" />
+        <indexTools :pageShow="barVector[0] === 0 && barVector[1] === -1" />
+        <qrCodeCreate ref="qrCodeCreate" :pageShow="barVector[0] === 2 && barVector[1] === 0" />
+        <qrCodeAdmin ref="qrCodeAdmin" :pageShow="barVector[0] === 2 && barVector[1] === 1" />
       </div>
     </div>
   </div>
@@ -56,6 +57,7 @@
 <script>
 import indexTools from "@/views/indexTools/indexTools.vue";
 import qrCodeCreate from "@/views/qrCode/qrCodeCreate.vue";
+import qrCodeAdmin from "@/views/qrCode/qrCodeAdmin.vue";
 export default {
   data() {
     return {
@@ -100,10 +102,23 @@ export default {
   },
   components: {
     indexTools,
-    qrCodeCreate
+    qrCodeCreate,
+    qrCodeAdmin
   },
   mounted() {},
-  computed: {},
+  computed: {
+    // 临时面包屑
+    tarBarRoutes() {
+      let barName1 = this.barList[this.barVector[0]].name;
+      let barName2 = "";
+      if (this.barVector[1] > -1) {
+        barName2 =
+          " / " +
+          this.barList[this.barVector[0]].children[this.barVector[1]].name;
+      }
+      return barName1 + barName2;
+    }
+  },
   methods: {
     setBarActive(bar, vector) {
       // 1.样式清空
@@ -119,13 +134,37 @@ export default {
       if (bar.children ? bar.children.length : false) {
         bar.childShow = !bar.childShow; // 展开子列表 不修改样式
       } else {
-        // ** 20/02/25 需要初始化 <2, 1>组件 的值 **
-        this.$refs.qrCodeCreate.initProcess();
-        // ** 20/02/25 需要初始化 <2, 1>组件 的值 End **
+        // ** 20/02/25 需要初始化对应组件的值 **
+        if (vector[0] === 2 && vector[1] === 0)
+          this.$refs.qrCodeCreate.initProcess();
+        if (vector[0] === 2 && vector[1] === 1)
+          this.$refs.qrCodeAdmin.initAdminType();
+        // ** 20/02/25 需要初始化对应组件的值 End **
 
         bar.activeStyle = !bar.activeStyle; // 切换组件 修改样式
       }
       Object.assign([], this.barList);
+    },
+    // 样式
+    setBarVector(index1, index2) {
+      // 1.样式清空
+      for (let i = 0; i < this.barList.length; i++) {
+        this.barList[i].activeStyle = false;
+        let childList = this.barList[i].children;
+        for (let j = 0; j < childList.length; j++) {
+          childList[j].activeStyle = false;
+        }
+      }
+      // 2.重新设置样式
+      if (this.barList[index1].children.length) {
+        this.barList[index1].children[index2].activeStyle = true;
+      } else {
+        this.barList[index1].activeStyle = true;
+      }
+      //
+      // let vector = Object.assign({}, {0:})
+      this.barVector[0] = index1;
+      this.barVector[1] = index2;
     }
   }
 };
@@ -137,6 +176,7 @@ export default {
   // 1
   .admin-bar {
     width: 15.625%;
+    // width: 18.75rem;
     background-color: rgb(0, 21, 41);
     z-index: 1;
     position: fixed;
@@ -191,8 +231,10 @@ export default {
   }
   // 2
   .admin-content {
-    width: 84.375%;
+    // width: 84.375%;
+    width: 100%;
     margin-left: 15.625%;
+    // 导航条
     .con-nav {
       position: fixed;
       top: 0px;
@@ -200,6 +242,7 @@ export default {
       width: 84.375%;
       padding: 0.5rem 1rem;
       background-color: white;
+      z-index: 1;
       .nav-item {
         margin-left: 1rem;
         font-size: 0.9rem;
@@ -236,11 +279,16 @@ export default {
         cursor: pointer;
       }
     }
+    // 面包屑
     .con-routes {
+      z-index: 1;
       position: fixed;
       top: 2.75rem;
       right: 0px;
+      cursor: default;
+      font-size: 0.9rem;
       width: 84.375%;
+      line-height: 1.7rem;
       padding: 0.5rem 1rem;
       background-color: white;
       border-top: 3px solid $common-back;

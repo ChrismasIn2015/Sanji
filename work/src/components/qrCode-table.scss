@@ -1,0 +1,115 @@
+// <div class="qrCode-table">
+
+//<!-- 表格头部按钮 -->
+//             <div class="table-nav flex-middle-y">
+//               <div class="common-btn">+ 添加群聊码</div>
+//               <div class="nav-switch flex-middle-y">
+//                 <div class="switch-name">轮播模式</div>
+//                 <div class="switch-btn">
+//                   <span class="btn"></span>
+//                 </div>
+//               </div>
+//             </div>
+
+//             <div class="table-list">
+//<!-- 表格第一行 -->
+//               <div class="table-row title flex-side">
+//                 <div class="table-column flex-middle">
+//                   # 多选格 <div class="column-checkBox"></div>
+//                 </div>
+//                 <div class="table-column flex-middle-y">
+//                   # 表格头固定文字 {{ text }}
+//                 </div>
+//               </div>
+//<!-- 表格内容 -->
+//               <div class="table-row flex-side" v-for!>
+//                 <div class="table-column flex-middle">
+//                   1.多选格 <div class="column-checkBox"> </div>
+//                 </div>
+//                 <div class="table-column flex-middle-y">
+//                   2.正常文字 {{ text }}
+//                 </div>
+//                 <div class="table-column flex-middle-y">
+//                   3.图片 <img class="sort-image" :src="code.qrCodeImage" alt="">...
+//                 </div>
+//                 <div class="table-column flex-middle-y">
+//                   4.末尾link <div class="common-link">编辑</div> ...
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+
+.qrCode-table {
+  // 表格头部按钮
+  .table-nav {
+    .nav-switch {
+      line-height: 1.5rem;
+      cursor: default;
+      margin: 0rem 1.5rem;
+      color: $common-tip-higher;
+      .switch-btn {
+        cursor: pointer;
+        margin-left: 1rem;
+        width: 3rem;
+        height: 1.5rem;
+        border-radius: 1rem;
+        background-color: $common-tip-lower;
+        position: relative;
+        .btn {
+          width: 1.3rem;
+          height: 1.3rem;
+          border-radius: 1.3rem;
+          background-color: $common-white;
+          position: absolute;
+          top: 0.1rem;
+          left: 0.1rem;
+        }
+      }
+    }
+    .common-btn-toggle {
+      margin-left: 1rem;
+    }
+  }
+  //
+  .table-list {
+    margin-top: 1.25rem;
+    cursor: default;
+    border-top: 1px solid $common-tip-lower;
+    .table-row {
+      padding: 0rem 1rem;
+      border-left: 1px solid $common-tip-lower;
+      border-right: 1px solid $common-tip-lower;
+      border-bottom: 1px solid $common-tip-lower;
+      .table-column {
+        width: 12%; // 100/8 = 12.5
+        padding: 1rem 0rem;
+        color: $common-tip-higher;
+        .column-checkBox {
+          width: 1rem;
+          height: 1rem;
+          border: 1px solid $common-tip-lower;
+        }
+        .column-checkBox-on {
+          background-color: $common-main;
+          border: 1px solid $common-main;
+        }
+        .main-image {
+          width: 5rem;
+          height: 5rem;
+        }
+        .sort-image {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 0.5rem;
+        }
+        .common-link {
+          margin-right: 1rem;
+        }
+      }
+    }
+    .title {
+      background-color: #f6f6f6;
+      color: $common-black;
+    }
+  }
+}

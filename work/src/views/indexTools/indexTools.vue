@@ -1,5 +1,5 @@
 <template>
-  <div class="index-card">
+  <div class="index-card" v-show="pageShow">
     <div class="indexTools flex">
       <div class="tool " v-for="(tool, index) in toolList" :key="index">
         <div class="tool-card flex">
@@ -19,6 +19,12 @@
 
 <script>
 export default {
+  props: {
+    pageShow: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       toolList: [
@@ -37,6 +43,11 @@ export default {
         }
       ]
     };
+  },
+  watch: {
+    pageShow(value) {
+      value ? console.log("tools on show") : "";
+    }
   },
   mounted() {},
   computed: {},

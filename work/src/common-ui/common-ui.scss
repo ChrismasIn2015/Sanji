@@ -87,3 +87,21 @@
     background-color: $common-main;
   }
 }
+
+.common-btn-tip {
+  display: inline-block;
+  color: $common-tip;
+  background-color: $common-white;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
+  border: 1px solid $common-tip;
+  &:hover {
+    color: $common-white;
+    background-color: $common-main;
+    border: 1px solid $common-main;
+  }
+}
