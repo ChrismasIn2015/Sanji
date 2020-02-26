@@ -1,5 +1,5 @@
 // ================================================= 1.微续账号API设置
-import { WqaoRequester } from "../wqao-request.js";
+import { WqaoRequester } from "../wqao/wqao-request.js";
 
 function wx_success(result, resolve, reject) {
     let data = result.data;

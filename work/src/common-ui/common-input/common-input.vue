@@ -1,11 +1,32 @@
 <template>
   <div class="common-input">
     <!-- 1.none 普通输入框 -->
-    <input v-model="inputValue" @focus.stop="inputWarn = ''" @blur.stop="inputVerify" :class="{'warn-input': inputWarn}" :placeholder="state.holder" :type="state.type" v-show="tagSwitch === 'input'" />
-    <textarea v-model="inputValue" @focus.stop="inputWarn = ''" @blur.stop="inputVerify" :class="{'warn-input': inputWarn}" :placeholder="state.holder" :type="state.type" v-show="tagSwitch === 'textarea'" />
+    <input
+      v-model="inputValue"
+      @focus.stop="inputWarn = ''"
+      @blur.stop="inputVerify"
+      :class="{'warn-input': inputWarn}"
+      :placeholder="state.holder"
+      :type="state.type"
+      v-show="tagSwitch === 'input'"
+      maxlength="24"
+    />
+    <textarea
+      v-model="inputValue"
+      @focus.stop="inputWarn = ''"
+      @blur.stop="inputVerify"
+      :class="{'warn-input': inputWarn}"
+      :placeholder="state.holder"
+      :type="state.type"
+      v-show="tagSwitch === 'textarea'"
+    />
     <div class="input-warn" v-show="inputWarn">{{ inputWarn }}</div>
     <!-- 2.btn 普通输入框+右侧按钮 -->
-    <div class="input-btn" v-if="state.plus === 'btn' && state.type==='none'"></div>
+    <div
+      class="input-btn"
+      v-if="state.plus === 'btn'"
+      @click.stop="setCountTimer"
+    >{{ count === 60 ? "发送验证码": count}}</div>
   </div>
 </template>
 
@@ -27,8 +48,12 @@ export default {
   },
   data() {
     return {
+      // 表单值
       inputValue: this.state.value ? this.state.value : "",
-      inputWarn: ""
+      inputWarn: "",
+      // 验证码
+      countTimer: null,
+      count: 60
     };
   },
   computed: {
@@ -66,6 +91,19 @@ export default {
         return true;
       }
       return false;
+    },
+    setCountTimer() {
+      if (this.countTimer) return;
+      this.count = 59;
+      this.countTimer = setInterval(() => {
+        this.count--;
+        if (this.count === 0) {
+          clearInterval(this.countTimer);
+          this.count = 60;
+          this.countTimer = null;
+        }
+      }, 1000);
+      this.$test.log("发送验证码成功", this.countTimer);
     }
   }
 };
@@ -96,7 +134,26 @@ export default {
     border: 1px solid red;
     box-shadow: 0px 0px 2px 0px red;
   }
-  // 设置 placeholder
+  .input-btn {
+    position: absolute;
+    width: 7rem;
+    height: 2.2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: $common-white;
+    top: 0rem;
+    right: 0rem;
+    cursor: pointer;
+    border: 1px solid $common-tip;
+    &:hover {
+      background-color: $common-tip-lower;
+    }
+    &:active {
+      background-color: $common-tip;
+    }
+  }
+
+  // 额外：设置 placeholder
   ::-webkit-input-placeholder {
     color: $common-tip-higher;
     font-size: 0.9rem;

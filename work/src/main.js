@@ -21,9 +21,9 @@ myRouter.beforeEach((to, from, next) => {
 import store from "./store/store";
 
 // 2.Wqao
-import "./utils/wqao-mobile-rem.js"; // 字体自适应
-import { WqaoTest } from "./utils/wqao-test.js"; // 测试语句
-Vue.prototype.$test = new WqaoTest(true);
+import "./utils/wqao/wqao-mobile-rem.js"; // 字体自适应
+import { WqaoTest } from "./utils/wqao/wqao-test.js"; // 测试语句
+Vue.prototype.$test = new WqaoTest(false);
 
 // *.创建实例
 new Vue({

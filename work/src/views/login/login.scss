@@ -137,11 +137,11 @@
                         }
                         .footer-checkBox-on {
                             border: 1px solid $common-main;
-                            background-color: $common-main;
+                            border: 0.4rem solid $common-main;
                         }
                     }
                     .common-btn {
-                        margin: 0.3rem 0rem;
+                        margin: 1rem 0rem 0.5rem;
                         width: 100%;
                     }
                     .common-input {

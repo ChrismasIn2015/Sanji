@@ -7,20 +7,32 @@
           <img src="../../static/images/logo-green.png" alt />
           <span class="logo-title">微续</span>
         </div>
-        <span class="common-link" v-show="pageType !== 'phone-register'" @click.stop="pageType = 'phone-register'">免费注册</span>
-        <span class="common-link" v-show="pageType === 'phone-register'" @click.stop="pageType = 'login'">登录</span>
+        <span
+          class="common-link"
+          v-show="pageType === 'login'"
+          @click.stop="pageType = 'phone-register'"
+        >免费注册</span>
+        <span class="common-link" v-show="pageType !== 'login'" @click.stop="pageType = 'login'">登录</span>
       </div>
       <!-- 内容 -->
       <div class="login-content">
         <!-- 1.首次使用 -->
         <div v-if="pageType === 'first'">
-          <div class="con-checkbox" :class="{ 'con-checkbox-on': checkBoxIndex === 0 }" @click.stop="checkBoxIndex = 0">
+          <div
+            class="con-checkbox"
+            :class="{ 'con-checkbox-on': checkBoxIndex === 0 }"
+            @click.stop="checkBoxIndex = 0"
+          >
             <div class="con-checkbox-point"></div>
             <div class="con-checkbox-line">首次使用</div>
             <div class="con-checkbox-line">请绑定手机号，以便使用更多功能</div>
             <div class="common-btn" @click.stop="pageType = 'phone-register'">确认绑定</div>
           </div>
-          <div class="con-checkbox" :class="{ 'con-checkbox-on': checkBoxIndex === 1 }" @click.stop="checkBoxIndex = 1">
+          <div
+            class="con-checkbox"
+            :class="{ 'con-checkbox-on': checkBoxIndex === 1 }"
+            @click.stop="checkBoxIndex = 1"
+          >
             <div class="con-checkbox-point"></div>
             <div class="con-checkbox-line">绑定已有账号</div>
             <div class="con-checkbox-line">如果您已注册过神手软件，选择此项可将已有的账号绑定该账号，下次也可使用手机号登录</div>
@@ -30,7 +42,7 @@
           </div>
         </div>
         <!-- 2.手机号/验证码 -->
-        <div v-if="pageType === 'phone-register' || pageType === 'phone-newPassword'">
+        <div v-show="pageType === 'phone-register' || pageType === 'phone-newPassword'">
           <div class="con-form">
             <div class="con-form-title">{{ pageTypeName }}</div>
             <div class="con-form-line flex-side flex-middle-y">
@@ -40,7 +52,10 @@
             </div>
             <div class="con-form-line flex-side flex-middle-y">
               <div class="line-name">短信验证码：</div>
-              <commonInput ref="myPhoneCode" :state="{ type: 'number', holder: '请输入验证码', plus: 'btn' }" />
+              <commonInput
+                ref="myPhoneCode"
+                :state="{ type: 'number', holder: '请输入验证码', plus: 'btn' }"
+              />
               <div class="line-name"></div>
             </div>
             <div class="con-form-line flex-side flex-middle-y">
@@ -55,19 +70,29 @@
             </div>
             <div class="con-form-line flex-side flex-middle-y">
               <div class="line-name"></div>
-              <div class="common-btn" v-show="pageType === 'phone-register'" @click.stop="register">确认注册</div>
-              <div class="common-btn" v-show="pageType === 'phone-newPassword'" @click.stop="setNewPass">确认修改</div>
+              <div
+                class="common-btn"
+                v-show="pageType === 'phone-register'"
+                @click.stop="register"
+              >确认注册</div>
+              <div
+                class="common-btn"
+                v-show="pageType === 'phone-newPassword'"
+                @click.stop="setNewPass"
+              >确认修改</div>
               <div class="line-name"></div>
             </div>
           </div>
         </div>
         <!-- 3.登录 -->
-        <div class="con-login" v-if="pageType === 'login'">
+        <div class="con-login" v-show="pageType === 'login'">
           <div class="con-form">
             <div class="login-tabbar flex-side flex-middle-y">
-              <div class="bar" :class="{'bar-on': loginBar === 0}" @click.stop="loginBar = 0">微信登录</div>
-              <div class="bar-line"></div>
-              <div class="bar" :class="{'bar-on': loginBar === 1}" @click.stop="loginBar = 1">账号登录</div>
+              <!-- ** 20/02/27 暂时封闭微信登录 ** -->
+              <!-- <div class="bar" :class="{'bar-on': loginBar === 0}" @click.stop="loginBar = 0">微信登录</div> -->
+              <!-- <div class="bar-line"></div> -->
+              <!-- <div class="bar" :class="{'bar-on': loginBar === 1}" @click.stop="loginBar = 1">账号登录</div> -->
+              <!-- ** 20/02/27 暂时封闭微信登录 End ** -->
             </div>
             <div v-show="loginBar === 0">
               <img id="wx-img" src="../../static/images/logo-green.png" alt />
@@ -77,7 +102,11 @@
               </div>
               <div class="login-footer flex-side flex-middle-y">
                 <span class="footer-checkBox" :class="{'footer-checkBox-on': autoLogin}" />
-                <span class="login-tip" :style="{'color':autoLogin ? 'black' : ''}" @click.stop="autoLogin = !autoLogin">下次自动登录</span>
+                <span
+                  class="login-tip"
+                  :style="{'color':autoLogin ? 'black' : ''}"
+                  @click.stop="autoLogin = !autoLogin"
+                >下次自动登录</span>
                 <span class="login-tip">微信扫一扫</span>
               </div>
             </div>
@@ -93,8 +122,15 @@
               <div class="common-btn" @click.stop="login">登录</div>
               <div class="login-footer flex-side flex-middle-y">
                 <span class="footer-checkBox" :class="{'footer-checkBox-on': autoLogin}" />
-                <span class="login-tip" :style="{'color':autoLogin ? 'black' : ''}" @click.stop="autoLogin = !autoLogin">下次自动登录</span>
-                <span class="login-tip common-link" @click.stop="pageType = 'phone-newPassword'">忘记密码</span>
+                <span
+                  class="login-tip"
+                  :style="{'color':autoLogin ? 'black' : ''}"
+                  @click.stop="autoLogin = !autoLogin"
+                >下次自动登录</span>
+                <span
+                  class="login-tip common-link"
+                  @click.stop="pageType = 'phone-newPassword'"
+                >忘记密码</span>
               </div>
             </div>
           </div>
@@ -110,10 +146,14 @@
 <script>
 import commonInput from "@/common-ui/common-input/common-input";
 export default {
+  beforeCreate() {
+    let temp = this.$route.query.childId;
+    window.alert(temp);
+  },
   data() {
     return {
       // 页面
-      pageType: "first", // 1.首次使用 first 2.手机号 phone-bind 绑定/  phone-register 注册/ phone-newPassword 忘记密码/ 3.登录 login
+      pageType: "login", // 1.首次使用 first 2.手机号 phone-bind 绑定/  phone-register 注册/ phone-newPassword 忘记密码/ 3.登录 login
       // 1.首次登录
       checkBoxIndex: 0,
       // 2.

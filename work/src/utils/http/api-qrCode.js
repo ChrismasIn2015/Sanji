@@ -1,5 +1,5 @@
 // ================================================= 1.营销二维码API设置
-import { WqaoRequester } from "../wqao-request.js";
+import { WqaoRequester } from "../wqao/wqao-request.js";
 
 function qr_success(result, resolve, reject) {
     let result = res.data;
