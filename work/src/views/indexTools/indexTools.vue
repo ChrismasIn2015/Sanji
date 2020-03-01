@@ -1,6 +1,6 @@
 <template>
-  <div class="index-card" v-show="pageShow">
-    <div class="indexTools flex">
+  <div class="indexTools" v-show="pageShow">
+    <div class="flex">
       <div class="tool " v-for="(tool, index) in toolList" :key="index">
         <div class="tool-card flex">
           <img :src="tool.icon" alt="" />
@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="tool-btns flex">
-          <div class="btn flex-middle" v-for="(button, _index) in tool.buttons" :key="_index">{{ button.name}}</div>
+          <div class="btn flex-middle" v-for="(button, _index) in tool.buttons" :key="_index" @click.stop="toSetBarActive(button.vector)">{{ button.name}}</div>
         </div>
       </div>
     </div>
@@ -33,30 +33,40 @@ export default {
           tip:
             "自动生成多个群聊/客服二维码，破除微信群二维码200人上限、七天后失效等限制。",
           icon: require("../../static/images/logo-green.png"),
-          buttons: [{ name: "活码管理" }, { name: "创建活码" }]
-        },
-        {
-          name: "二维码工具",
-          tip: "二维码生成器说明二维码生成器说明二维码生成器说明二维码生成器。",
-          icon: require("../../static/images/logo-green.png"),
-          buttons: [{ name: "二维码管理" }, { name: "生成二维码" }]
+          buttons: [
+            { name: "活码管理", vector: { 0: 2, 1: 1 } },
+            { name: "创建活码", vector: { 0: 2, 1: 0 } }
+          ]
         }
+        // {
+        //   name: "二维码工具",
+        //   tip: "二维码生成器说明二维码生成器说明二维码生成器说明二维码生成器。",
+        //   icon: require("../../static/images/logo-green.png"),
+        //   buttons: [{ name: "二维码管理" }, { name: "生成二维码" }]
+        // }
       ]
     };
   },
-  watch: {
-    pageShow(value) {
-      value ? console.log("tools on show") : "";
-    }
-  },
+  // watch: {
+  //   pageShow(value) {
+  //     value ? console.log("tools on show") : "";
+  //   }
+  // },
   mounted() {},
   computed: {},
-  methods: {}
+  methods: {
+    toSetBarActive(vector) {
+      this.$parent.setBarActive(vector);
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .indexTools {
+  min-height: 61rem;
+  background-color: $common-white;
+  border: 1rem solid $common-back;
   padding: 2.5rem;
   .tool {
     width: 38rem;
@@ -99,11 +109,5 @@ export default {
       }
     }
   }
-}
-// 通用
-.index-card {
-  background-color: $common-white;
-  height: 100%;
-  border: 1rem solid $common-back;
 }
 </style>

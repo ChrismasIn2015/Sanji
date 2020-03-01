@@ -28,15 +28,23 @@ export class WqaoRequester {
             let METHODS = methods ? methods : "GET";
             let URL = this.BASE_URL + (url ? url : "");
             let PARAMS = params;
-            let CONFIG = config ? config : {};
+            let HEADERS = {};
+            if (config) {
+                HEADERS = config.headers ? config.headers : {};
+            }
 
             // 发送请求
-            return axios({ method: METHODS, url: URL, data: PARAMS }, CONFIG)
+            axios({
+                method: METHODS,
+                url: URL,
+                data: PARAMS,
+                headers: HEADERS
+            })
                 .then(result => {
                     this.COMPLETE(result, resolve, reject);
                 })
                 .catch(error => {
-                    this.ERROR(error);
+                    this.ERROR(error, reject);
                 });
         });
     }

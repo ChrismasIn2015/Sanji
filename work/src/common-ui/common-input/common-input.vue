@@ -21,12 +21,6 @@
       v-show="tagSwitch === 'textarea'"
     />
     <div class="input-warn" v-show="inputWarn">{{ inputWarn }}</div>
-    <!-- 2.btn 普通输入框+右侧按钮 -->
-    <div
-      class="input-btn"
-      v-if="state.plus === 'btn'"
-      @click.stop="setCountTimer"
-    >{{ count === 60 ? "发送验证码": count}}</div>
   </div>
 </template>
 
@@ -39,7 +33,6 @@ export default {
         return {
           type: "none",
           holder: "",
-          plus: "", // btn 短信验证码
           value: "", // 编辑值
           rule: "" // 自定义规则
         };
@@ -82,6 +75,21 @@ export default {
           this.inputWarn = "请输入至少6位数字+字母";
         }
       }
+      // 验证日期
+      if (this.state.rule === "date") {
+        if (this.inputValue.length !== 10) {
+          return (this.inputWarn = "格式 YYYY-MM-DD");
+        }
+        // 七天之内
+        let date = new Date(this.inputValue).getTime();
+        let today = new Date().getTime();
+        let gap = date - today;
+        if (!isNaN(date) && gap < 86400000 * 7 && gap > 0) {
+          // console.log("七天之内");
+        } else {
+          return (this.inputWarn = "请输入七天内日期");
+        }
+      }
       // # 外部验证需要返回值
       return this.inputWarn;
     },
@@ -91,19 +99,6 @@ export default {
         return true;
       }
       return false;
-    },
-    setCountTimer() {
-      if (this.countTimer) return;
-      this.count = 59;
-      this.countTimer = setInterval(() => {
-        this.count--;
-        if (this.count === 0) {
-          clearInterval(this.countTimer);
-          this.count = 60;
-          this.countTimer = null;
-        }
-      }, 1000);
-      this.$test.log("发送验证码成功", this.countTimer);
     }
   }
 };

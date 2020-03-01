@@ -65,6 +65,13 @@
           left: 0.1rem;
         }
       }
+      .switch-btn-on {
+        background-color: $common-main;
+        .btn {
+          left: auto;
+          right: 0.1rem;
+        }
+      }
     }
     .common-btn-toggle {
       margin-left: 1rem;
@@ -91,7 +98,7 @@
         }
         .column-checkBox-on {
           background-color: $common-main;
-          border: 1px solid $common-main;
+          // border: 0.35rem solid $common-main;
         }
         .main-image {
           width: 5rem;

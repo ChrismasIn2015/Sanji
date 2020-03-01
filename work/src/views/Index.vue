@@ -8,7 +8,11 @@
       </div>
       <div class="bar-list">
         <div v-for="(item, index) in barList" :key="index">
-          <div class="bar" :class="{'bar-on': item.activeStyle}" @click.stop="setBarActive(item, {0:index, 1:-1})">
+          <div
+            class="bar"
+            :class="{'bar-on': item.activeStyle}"
+            @click.stop="setBarActive({0:index, 1:-1})"
+          >
             <div class="pot" v-show="item.activeStyle"></div>
             <div class="flex-middle-y">
               <img :src="item.icon" alt />
@@ -16,7 +20,13 @@
             </div>
           </div>
           <div v-show="item.childShow">
-            <div class="bar bar-child" v-for="(child, _index) in item.children" :key="_index" :class="{'bar-on': child.activeStyle}" @click.stop="setBarActive(child, {0:index, 1:_index})">
+            <div
+              class="bar bar-child"
+              v-for="(child, _index) in item.children"
+              :key="_index"
+              :class="{'bar-on': child.activeStyle}"
+              @click.stop="setBarActive({0:index, 1:_index})"
+            >
               <div class="pot" v-show="child.activeStyle"></div>
               <span class="name">{{ child.name }}</span>
             </div>
@@ -29,18 +39,18 @@
     <div class="admin-content flex-y">
       <!-- 固定导航 -->
       <div class="con-nav flex-x-reverse flex-middle-y">
-        <div class="nav-item person flex-middle-y">
-          <img src="../static/images/logo-green.png" />
-          <div>用户名</div>
+        <div class="nav-item person flex-middle-y" @click.stop="logout">
+          <img src="../static/images/user-logo.png" />
+          <div>{{ userName }}</div>
         </div>
-        <div class="nav-item message flex-middle-y">
+        <!-- <div class="nav-item message flex-middle-y">
           <img src="../static/images/logo-green.png" />
-        </div>
-        <div class="nav-item">
+        </div>-->
+        <!-- <div class="nav-item">
           <div class="form-btn">点击续费</div>
-        </div>
-        <div class="nav-item">基础版：2020-05-02到期</div>
-        <img class="nav-item bar-btn" src="../static/images/logo-green.png" alt @click.stop="barListShow = !barListShow" />
+        </div>-->
+        <!-- <div class="nav-item">基础版：2020-05-02到期</div> -->
+        <!-- <img class="nav-item bar-btn" src="../static/images/logo-green.png" alt @click.stop="barListShow = !barListShow" /> -->
       </div>
       <!-- 面包屑 -->
       <div class="con-routes flex-middle-y">{{ tarBarRoutes }}</div>
@@ -62,6 +72,7 @@ export default {
   data() {
     return {
       // 导航条
+      userName: "暂未登录",
       barList: [
         {
           name: "首页",
@@ -105,7 +116,10 @@ export default {
     qrCodeCreate,
     qrCodeAdmin
   },
-  mounted() {},
+  mounted() {
+    let name = localStorage.getItem("qrCodeName");
+    this.userName = name ? name : "获取失败";
+  },
   computed: {
     // 临时面包屑
     tarBarRoutes() {
@@ -120,7 +134,9 @@ export default {
     }
   },
   methods: {
-    setBarActive(bar, vector) {
+    // 点击 Bar
+    setBarActive(vector) {
+      this.barVector = vector;
       // 1.样式清空
       for (let i = 0; i < this.barList.length; i++) {
         this.barList[i].activeStyle = false;
@@ -130,41 +146,26 @@ export default {
         }
       }
       // 2.根据 vector 设置内容区
-      this.barVector = vector;
+      let bar = this.barList[vector[0]];
       if (bar.children ? bar.children.length : false) {
-        bar.childShow = !bar.childShow; // 展开子列表 不修改样式
+        // 2.1 有子元素
+        if (vector[1] > -1) {
+          bar = bar.children[vector[1]];
+          bar.activeStyle = !bar.activeStyle; //2.2 希望进入子元素 点亮子元素
+        } else {
+          bar.childShow = !bar.childShow; //2.2+ 不希望进入子元素 展开子元素
+        }
       } else {
-        // ** 20/02/25 需要初始化对应组件的值 **
-        if (vector[0] === 2 && vector[1] === 0)
-          this.$refs.qrCodeCreate.initProcess();
-        if (vector[0] === 2 && vector[1] === 1)
-          this.$refs.qrCodeAdmin.initAdminType();
-        // ** 20/02/25 需要初始化对应组件的值 End **
-
-        bar.activeStyle = !bar.activeStyle; // 切换组件 修改样式
+        bar.activeStyle = !bar.activeStyle; //2.1+ 没有子元素 点亮父元素
       }
       Object.assign([], this.barList);
     },
-    // 样式
-    setBarVector(index1, index2) {
-      // 1.样式清空
-      for (let i = 0; i < this.barList.length; i++) {
-        this.barList[i].activeStyle = false;
-        let childList = this.barList[i].children;
-        for (let j = 0; j < childList.length; j++) {
-          childList[j].activeStyle = false;
-        }
+    logout() {
+      let response = window.confirm("确定要退出吗？");
+      if (response) {
+        localStorage.setItem("qrCodeToken", null);
+        this.$router.push({ name: "qrResult" });
       }
-      // 2.重新设置样式
-      if (this.barList[index1].children.length) {
-        this.barList[index1].children[index2].activeStyle = true;
-      } else {
-        this.barList[index1].activeStyle = true;
-      }
-      //
-      // let vector = Object.assign({}, {0:})
-      this.barVector[0] = index1;
-      this.barVector[1] = index2;
     }
   }
 };
@@ -246,7 +247,12 @@ export default {
       .nav-item {
         margin-left: 1rem;
         font-size: 0.9rem;
+        color: $common-tip-higher;
         cursor: default;
+        img {
+          width: 1rem;
+          height: 1rem;
+        }
         .form-btn {
           border-radius: 0.2rem;
           height: 1.8rem;

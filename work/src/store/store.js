@@ -4,20 +4,20 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        token: null,
+        modalShow: null,
         tempParams: null
     },
     getters: {
-        getToken: state => {
-            return state.token;
+        getModalShow: state => {
+            return state.modalShow;
         },
         getTempParams: state => {
             return state.tempParams;
         }
     },
     mutations: {
-        setToken(state, token) {
-            state.token = token;
+        setModalShow(state, modalShow) {
+            state.modalShow = modalShow;
         },
         setTempParams(state, temp) {
             state.tempParams = temp;

@@ -3,29 +3,40 @@
     <div class="create">
       <!-- 流程条 -->
       <div class="create-process flex-middle-x">
-        <div class="process flex-middle-y" v-for="(process, index) in processList" :key="index" :class="{'process-active': processIndex === index, 'process-actived': processIndex > index}">
-          <div class="process-index">{{ processIndex > index ? "√" : index+1}}</div>
-          <div class="process-name">{{ process.name}}</div>
+        <div
+          class="process flex-middle-y"
+          v-for="(process, index) in processList"
+          :key="index"
+          :class="{'process-active': processIndex-1 === index, 'process-actived': processIndex-1 > index}"
+        >
+          <div class="process-index">{{ processIndex-1 > index ? "√" : index}}</div>
+          <div class="process-name">{{ process.name }}</div>
           <div class="process-line" v-show="index < processList.length-1"></div>
         </div>
       </div>
 
-      <!-- 0 -->
-      <div v-show="processIndex === 0">
+      <!-- 步骤1 用法提示 -->
+      <div v-show="processIndex === 1">
         <!-- 介绍卡片 -->
         <div class="create-card" v-for="(card, index) in introductionList" :key="index">
           <div class="create-card-block title">
             <div class="card-line">{{ card.title }}</div>
           </div>
           <div class="create-card-block">
-            <div class="card-line" v-for="(introduction, _index) in card.introductions" :key="_index">{{ introduction }}</div>
+            <div
+              class="card-line"
+              v-for="(introduction, _index) in card.introductions"
+              :key="_index"
+            >{{ introduction }}</div>
           </div>
         </div>
         <!-- 温馨提示 -->
         <div class="create-tip">
-          <img src="../../static/images/logo-green.png" alt="" class="tip-image">
+          <img src="../../static/images/logo-green.png" alt class="tip-image" />
           <div class="tip-line title">温馨提示</div>
-          <div class="tip-line">禁止发布任何违法、违规内容（含微信诱导分享/关注/集赞、红包等），如因内容违规导致域名被封，系统将不会再重新分配域名。且情节严重者将封停账号。</div>
+          <div
+            class="tip-line"
+          >禁止发布任何违法、违规内容（含微信诱导分享/关注/集赞、红包等），如因内容违规导致域名被封，系统将不会再重新分配域名。且情节严重者将封停账号。</div>
         </div>
         <!-- 外部链接 -->
         <div class="create-link">
@@ -34,155 +45,36 @@
         </div>
       </div>
 
-      <!-- 1 -->
-      <div v-show="processIndex === 1">
-        <div class="create-form">
-          <div class="form-line flex-middle-y">
-            <div class="line-name">活码类型：</div>
-            <div class="line-content">
-              <div class="common-btn-toggle">群聊码</div>
-              <div class="common-btn-toggle">客服码</div>
-            </div>
-          </div>
-          <div class="form-line flex-middle-y">
-            <div class="line-name">活码页标题：</div>
-            <div class="line-content">
-              <commonInput ref="myServeName" :state="{ type:'none', holder:'活码页的页面标题，请输入1～24个字' }" />
-            </div>
-          </div>
-          <div class="form-line flex-middle-y">
-            <div class="line-name">活码备注(选填)：</div>
-            <div class="line-content">
-              <commonInput ref="myServeName" :state="{ type:'none', holder:'为了方便您管理活码，该备注不会对外显示' }" />
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name">活码设置：</div>
-            <div class="line-content">
-              <div class="con-checkBox-plus">
-                <div class="box-pot"></div>
-                <div class="box-content">
-                  <div class="con-line title">防止重复入群</div>
-                  <div class="con-line">用户扫码获得微信群码后，后续扫码仅展示所获二维码（无论活码是否有切换/调整）</div>
-                </div>
-              </div>
-              <div class="con-checkBox-plus">
-                <div class="box-pot"></div>
-                <div class="box-content">
-                  <div class="con-line title">管理员微信</div>
-                  <div class="con-line">管理员微信绑定后，扫码不受防重复功能影响，且不对其使用数据统计</div>
-                </div>
-              </div>
-              <div class="con-checkBox-plus">
-                <div class="box-pot"></div>
-                <div class="box-content">
-                  <div class="con-line title">安全验证提示</div>
-                  <div class="con-line">在活码页顶部增加安全验证信息，来增加可信度</div>
-                </div>
-              </div>
-              <div class="con-checkBox-plus con-checkBox-on">
-                <div class="box-pot"></div>
-                <div class="box-content">
-                  <div class="con-line title">客服功能</div>
-                  <div class="con-line">在活码页底部增加客服联系方式，必要时为用户联系客服提供帮助活码活动结束后，默认展示已设置客服微信</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- 步骤2 编辑活码 -->
+      <adminCodeEdit ref="adminEdit" v-show="processIndex === 2" />
 
-      <!-- 2 -->
-      <div v-show="processIndex === 2">
-        <div class="create-form">
-          <div class="form-line flex-middle-y">
-            <div class="line-name">活码类型：</div>
-            <div class="line-content">
-              <div class="common-btn-toggle">微信二维码</div>
-              <div class="common-btn-toggle">自制海报</div>
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name">二维码展示形式：</div>
-            <div class="line-content">
-              <div class="con-checkBox">
-                <div class="box-pot"></div>
-                <div class="box-name">标准模式</div>
-              </div>
-              <div class="con-checkBox">
-                <div class="box-pot"></div>
-                <div class="box-name">适配模式</div>
-              </div>
-              <div class="con-checkBox">
-                <div class="box-pot"></div>
-                <div class="box-name">裁剪模式</div>
-              </div>
-            </div>
-          </div>
-          <div class="form-line flex-middle-y">
-            <div class="line-name">客服昵称：</div>
-            <div class="line-content">
-              <commonInput ref="myServeName" :state="{ type:'none', holder:'请输入客服昵称' }" />
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name" style="padding-top: 0.4rem;">上传二维码图片：</div>
-            <div class="line-content">
-              <div class="common-btn">+ 上传群聊码</div>
-              <div class="con-tip">图片小于2M，可多张上传（每次至多500张）</div>
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name" style="padding-top: 0.4rem;">自定义群聊头像：</div>
-            <div class="line-content">
-              <div class="common-btn">+ 自定义群头像</div>
-              <div class="con-tip">图片小于2M，仅可上传一张</div>
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name" style="padding-top: 0.4rem;">自动切换频率：</div>
-            <div class="line-content">
-              <commonInput class="con-input" ref="myFrequency" :state="{ type:'number', holder:'请输入切换频率' }" />
-              <div class="con-tip">当二维码用户达到该数字时，自动切换下一个二维码，频率建议为150-180</div>
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name" style="padding-top: 0.4rem;">二维码失效日期：</div>
-            <div class="line-content">
-              <commonInput class="con-input" ref="myDate" :state="{ holder:'请输入切换频率' }" />
-              <div class="con-tip">根据微信群码图片的底部日期填写，到期前系统将提醒您及时更换</div>
-            </div>
-          </div>
-          <div class="form-line flex">
-            <div class="line-name" style="padding-top: 0.4rem;">引导文字 (选填)：</div>
-            <div class="line-content">
-              <commonInput ref="myMoreText" :state="{ type:'textarea', holder:'二维码下方的引导文字，可输入文字后查看右侧预览图' }" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- 步骤3 编辑子码 -->
+      <childCodeEdit ref="childEdit" v-show="processIndex === 3" />
 
-      <!-- 3 -->
-      <div v-show="processIndex === 3">
+      <!-- 步骤4 展示子码 -->
+      <div v-show="processIndex === 4">
         <div class="qrCode-table">
-          <!-- 使用了 qrCode-ui.scss 的样式，具体以后改进 -->
-          <!-- 表格头部按钮 -->
+          <!-- 表格功能区 -->
           <div class="table-nav flex-middle-y">
-            <div class="common-btn">+ 添加群聊码</div>
-            <div class="nav-switch flex-middle-y">
+            <!-- <div class="common-btn">+ 添加群聊码</div> -->
+            <div
+              class="nav-switch flex-middle-y"
+              @click.stop="adminCode.adminShowType = (adminCode.adminShowType === 0 ? 1 : 0)"
+            >
               <div class="switch-name">轮播模式</div>
-              <div class="switch-btn">
+              <div class="switch-btn" :class="{'switch-btn-on': adminCode.adminShowType === 1}">
                 <span class="btn"></span>
               </div>
             </div>
             <div style="margin-left: auto">
-              <div class="common-btn-toggle">有效期</div>
-              <div class="common-btn-toggle">自动切换频率</div>
-              <div class="common-btn-toggle">删除</div>
+              <!-- <div class="common-btn-toggle">有效期</div> -->
+              <!-- <div class="common-btn-toggle">自动切换频率</div> -->
+              <!-- <div class="common-btn-toggle">删除</div> -->
             </div>
           </div>
+          <!-- 表格内容 -->
           <div class="table-list">
-            <!-- 表格第一行 -->
+            <!-- Row 1 -->
             <div class="table-row title flex-side">
               <div class="table-column flex-middle" style="width: 3%;">
                 <div class="column-checkBox"></div>
@@ -195,26 +87,44 @@
               <div class="table-column flex-middle-y">位置排序</div>
               <div class="table-column flex-middle-y">操作</div>
             </div>
-            <!-- 表格内容 -->
-            <div class="table-row flex-side" v-for="(code, index) in qrCodeList" :key="index">
+            <!-- Row N -->
+            <div
+              class="table-row flex-side"
+              v-for="(code, index) in childCodeList"
+              :key="index"
+              @click.stop="code.checked = !code.checked"
+            >
               <div class="table-column flex-middle" style="width: 3%;">
-                <div class="column-checkBox"></div>
+                <div class="column-checkBox" :class="{'column-checkBox-on': code.checked}"></div>
               </div>
-              <div class="table-column flex-middle-y">{{ code.name }}</div>
+              <div class="table-column flex-middle-y">{{ code.imageName }}</div>
               <div class="table-column flex-middle-y">
-                <img class="main-image" :src="code.qrCodeImage" alt=""></div>
+                <img class="main-image" :src="code.imageLocal" alt />
+              </div>
               <div class="table-column flex-middle-y">{{ code.frequency }}</div>
-              <div class="table-column flex-middle-y">{{ code.endDateTime }}</div>
-              <div class="table-column flex-middle-y">{{ gainModeMap[code.gainMode] }}</div>
+              <div class="table-column flex-middle-y">{{ code.invalidDate }}</div>
+              <div
+                class="table-column flex-middle-y"
+              >{{ adminShowTypeMap[adminCode.adminShowType] }}</div>
               <div class="table-column flex-middle-y">
-                <img class="sort-image" :src="code.qrCodeImage" alt="">
-                <img class="sort-image" :src="code.qrCodeImage" alt="">
-                <img class="sort-image" :src="code.qrCodeImage" alt="">
-                <img class="sort-image" :src="code.qrCodeImage" alt="">
+                <img
+                  class="sort-image"
+                  src="../../static/images/sort-down.png"
+                  alt
+                  @click.stop="sortQrCodeList(index, true)"
+                />
+                <img
+                  class="sort-image"
+                  src="../../static/images/sort-up.png"
+                  alt
+                  @click.stop="sortQrCodeList(index, false)"
+                />
+                <!-- <img class="sort-image" src="../../static/images/sort-top.png" alt="" @click.stop="sortQrCodeList(index)">
+                <img class="sort-image" src="../../static/images/sort-bottom.png" alt="" @click.stop="sortQrCodeList(index)">-->
               </div>
               <div class="table-column flex-middle-y">
-                <div class="common-link">编辑</div>
-                <div class="common-link">删除</div>
+                <div class="common-link" @click.stop="setChildCodeEdit(code, index)">编辑</div>
+                <div class="common-link" @click.stop="deleteChildCodeList(index)">删除</div>
               </div>
             </div>
           </div>
@@ -222,34 +132,51 @@
       </div>
 
       <!-- 4 -->
-      <div v-show="processIndex ===4">
+      <div v-show="processIndex === 5">
         <div class="create-result flex-middle flex-y">
-          <img src="../../static/images/logo-green.png" alt="">
+          <img src="../../static/images/logo-green.png" alt />
           <div class="result-message">成功生成活码</div>
-          <img src="../../static/images/logo-green.png" alt="" class="result-image">
-          <div class="result-link">永久链接：http://???????????????????
+          <img :src="myAdminCode.adminImage" alt class="result-image" />
+          <div class="result-link">
+            永久链接：{{ myAdminCode.adminImage }}
             <span class="common-link">点击下载二维码</span>
           </div>
         </div>
         <div style="height: 9rem;"></div>
       </div>
     </div>
+
+    <!-- 下方步骤按钮 -->
     <div class="create-admin flex-x-reverse">
-      <div class="common-btn" v-show="processIndex === 0" @click.stop="processIndex++">我已详细阅读，下一步</div>
-      <div class="common-btn" v-show="processIndex === 1" @click.stop="processIndex++">下一步</div>
-      <div class="common-btn" v-show="processIndex === 1" @click.stop="processIndex--">上一步</div>
-      <div class="common-btn" v-show="processIndex === 2" @click.stop="processIndex++">下一步</div>
-      <div class="common-btn" v-show="processIndex === 2" @click.stop="processIndex--">上一步</div>
-      <div class="common-btn" v-show="processIndex === 3" @click.stop="processIndex++">下一步</div>
-      <div class="common-btn" v-show="processIndex === 3" @click.stop="processIndex--">上一步</div>
-      <div class="common-btn" v-show="processIndex === 4" @click.stop>完成</div>
-      <div class="common-btn-toggle" v-show="processIndex === 4" @click.stop="initProcess">再次创建</div>
+      <div class="common-btn" v-show="processIndex === 1" @click.stop="setProcess(1)">我已详细阅读，下一步</div>
+      <div class="common-btn" v-show="processIndex === 2" @click.stop="setProcess(1)">下一步</div>
+      <div class="common-btn" v-show="processIndex === 2" @click.stop="setProcess(0)">上一步</div>
+      <div class="common-btn" v-show="processIndex === 3" @click.stop="setProcess(1)">下一步</div>
+      <div class="common-btn" v-show="processIndex === 3" @click.stop="setProcess(0)">上一步</div>
+      <div class="common-btn" v-show="processIndex === 4" @click.stop="setProcess(1)">创建</div>
+      <div class="common-btn" v-show="processIndex === 4" @click.stop="setProcess(0)">上一步</div>
+      <div class="common-btn" v-show="processIndex === 5" @click.stop="toIndex">完成</div>
+      <div class="common-btn-toggle" v-show="processIndex === 5" @click.stop="processIndex = 1">再次创建</div>
+    </div>
+
+    <!-- Loadding -->
+    <!-- <qrCodeModal v-show="loadding" @action="showModal" /> -->
+    <!-- 编辑子码列表 -->
+    <div class="common-modal" v-show="childCodeEditShow">
+      <div class="common-modal-blank">
+        <childCodeEdit ref="childCodeEdit" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import commonInput from "@/common-ui/common-input/common-input";
+import adminCodeEdit from "@/views/qrCode/components/adminCodeEdit.vue";
+import childCodeEdit from "@/views/qrCode/components/childCodeEdit.vue";
+// import qrCodeModal from "@/components/qrCodeModal.vue";
+import { editAdminCode, editChildCode } from "@/utils/http/api-qrCode";
+import { postImage } from "@/utils/http/api-qrCode";
+
 export default {
   props: {
     pageShow: {
@@ -261,7 +188,6 @@ export default {
     return {
       // 全局
       processIndex: 1,
-      // 步骤2
       processList: [
         {
           name: "使用须知",
@@ -285,6 +211,8 @@ export default {
           noLine: true
         }
       ],
+      loadding: false,
+      // 步骤1 介绍规则
       introductionList: [
         {
           title: "活码应用场景",
@@ -308,67 +236,209 @@ export default {
           ]
         }
       ],
-      // 步骤3
-      // 步骤4
-      // qrCodeGroup
-      qrCodeList: [
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        },
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        },
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        },
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        },
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        },
-        {
-          name: "子二维码名称子二维码名称子二维码名称",
-          qrCodeImage: require("../../static/images/logo-green.png"),
-          frequency: 180,
-          endDateTime: "AAAA-AA-AA",
-          gainMode: 0 // 0 标准 1 循环 2 轮播
-        }
-      ],
-      gainModeMap: ["标准", "循环", "轮播"]
+      // 步骤2 准备活码参数
+      adminCode: {
+        adminShowType: 0
+      },
+      adminShowTypeMap: ["标准", "轮播"],
+      // 步骤3 准备子码参数
+      childCode: null,
+      // 步骤4 准备生成结果
+      childCodeList: [],
+      childCodeEdit: null,
+      childCodeEditIndex: -1,
+      childCodeEditShow: false,
+      // 步骤5 - 生成成功
+      myAdminCode: {}
     };
   },
   watch: {
     pageShow(value) {
-      value ? console.log("create on show") : "";
+      value ? (this.processIndex = 1) : "";
     }
   },
   components: {
-    commonInput
+    // qrCodeModal,
+    adminCodeEdit,
+    childCodeEdit
   },
   methods: {
-    initProcess() {
-      this.processIndex = 0;
+    // 全局
+    async createMyAdminCode() {
+      try {
+        //
+        let tempUrl = "";
+        let formdata = null;
+        // 1.上传所有图片 **************************
+        // - 上传 活码Logo
+        formdata = new FormData();
+        formdata.append(
+          "file",
+          this.childCode.childLogo.file,
+          this.childCode.childLogo.file.name
+        );
+        tempUrl = await postImage(formdata);
+        this.childCode.childLogo.url = tempUrl;
+        this.$test.log("上传活码Logo成功", this.childCode.childLogo.url);
+        // - 上传 客服微信
+        if (this.adminCode.customerServiceFile) {
+          formdata = new FormData();
+          formdata.append(
+            "file",
+            this.adminCode.customerServiceFile,
+            this.adminCode.customerServiceFile.name
+          );
+          tempUrl = await postImage(formdata);
+          this.adminCode.modes.customerService = tempUrl;
+          this.$test.log(
+            "上传客服微信成功",
+            this.adminCode.modes.customerService
+          );
+        }
+        // - 上传 子码图片
+        let tempChildsImages = [];
+        let temp = this.childCode.codes;
+        for (let index = 0; index < temp.files.length; index++) {
+          let item = temp.files[index];
+          formdata = new FormData();
+          formdata.append("file", item, item.name);
+          tempUrl = await postImage(formdata);
+          tempChildsImages.push({ imageName: item.name, imageUrl: tempUrl });
+        }
+        this.$test.log("上传子码图片成功", tempChildsImages);
+        // 2.创建活码 **************************
+        let newCode = await editAdminCode(
+          -1,
+          this.adminCode.adminType,
+          this.$refs.adminCodeEdit.myAdminName.inputValue,
+          this.$refs.adminCodeEdit.myAdminTip.inputValue,
+          this.adminCode.modes,
+          this.adminCode.adminShowType,
+          this.adminCode.invalidDate
+        );
+        this.$test.log("创建活码成功", newCode);
+        this.myAdminCode = newCode;
+        // 3.添加子码 **************************
+        await editChildCode(
+          newCode.id,
+          -1,
+          0,
+          this.childCode.childImageType,
+          this.$refs.adminCodeEdit.myAdminName.inputValue,
+          tempChildsImages,
+          this.childCode.childLogo.url,
+          Number(this.childCode.childFrequency),
+          this.$refs.adminCodeEdit.myAdminTip.inputValue,
+          this.adminCode.invalidDate
+        );
+        this.$test.log("添加子码成功");
+        this.processIndex++;
+      } catch (error) {
+        window.alert(error);
+      }
+    },
+    setChildCodeEdit(item, index) {
+      this.childCode.childImageLocal = item.imageLocal;
+      this.childCode.childLogoLocal = item.logoLocal;
+      this.childCodeEditIndex = index;
+      this.$refs.childCodeEdit.initChildCode(this.childCode);
+      this.childCodeEditShow = true;
+    },
+    // toggleChildEdit(item, index) {
+    //   this.childCodeEditShow = !this.childCodeEditShow;
+    //   if (this.childCodeEditShow) {
+    //     item["editIndex"] = index;
+    //     this.childCodeEditTemp = item;
+    //     console.log("设置编辑值", this.childCodeEditTemp);
+    //   } else {
+    //     //
+    //   }
+    //   this.childCodeList = Object.assign([], this.childCodeList);
+    // },
+    editLocalImage(image) {
+      let target = this.childCodeList[image.index];
+      console.log("改变前", target.childImageName);
+      if (target) {
+        target.childImageFile = image.file;
+        target.childImageLocal = image.local;
+        target.childImageName = image.file.name;
+      }
+      console.log("改变后", target.childImageName);
+      this.childCodeList = Object.assign([], this.childCodeList);
+      this.childCodeEditShow = false;
+    },
+    deleteChildCodeList(index) {
+      this.childCodeList.splice(index, 1);
+    },
+    sortQrCodeList(index, toPop) {
+      let tempList = JSON.parse(JSON.stringify(this.childCodeList));
+      let targetIndex = toPop ? index - 1 : index + 1;
+      if (targetIndex < 0 || targetIndex >= tempList.length) return;
+      // 交换
+      let temp = tempList[index];
+      tempList[index] = tempList[targetIndex];
+      tempList[targetIndex] = temp;
+      // 渲染
+      this.childCodeList = Object.assign([], tempList);
+    },
+    // 样式
+    // * 步骤跳转
+    setProcess(bool) {
+      if (bool) {
+        let index = this.processIndex + 1;
+
+        // 进入活码编辑之前
+        if (index === 2) {
+          // 1.需要初始化
+          this.$refs.adminEdit.initAdminCode();
+        }
+
+        // 进入子码编辑之前
+        if (index === 3) {
+          // 1.需要获取活码数据
+          let myAdminCode = this.$refs.adminEdit.getMyAdminCode();
+          if (myAdminCode === false) return;
+          this.adminCode = myAdminCode;
+          this.$test.log("步骤4 活码", this.adminCode);
+          // 2.需要初始化子码数据
+          this.$refs.childEdit.initChildCode();
+        }
+
+        // 进入子码列表之前
+        if (index === 4) {
+          // 1.需要获取子码数据
+          let myChildCode = this.$refs.childEdit.getChildCode();
+          if (myChildCode === false) return;
+          this.childCode = myChildCode;
+          this.$test.log("步骤4 子码", this.childCode);
+          // 2.制作子码列表
+          this.setChildCodeList();
+        }
+
+        this.processIndex++;
+      } else {
+        this.processIndex--;
+      }
+    },
+    // 根据 childCode 制作对应表格List
+    setChildCodeList() {
+      let list = [];
+      this.childCode.childsImagesLocal.forEach((item, index) => {
+        list.push({
+          // 列表参数
+          checked: false,
+          imageName: this.childCode.childsImagesFiles[index].name,
+          imageLocal: item,
+          logoLocal: this.childCode.childLogoLocal,
+          frequency: this.childCode.childFrequency,
+          invalidDate: this.childCode.childDate
+        });
+      });
+      this.childCodeList = Object.assign([], list);
+      this.$test.log("二维码列表", this.childCodeList);
+    },
+    toIndex() {
+      this.$parent.setBarActive({ 0: 0, 1: -1 });
     }
   }
 };
@@ -379,6 +449,7 @@ export default {
   background-color: $common-white;
   padding: 2rem;
   margin: 1.5rem 1.5rem 6rem;
+  min-height: 54rem;
   .create-process {
     .process {
       cursor: default;
@@ -493,6 +564,12 @@ export default {
       }
       .line-content {
         width: 65%;
+        img {
+          width: 8rem;
+          height: 8rem;
+          margin-right: 1rem;
+          margin-top: 1rem;
+        }
         .common-btn-toggle {
           margin-right: 1rem;
         }
@@ -539,10 +616,26 @@ export default {
           &:last-child {
             margin-bottom: 0rem;
           }
+          .common-btn {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+          }
+          .box-content {
+            img {
+              width: 10rem;
+              height: 10rem;
+              border: 1px solid $common-tip;
+              margin-left: 1.5rem;
+              margin-bottom: 0.5rem;
+            }
+          }
         }
         .con-checkBox-on {
           .box-pot {
             border: 0.35rem solid $common-main;
+          }
+          .box-name {
+            color: $common-black;
           }
         }
         .con-tip {
@@ -591,5 +684,14 @@ export default {
     padding: 0.5rem 2rem;
     margin-left: 1rem;
   }
+}
+.tempModal {
+  position: fixed;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 }
 </style>

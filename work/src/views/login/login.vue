@@ -42,7 +42,7 @@
           </div>
         </div>
         <!-- 2.手机号/验证码 -->
-        <div v-show="pageType === 'phone-register' || pageType === 'phone-newPassword'">
+        <div v-if="pageType === 'phone-register' || pageType === 'phone-newPassword'">
           <div class="con-form">
             <div class="con-form-title">{{ pageTypeName }}</div>
             <div class="con-form-line flex-side flex-middle-y">
@@ -56,6 +56,10 @@
                 ref="myPhoneCode"
                 :state="{ type: 'number', holder: '请输入验证码', plus: 'btn' }"
               />
+              <div
+                class="common-btn-toggle"
+                @click.stop="getPhoneCode"
+              >{{ countTimer ? count : '发送验证码'}}</div>
               <div class="line-name"></div>
             </div>
             <div class="con-form-line flex-side flex-middle-y">
@@ -85,7 +89,7 @@
           </div>
         </div>
         <!-- 3.登录 -->
-        <div class="con-login" v-show="pageType === 'login'">
+        <div class="con-login" v-if="pageType === 'login'">
           <div class="con-form">
             <div class="login-tabbar flex-side flex-middle-y">
               <!-- ** 20/02/27 暂时封闭微信登录 ** -->
@@ -145,27 +149,38 @@
 
 <script>
 import commonInput from "@/common-ui/common-input/common-input";
+import {
+  login,
+  register,
+  resetPassword,
+  getPhoneCode
+} from "@/utils/http/api-wx.js";
 export default {
   beforeCreate() {
-    let temp = this.$route.query.childId;
-    window.alert(temp);
+    // 自动登录
+    let token = localStorage.getItem("qrCodeToken");
+    if (token) {
+      this.$test.log("自动登录成功", token);
+      this.$router.push({ name: "index" });
+    }
   },
   data() {
     return {
       // 页面
       pageType: "login", // 1.首次使用 first 2.手机号 phone-bind 绑定/  phone-register 注册/ phone-newPassword 忘记密码/ 3.登录 login
+      countTimer: null,
+      count: 60,
       // 1.首次登录
       checkBoxIndex: 0,
       // 2.
       // 3.登录
       loginBar: 1,
-      autoLogin: false
+      autoLogin: true
     };
   },
   components: {
     commonInput
   },
-  mounted() {},
   computed: {
     pageTypeName() {
       switch (this.pageType) {
@@ -181,17 +196,116 @@ export default {
     }
   },
   methods: {
-    register() {
-      // 验证
-      for (let item in this.$refs) {
-        if (this.$refs[item].inputVerify()) return;
+    async login() {
+      try {
+        // 验证
+        if (this.$refs.myPhone.inputVerify()) return;
+        if (this.$refs.myPass.inputVerify()) return;
+        // 登录
+        this.$test.log(
+          "登录中...参数",
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        let loginResult = await login(
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        localStorage.setItem("qrCodeName", loginResult.phone);
+        localStorage.setItem("qrCodeToken", loginResult.token);
+        this.$test.log(
+          "登录成功 保留Token",
+          localStorage.getItem("qrCodeToken")
+        );
+        // this.$store.commit("setToken", loginResult.token);
+        this.$router.push({ name: "index" });
+      } catch (error) {
+        this.$test.log("登录失败");
+        window.alert(error);
       }
-      // 跳转
-      this.pageType = "login";
     },
-    setNewPass() {},
-    login() {
-      this.$router.push({ name: "index" });
+    async register() {
+      try {
+        // 验证
+        if (this.$refs.myPhone.inputVerify()) return;
+        if (this.$refs.myPhoneCode.inputVerify()) return;
+        if (this.$refs.myPass.inputVerify()) return;
+        // 注册
+        if (this.$refs.myRePass.inputValue !== this.$refs.myPass.inputValue) {
+          window.alert("密码不一致");
+          return;
+        }
+        this.$test.log(
+          "注册参数",
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPhoneCode.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        await register(
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPhoneCode.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        this.$test.log("注册成功");
+        // 跳转
+        this.pageType = "login";
+      } catch (error) {
+        this.$test.log("注册失败");
+        window.alert(error);
+      }
+    },
+    async setNewPass() {
+      try {
+        // 验证
+        if (this.$refs.myPhone.inputVerify()) return;
+        if (this.$refs.myPhoneCode.inputVerify()) return;
+        if (this.$refs.myPass.inputVerify()) return;
+        // 设置新密码
+        if (this.$refs.myRePass.inputValue !== this.$refs.myPass.inputValue) {
+          window.alert("密码不一致");
+          return;
+        }
+        this.$test.log(
+          "改密参数",
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPhoneCode.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        await resetPassword(
+          this.$refs.myPhone.inputValue,
+          this.$refs.myPhoneCode.inputValue,
+          this.$refs.myPass.inputValue
+        );
+        this.$test.log("改密成功");
+        // 跳转
+        this.pageType = "login";
+      } catch (error) {
+        this.$test.log("改密失败");
+        window.alert(error);
+      }
+    },
+    async getPhoneCode() {
+      try {
+        if (this.$refs.myPhone.inputVerify()) return;
+
+        let phone = this.$refs.myPhone.inputValue;
+        if (this.countTimer) return;
+        this.$test.log("验证码发送中...参数", phone);
+        await getPhoneCode(phone);
+        this.count = 59;
+        this.countTimer = setInterval(() => {
+          this.count--;
+          if (this.count === 0) {
+            clearInterval(this.countTimer);
+            this.count = 60;
+            this.countTimer = null;
+          }
+        }, 1000);
+        this.$test.log("发送验证码成功");
+      } catch (error) {
+        this.$test.log("发送验证码失败");
+        window.alert(error);
+      }
     }
   }
 };
