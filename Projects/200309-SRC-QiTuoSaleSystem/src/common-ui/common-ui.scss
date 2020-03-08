@@ -1,0 +1,140 @@
+// # 布局
+.flex {
+  display: flex;
+}
+.flex-x-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flex-y {
+  display: flex;
+  flex-direction: column;
+}
+.flex-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-middle-x {
+  display: flex;
+  justify-content: center;
+}
+.flex-middle-y {
+  display: flex;
+  align-items: center;
+}
+.flex-side {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-no-side {
+  display: flex;
+  justify-content: space-around;
+}
+
+// # 常用属性设置
+.common-shadow {
+  box-shadow: 0px 0px 10px 2px #e2e2e2;
+  // 参数解释: left top 扩散程度 宽度 颜色
+}
+.text-cut {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// # 常用组件设置
+
+// 连接
+.common-link {
+  display: inline;
+  color: $common-main !important;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// 按钮
+.common-btn {
+  display: inline-block;
+  color: white;
+  background-color: $common-main;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: white;
+    color: $common-main;
+    border: 1px solid $common-main;
+  }
+}
+
+.common-btn-toggle {
+  display: inline-block;
+  color: $common-main;
+  background-color: $common-white;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
+  border: 1px solid $common-main;
+  &:hover {
+    color: $common-white;
+    background-color: $common-main;
+  }
+}
+
+.common-btn-tip {
+  display: inline-block;
+  background-color: $common-white;
+  border: 1px solid $common-tip;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
+  &:hover {
+    color: $common-white;
+    background-color: $common-tip;
+    border: 1px solid $common-tip;
+  }
+}
+
+.btn-disable {
+  color: $common-white;
+  background-color: $common-tip;
+  border: 1px solid $common-tip;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+// 居中板
+.common-modal {
+  position: fixed;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.common-modal-blank {
+  background-color: $common-white;
+  padding: 2rem;
+  overflow: scroll;
+  max-height: 70%;
+  border-radius: 0.3rem;
+}
