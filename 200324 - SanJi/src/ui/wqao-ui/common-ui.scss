@@ -1,0 +1,171 @@
+// ################################################ 布局
+.flex {
+  display: flex;
+}
+.flex-x-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flex-y {
+  display: flex;
+  flex-direction: column;
+}
+.flex-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-middle-x {
+  display: flex;
+  justify-content: center;
+}
+.flex-middle-y {
+  display: flex;
+  align-items: center;
+}
+.flex-side {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-no-side {
+  display: flex;
+  justify-content: space-around;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// ################################################ 常用属性设置
+.common-shadow {
+  box-shadow: 0px 0px 10px 2px #e2e2e2;
+  // 参数解释: left top 扩散程度 宽度 颜色
+}
+.text-cut {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// ################################################ 动画
+
+@keyframes opacityShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+// ################################################ 常用组件设置
+
+// 连接
+.common-link {
+  display: inline;
+  color: $common-main !important;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// 按钮
+.common-btn {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.7rem 1.5rem;
+  transition: all 0.2s;
+  border-radius: 0.2rem;
+  color: $common-white;
+  border: 1px solid transparent;
+  background-color: $common-main;
+  &:hover {
+    background-color: #05ab55;
+  }
+  img {
+    width: 1rem !important;
+    height: 1rem !important;
+    margin: 0rem !important;
+    margin: 0rem !important;
+  }
+}
+.toggle {
+  color: $common-main;
+  border: 1px solid $common-main;
+  background-color: $common-white;
+  &:hover {
+    color: $common-white;
+    background-color: $common-main;
+  }
+}
+.tip {
+  color: $common-tip;
+  border: 1px solid $common-tip-lower;
+  background-color: $common-white;
+  &:hover {
+    color: $common-main;
+    border: 1px solid $common-main;
+    background-color: $common-white;
+  }
+}
+.disable {
+  color: $common-tip;
+  border: 1px solid $common-tip-lower;
+  background-color: $common-white;
+  &:hover {
+    cursor: not-allowed;
+    color: $common-tip;
+    border: 1px solid $common-tip-lower;
+    background-color: $common-white;
+  }
+}
+
+// 居中板
+.common-modal {
+  position: fixed;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .common-modal-blank {
+    background-color: $common-white;
+    width: 80%;
+    max-height: 80%;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    .modal-title {
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid $common-tip-lower;
+      margin-bottom: 1rem;
+      span {
+        cursor: pointer;
+      }
+    }
+    .modal-content {
+      min-height: 10rem;
+      padding: 0rem 1rem;
+      overflow: scroll;
+    }
+    .modal-btns {
+      min-height: 4rem;
+      padding: 1rem 1rem 0rem;
+      display: flex;
+      flex-direction: row-reverse;
+      .common-btn {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
