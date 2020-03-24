@@ -1,15 +1,15 @@
-// ********************************** 0.主进程常量设置
+// ********************************** 0.导入自己的主进程代码
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // ********************************** 1.使用窗口模块 BrowserWindow 对象
 import { BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 
-let SPA_WINDOW;
+let spa_window;
 function createWindow() {
-  SPA_WINDOW = new BrowserWindow({
-    width: 800,
-    height: 600,
+  spa_window = new BrowserWindow({
+    width: 1300,
+    height: 900,
     webPreferences: {
       nodeIntegration: true // 这行代码表示允许使用 node API
     }
@@ -19,15 +19,15 @@ function createWindow() {
   let devURL = process.env.WEBPACK_DEV_SERVER_URL;
   if (devURL) {
     // localhost:8080
-    SPA_WINDOW.loadURL(devURL);
-    SPA_WINDOW.webContents.openDevTools();
+    spa_window.loadURL(devURL);
+    spa_window.webContents.openDevTools();
   } else {
     createProtocol("app");
-    SPA_WINDOW.loadURL("app://./index.html");
+    spa_window.loadURL("app://./index.html");
   }
 
-  SPA_WINDOW.on("closed", () => {
-    SPA_WINDOW = null;
+  spa_window.on("closed", () => {
+    spa_window = null;
   });
 }
 
