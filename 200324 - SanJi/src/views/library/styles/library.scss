@@ -1,0 +1,38 @@
+.library {
+  padding: 1rem;
+  height: 100%;
+  // 1
+  .library-nav {
+    margin-bottom: 1rem;
+    .common-btn {
+      margin: 0.5rem;
+    }
+    .right {
+      .tip {
+        margin-right: 0rem;
+      }
+    }
+  }
+  // 2
+  .library-block {
+    background-color: $common-tip;
+    height: 100%;
+    padding: 0.5rem;
+    .block-shelf {
+      width: 40rem;
+      background-color: $common-tip-lower;
+      .common-btn {
+        margin: 0.5rem;
+      }
+      .shelf-tip {
+        padding-top: 2rem;
+        text-align: center;
+        color: $common-tip-higher;
+      }
+    }
+    .block-book {
+      width: 100%;
+      // background-color: $common-tip-lower;
+    }
+  }
+}

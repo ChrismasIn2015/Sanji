@@ -1,3 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100%;
+  background-color: $common-back;
+  -moz-user-select: none; /* 火狐 */
+  -webkit-user-select: none; /* 谷歌 */
+  -ms-user-select: none; /* IE */
+  user-select: none;
+}
+
 // ################################################ 布局
 .flex {
   display: flex;

@@ -1,5 +1,5 @@
 // ********************************** 0.导入自己的主进程代码
-const isDevelopment = process.env.NODE_ENV !== "production";
+// const isDevelopment = process.env.NODE_ENV !== "production";
 
 // ********************************** 1.使用窗口模块 BrowserWindow 对象
 import { BrowserWindow } from "electron";

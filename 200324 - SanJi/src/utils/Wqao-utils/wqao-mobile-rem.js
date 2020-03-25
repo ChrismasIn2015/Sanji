@@ -11,7 +11,7 @@
         return;
       }
       // 设计稿/字体 = 1920px/16px = 屏幕宽/1rem
-      let rem = (clientW * 15) / 1920;
+      let rem = (clientW * 16) / 1920;
       rem = rem < 12 ? 12 : rem;
       html.style.fontSize = rem + "px";
     };
