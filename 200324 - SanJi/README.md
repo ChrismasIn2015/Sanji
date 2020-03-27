@@ -12,7 +12,10 @@
   - 构建 vue add electron-builder
   - 相关命令 package.json
 
-- 3.通过 sql.js 添加数据库环境（npm install sql.js）
+- 3.通过 lowdb.js 添加数据库环境（npm install lowdb.js）
+  - 需要自行封装本地 API
+
+相关命令详见 package.json
 
 ## 2.关键项目结构
 
