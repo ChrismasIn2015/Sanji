@@ -1,5 +1,5 @@
 .library {
-  padding: 1rem;
+  padding: 0.5rem;
   height: 100%;
   // 1
   .library-nav {
@@ -7,9 +7,19 @@
     .common-btn {
       margin: 0.5rem;
     }
+    .left {
+      width: 100%;
+      .nav-tip {
+        color: $common-tip-higher;
+      }
+    }
     .right {
-      .tip {
-        margin-right: 0rem;
+      min-width: 32rem;
+      .common-btn {
+        // float: right;
+        &:nth-child(1) {
+          margin-right: 0rem;
+        }
       }
     }
   }
@@ -18,16 +28,40 @@
     background-color: $common-tip;
     height: 100%;
     padding: 0.5rem;
-    .block-shelf {
+    .shelf-block {
       width: 40rem;
       background-color: $common-tip-lower;
-      .common-btn {
-        margin: 0.5rem;
+      .shelf {
+        .common-btn {
+          margin: 0.5rem;
+          margin-bottom: 0rem;
+          text-align: left;
+        }
+        .books {
+          background-color: rgb(248, 248, 248);
+          margin: 0.5rem;
+          margin-bottom: 0rem;
+          padding: 0.5rem;
+          .book-admin {
+            .common-btn {
+              text-align: center;
+              width: 100%;
+            }
+          }
+        }
       }
       .shelf-tip {
         padding-top: 2rem;
         text-align: center;
         color: $common-tip-higher;
+      }
+      .shelf-admin {
+        margin-top: auto;
+        margin-bottom: 0.5rem;
+        .common-btn {
+          margin: 0rem 0.5rem;
+          width: 100%;
+        }
       }
     }
     .block-book {

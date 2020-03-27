@@ -1,5 +1,144 @@
 {
-  "blocks": {},
-  "shelfs": {},
-  "books": {}
+  "blocks": {
+    "D2S51gJkH": {
+      "blockId": "D2S51gJkH",
+      "name": "前端开发",
+      "color": "#666666"
+    },
+    "zzyVg8gA_": {
+      "blockId": "zzyVg8gA_",
+      "name": "经济学",
+      "color": "#666666"
+    }
+  },
+  "shelfs": {
+    "VYWlh1oUK": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "name": "1.关于浏览器",
+      "books": [
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "QcKN97Lkw",
+          "name": "321",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "KYLb-bVuf",
+          "name": "321312",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "Eta0ri9VB",
+          "name": "123",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "CFoMskO0v",
+          "name": "123",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "G-PIITGZE",
+          "name": "12333",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "G1dhxdD7E",
+          "name": "AAA",
+          "content": ""
+        },
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "VYWlh1oUK",
+          "bookId": "t8zI6NxlB",
+          "name": "13",
+          "content": ""
+        }
+      ]
+    },
+    "Ovrt1kT5d": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "Ovrt1kT5d",
+      "name": "2.关于JavaScript",
+      "books": [
+        {
+          "blockId": "D2S51gJkH",
+          "shelfId": "Ovrt1kT5d",
+          "bookId": "-ASbUq8l4",
+          "name": "13213",
+          "content": ""
+        }
+      ]
+    }
+  },
+  "books": {
+    "QcKN97Lkw": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "QcKN97Lkw",
+      "name": "321",
+      "content": ""
+    },
+    "KYLb-bVuf": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "KYLb-bVuf",
+      "name": "321312",
+      "content": ""
+    },
+    "Eta0ri9VB": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "Eta0ri9VB",
+      "name": "123",
+      "content": ""
+    },
+    "CFoMskO0v": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "CFoMskO0v",
+      "name": "123",
+      "content": ""
+    },
+    "G-PIITGZE": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "G-PIITGZE",
+      "name": "12333",
+      "content": ""
+    },
+    "G1dhxdD7E": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "G1dhxdD7E",
+      "name": "AAA",
+      "content": ""
+    },
+    "t8zI6NxlB": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "VYWlh1oUK",
+      "bookId": "t8zI6NxlB",
+      "name": "13",
+      "content": ""
+    },
+    "-ASbUq8l4": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "Ovrt1kT5d",
+      "bookId": "-ASbUq8l4",
+      "name": "13213",
+      "content": ""
+    }
+  }
 }

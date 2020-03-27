@@ -125,6 +125,50 @@ body,
     background-color: $common-white;
   }
 }
+.tip-on {
+  color: $common-main;
+  border: 1px solid $common-main;
+}
+.blue {
+  color: $common-tip-higher;
+  border: 1px solid $common-tip;
+  background-color: $common-white;
+  &:hover {
+    color: rgb(79, 145, 207);
+    border: 1px solid rgb(79, 145, 207);
+    background-color: $common-white;
+  }
+}
+.blue-on {
+  color: $common-white;
+  border: 1px solid rgb(79, 145, 207);
+  background-color: rgb(79, 145, 207);
+  &:hover {
+    color: $common-white;
+    border: 1px solid rgb(55, 115, 172);
+    background-color: rgb(55, 115, 172);
+  }
+}
+.orange {
+  color: $common-tip-higher;
+  border: 1px solid $common-tip;
+  background-color: $common-white;
+  &:hover {
+    color: rgb(251, 177, 116);
+    border: 1px solid rgb(251, 177, 116);
+    background-color: $common-white;
+  }
+}
+.orange-on {
+  color: $common-white;
+  border: 1px solid rgb(251, 177, 116);
+  background-color: rgb(251, 177, 116);
+  &:hover {
+    color: $common-white;
+    border: 1px solid rgb(223, 155, 100);
+    background-color: rgb(223, 155, 100);
+  }
+}
 .disable {
   color: $common-tip;
   border: 1px solid $common-tip-lower;
@@ -172,7 +216,7 @@ body,
     .modal-content {
       min-height: 10rem;
       padding: 0rem 1rem;
-      overflow: scroll;
+      overflow: auto;
     }
     .modal-btns {
       min-height: 4rem;

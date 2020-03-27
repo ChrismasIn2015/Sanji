@@ -7,7 +7,7 @@
 import { DB } from "../model/node_lowDB.js";
 const shortid = require("shortid");
 
-// *************************************** 获取区块列表
+// 1. 获取区块列表
 export function getBlockList() {
   try {
     let blocks = DB.get("blocks").value();
@@ -21,14 +21,32 @@ export function getBlockList() {
     console.log("%c" + error, "color: red;");
   }
 }
-// *************************************** 获取书架列表
+// 2. 获取书架列表
 export function getShelfList(blockId) {
   try {
     let shelfs = DB.get("shelfs").value();
     let list = [];
     for (let key in shelfs) {
       let item = shelfs[key];
-      if (item.blockId === blockId) list.push(item);
+      if (item.blockId === blockId) {
+        item["books"] = getBookList(item.shelfId);
+        list.push(item);
+      }
+    }
+    return list;
+  } catch (error) {
+    console.log("%c" + error, "color: red;");
+  }
+}
+// 3. 获取书籍列表
+export function getBookList(shelfId) {
+  try {
+    let books = DB.get("books").value();
+    let list = [];
+    for (let key in books) {
+      let item = books[key];
+      item.content = "";
+      if (item.shelfId === shelfId) list.push(item);
     }
     return list;
   } catch (error) {
@@ -57,7 +75,7 @@ function getBlock(blockId) {
     console.log("%c " + error, "color: red;");
   }
 }
-function editBlockName(blockId, newName) {
+export function editBlockName(blockId, newName) {
   try {
     getBlock(blockId);
     DB.get("blocks")
@@ -68,7 +86,7 @@ function editBlockName(blockId, newName) {
     console.log("%c" + error, "color: red;");
   }
 }
-function removeBlock(blockId) {
+export function removeBlock(blockId) {
   try {
     getBlock(blockId);
     DB.unset(["blocks", blockId]).write();
@@ -98,7 +116,7 @@ function getShelf(shelfId) {
     console.log("%c " + error, "color: red;");
   }
 }
-function editShelfName(shelfId, newName) {
+export function editShelfName(shelfId, newName) {
   try {
     getShelf(shelfId);
     DB.get("shelfs")
@@ -109,7 +127,7 @@ function editShelfName(shelfId, newName) {
     console.log("%c" + error, "color: red;");
   }
 }
-function removeShelf(shelfId) {
+export function removeShelf(shelfId) {
   try {
     getShelf(shelfId);
     DB.unset(["shelfs", shelfId]).write();
@@ -120,7 +138,7 @@ function removeShelf(shelfId) {
 // *************************************** 添加/查询/修改/删除 藏书
 export function createBook(blockId, shelfId, bookName, bookContent) {
   try {
-    if (!getBlock() || !getShelf()) throw new Error("父级不存在");
+    if (!getBlock(blockId) || !getShelf(shelfId)) throw new Error("父级不存在");
     // 赋值
     let Id = shortid.generate();
     let target = DB.get("books");
@@ -147,21 +165,26 @@ export function getBook(bookId) {
     console.log("%c " + error, "color: red;");
   }
 }
-function editBook(bookId, newName, newContent) {
+export function editBookName(bookId, newName) {
   try {
-    getShelf(bookId);
+    let target = DB.get("books")
+      .get(bookId)
+      .value();
+    if (!target) throw Error("书籍不存在");
     DB.get("books")
       .get(bookId)
       .set("name", newName)
-      .set("content", newContent)
       .write();
   } catch (error) {
     console.log("%c" + error, "color: red;");
   }
 }
-function removeBook(bookId) {
+export function removeBook(bookId) {
   try {
-    getShelf(bookId);
+    let target = DB.get("books")
+      .get(bookId)
+      .value();
+    if (!target) throw Error("书籍不存在");
     DB.unset(["books", bookId]).write();
   } catch (error) {
     console.log("%c" + error, "color: red;");
