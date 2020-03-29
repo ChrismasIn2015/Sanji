@@ -1,9 +1,0 @@
-javax.servlet.http.Cookie：通过<K,V>来保存信息
-
-构造：new Cookie("JSESSION","123123");
-获取：request.getCookies()：Cookie[]
-添加：response.addCookie(Cookie);	
-
-获取Key：getName()
-获取Value：getValue()
-保存时间：setMaxAge(int seconds)：<0:一次性

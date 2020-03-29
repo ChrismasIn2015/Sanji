@@ -1,9 +1,0 @@
-0.计算机统一二进制编码
-	Unicode
-1.自定义网页编码：
-	<head>
-	<meta charset="UTF-8">：3byte
-2.HTTP传输编码：
-	默认ISO-8859-1：2byte
-3.数据库传输编码：
-	默认ISO-8859-1：2byte
