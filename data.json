@@ -62,7 +62,7 @@
     "f2_y5u4yN": {
       "blockId": "i9hSICf-d",
       "shelfId": "f2_y5u4yN",
-      "name": "1.公司的账号"
+      "name": "公司的账号"
     },
     "UKfQP2D2P": {
       "blockId": "D2S51gJkH",
@@ -89,8 +89,8 @@
       "blockId": "D2S51gJkH",
       "shelfId": "VYWlh1oUK",
       "bookId": "Mho-rv0VY",
-      "name": "HTML",
-      "content": "<div>浏览器渲染过程</div><div>&nbsp; &nbsp; 1.用HTML分析器，分析HTML元素，构建一颗DOM树</div><div>&nbsp; &nbsp; <span style=\"white-space:pre\">\t</span>- onload函数触发</div><div>&nbsp; &nbsp; 2.用CSS分析器，分析CSS文件和元素样式，生成页面的样式表。</div><div>&nbsp; &nbsp; 3.将DOM树和样式表，关联起来，构建一颗Render树(这一过程又称为Attachment)。</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 每个DOM节点都有attach方法，接受样式信息，返回一个render对象。</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 这些render对象最终会被构建成一颗Render树。</div><div>&nbsp; &nbsp; 4.有了Render树，浏览器开始布局，为每个Render树上的节点确定一个在显示屏上出现的精确坐标。</div><div>&nbsp; &nbsp; 5.Render树和节点显示坐标都有了，就调用每个节点paint方法，把它们绘制出来。&nbsp;</div><div>&nbsp; &nbsp; # 构建DOM数是一个渐进过程，为达到更好用户体验，渲染引擎会尽快将内容显示在屏幕上。</div><div>&nbsp; &nbsp; # 它不必等到整个HTML文档解析完毕之后才开始构建render数和布局。</div><div>***********************************************************************************</div><div><span style=\"white-space:pre\">\t</span>rel : 关系 : icon/stylesheet</div><div><span style=\"white-space:pre\">\t</span>href : 连接 : #顶部/#id/javascript/url</div><div><span style=\"white-space:pre\">\t</span></div><div>&nbsp; &nbsp; 网页图标 : &lt;link rel=\"icon\" src=\"logo.png\" sizes=\"32x32\"&gt;</div><div>&nbsp; &nbsp; 图片连接 : &lt;a href&gt;&lt;img src=\"URL\" alt=\"替换文本\"&gt;&lt;/a&gt;</div><div>&nbsp; &nbsp; 文字区域 : &lt;textarea&gt; disabled=\"disabled\"禁止拖动</div><div><br></div><div>&nbsp; &nbsp; 表单 : &lt;form action=\"url\" method=\"post\"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 样式</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 表单长度 : size</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 底部文字 : placeholder</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容长度 : maxlength</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容选取 : name/value</div><div>&nbsp; &nbsp; &nbsp; &nbsp; (type)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容text/复选checkbox/单选radio</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 重置reset/下拉select+option</div>"
+      "name": "浏览器底层原理",
+      "content": "<div><b><font color=\"#ff0000\">浏览器URL解析</font></b></div><div>&nbsp; &nbsp; 1.字符串解析</div><div>&nbsp; &nbsp; 2.HTTP Strict Transport Security：强制客户端使用HTTPS请求资源</div><div>&nbsp; &nbsp; 3.其他操作：安全检查、限制访问（996.icu）</div><div>&nbsp; &nbsp; 4.检查资源缓存</div><div><br></div><div><font color=\"#ff0000\"><b>DNS查询（Domain Name System）</b></font></div><div>&nbsp; &nbsp; * DNS服务器 主要用于域名与 IP 地址的相互转换</div><div>&nbsp; &nbsp; 1.查询本地缓存：浏览器/操作系统/路由器/ISP DNS地址缓存（本地首选DNS服务器）</div><div>&nbsp; &nbsp; 2.向\"国内根域名服务器\"查询</div><div><br></div><div><font color=\"#ff0000\"><b>与查询结果的IP地址建立连接</b></font></div><div>&nbsp; &nbsp; 1.数据准备</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 应用层（封装HTTP报文：请求头/&nbsp;请求体）</div>&nbsp; &nbsp; &nbsp; &nbsp; 传输层（封装TCP/UDP首部）<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&nbsp;三次握手<br><div>&nbsp; &nbsp; &nbsp; &nbsp; 网络层（封装IP首部）</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 链路层（封装以太网首部）</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 物理层</div><div><br></div><div><font color=\"#ff0000\"><b>服务器处理请求</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; 1.常见服务器装配（运维）</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * OS：</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Windows</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - linux内核：Cento /&nbsp;Ubuntu</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Unix内核：...垄断着大型企业的关键性应用领域</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *&nbsp;服务器程序：</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Web/HTTP：只需支持HTTP协议（Tomcat，Windows IIS，Apache，Nginx）</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - 特定应用：支持各种协议并提供服务（<span style=\"color: rgb(51, 51, 51); font-family: Arial; font-size: 14px;\">BEA&nbsp;</span>Weblogic，<span style=\"color: rgb(51, 51, 51); font-family: Arial; font-size: 14px;\">IBM&nbsp;</span>WebSphere）</div><div><br></div><div><b><font color=\"#ff0000\">浏览器端</font></b></div><div>&nbsp; &nbsp; 解压缩gzip资源 /&nbsp;资源缓存 /&nbsp;根据MIME类型解析内容</div><div>&nbsp; &nbsp; <b><font color=\"#ff0000\">1.渲染引擎</font></b></div><div>&nbsp; &nbsp; &nbsp; &nbsp; #1 解码/构建 DOM 树</div><div>&nbsp; &nbsp; &nbsp; &nbsp; #2 解析/构建 CSS&nbsp;树</div><div>&nbsp; &nbsp; &nbsp; &nbsp; #3&nbsp;合并DOM/CSS树：计算DOM单位 /&nbsp;确定样式 /&nbsp;渲染阻塞：CSS 样式 &gt; Script脚本 &gt; DOM树</div><div>&nbsp; &nbsp; &nbsp; &nbsp; #4&nbsp;布局/绘制DOM结点到渲染层</div><div>&nbsp; &nbsp; &nbsp; &nbsp; #5&nbsp;合并渲染层</div><div>&nbsp; &nbsp; &nbsp; &nbsp; #6&nbsp;布局改变会导致<b><font color=\"#ff0000\">回流</font></b>(成本高)，属性改变会导致<font color=\"#ff0000\"><b>重绘</b></font></div><div>&nbsp; &nbsp; <font color=\"#ff0000\"><b>2.JavaScript引擎</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 编译执行</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=\"#4169e1\"><b>1.词法解析</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 得出抽象语法树（AST）并转换成机器指令</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=\"#4169e1\"><b>2.预编译：这一步使得</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *&nbsp;抽象JS内存环境：全局环境/函数环境/Eval</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *&nbsp;抽象JS内存环境内容：执行上下文</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=\"#4169e1\"><b>* 创建执行上下文</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 创建变量内存（变量/函数）&gt;&nbsp;建立作用域链 &gt;&nbsp;确定this指向当前执行上下文</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <font color=\"#4169e1\"><b>3.执行</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>***********************************************************************************</div><div><span style=\"white-space:pre\">\t</span>rel : 关系 : icon/stylesheet</div><div><span style=\"white-space:pre\">\t</span>href : 连接 : #顶部/#id/javascript/url</div><div><span style=\"white-space:pre\">\t</span></div><div>&nbsp; &nbsp; 网页图标 : &lt;link rel=\"icon\" src=\"logo.png\" sizes=\"32x32\"&gt;</div><div>&nbsp; &nbsp; 图片连接 : &lt;a href&gt;&lt;img src=\"URL\" alt=\"替换文本\"&gt;&lt;/a&gt;</div><div>&nbsp; &nbsp; 文字区域 : &lt;textarea&gt; disabled=\"disabled\"禁止拖动</div><div><br></div><div>&nbsp; &nbsp; 表单 : &lt;form action=\"url\" method=\"post\"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 样式</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 表单长度 : size</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 底部文字 : placeholder</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容长度 : maxlength</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容选取 : name/value</div><div>&nbsp; &nbsp; &nbsp; &nbsp; (type)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 内容text/复选checkbox/单选radio</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 重置reset/下拉select+option</div><div><br></div><div><b><font color=\"#ff0000\">参考文章</font></b></div><div>&nbsp; &nbsp; 1.你所不知道的 HSTS：Strict Transport Security</div><div>&nbsp; &nbsp; &nbsp; &nbsp; https://www.barretlee.com/blog/2015/10/22/hsts-intro/<br></div></div><div>&nbsp; &nbsp; 2.Web服务器、应用程序服务器、HTTP服务器区别</div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;https://zhuanlan.zhihu.com/p/58917525</div>"
     },
     "_6NM7OvHK": {
       "blockId": "D2S51gJkH",
@@ -189,6 +189,41 @@
       "bookId": "h_VQcYYGJ",
       "name": "VS Code",
       "content": "<div>prettier.config.js<br></div><div>{</div><div>&nbsp; &nbsp; // ***************** 必备 *****************</div><div>&nbsp; &nbsp; // 自动格式化</div><div>&nbsp; &nbsp; \"editor.formatOnSave\": true,</div><div><br></div><div>&nbsp; &nbsp; // Tab缩进为4个空格</div><div>&nbsp; &nbsp; \"prettier.tabWidth\": 4,</div><div><br></div><div>&nbsp; &nbsp; // 统一使用单引号</div><div>&nbsp; &nbsp; \"prettier.singleQuote\": true,</div><div><br></div><div>&nbsp; &nbsp; // ***************** 其他 *****************</div><div>&nbsp; &nbsp; // 是否自动添加分号</div><div>&nbsp; &nbsp; \"prettier.semi\": false,</div><div><br></div><div>&nbsp; &nbsp; // { / }两侧必须有空格</div><div>&nbsp; &nbsp; \"prettier.bracketSpacing\": true,</div><div><br></div><div>&nbsp; &nbsp; // 单参数箭头函数 总是带()</div><div>&nbsp; &nbsp; \"prettier.arrowParens\": \"always\",</div><div><br></div><div>&nbsp; &nbsp; // vue 模板/样式的缩进</div><div>&nbsp; &nbsp; \"prettier.vueIndentScriptAndStyle\": true</div><div>}</div><div><br></div>"
+    },
+    "0IlRbC42H": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "hOBITMJvI",
+      "bookId": "0IlRbC42H",
+      "name": "网站开发",
+      "content": ""
+    },
+    "vpouL20lY": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "hOBITMJvI",
+      "bookId": "vpouL20lY",
+      "name": "移动端开发",
+      "content": ""
+    },
+    "2MTuHMBRu": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "hOBITMJvI",
+      "bookId": "2MTuHMBRu",
+      "name": "客户端",
+      "content": ""
+    },
+    "7bs3lcUsJ": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "UKfQP2D2P",
+      "bookId": "7bs3lcUsJ",
+      "name": "应用生态圈",
+      "content": "<div><font color=\"#ff0000\"><b>1.传统网站开发</b></font><br></div><div><br></div><div><div>&nbsp; &nbsp; 通常是一套代码进行样式适配，再部署到 PC / Mobile&nbsp;不同平台，最后通过浏览器软件进行访问 &nbsp;&nbsp;</div><div><br><div><font color=\"#ff0000\"><b>2.移动端开发</b></font></div><div><br></div><div>&nbsp; &nbsp; Native APP (原生APP)</div><div>&nbsp; &nbsp; - Android：Java / IOS：Object-C/Swift&nbsp;等</div><div><br></div><div>&nbsp; &nbsp; Hybrid APP (混合开发)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 是一种用Native技术来搭建本地Web环境，内容主要通过Web技术来提供的移动应用</div><div>&nbsp; &nbsp; &nbsp; &nbsp; *&nbsp;主要开发技术</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Uni-App：自研Wxs技术降低视图层与语言引擎通信耗损</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - React-Native：JavaScript引擎，不同平台需要不同UI</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - Flutter：Dart引擎，是纯粹的渲染引擎，简单、高性能，</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 但由于Dart语法使得维护性/代码可读性很差，</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 不支持动态热更新，不同平台需要不同UI</div></div><div><br></div><div><div><font color=\"#ff0000\"><b>3.客户端开发</b></font></div></div><div>&nbsp; &nbsp; Electron（@github）原来叫 Atom Shell</div></div><div><br></div><div><font color=\"#ff0000\"><b>参考文章</b></font></div><div>&nbsp; &nbsp; Flutter、React-Native、Uni-App比较：https://ask.dcloud.net.cn/article/36083</div>"
+    },
+    "25SSa_7j3": {
+      "blockId": "D2S51gJkH",
+      "shelfId": "UKfQP2D2P",
+      "bookId": "25SSa_7j3",
+      "name": "性能优化",
+      "content": ""
     }
   }
 }

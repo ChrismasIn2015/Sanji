@@ -9,8 +9,8 @@ let spa_window;
 
 function createWindow() {
   spa_window = new BrowserWindow({
-    width: 1300,
-    height: 900,
+    width: 1280,
+    height: 720,
     resizable: false,
     webPreferences: {
       nodeIntegration: true // 这行代码表示允许使用 node API

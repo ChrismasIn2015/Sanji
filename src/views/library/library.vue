@@ -4,20 +4,14 @@
     <div class="library-nav flex-side">
       <!-- 左侧区块列表 -->
       <div class="left">
-        <div
-          class="common-btn tip"
-          v-for="(item, index) in blockList"
-          :key="index"
-          @click.stop="setNowBlockId(item)"
-          :class="{'tip-on': nowBlockId===item.blockId}"
-        >{{ item.name }}</div>
+        <div class="common-btn tip" v-for="(item, index) in blockList" :key="index" @click.stop="setNowBlockId(item)" :class="{'tip-on': nowBlockId===item.blockId}">{{ item.name }}</div>
         <div class="nav-tip" v-show="!blockList.length">暂无数据</div>
       </div>
       <!-- 右侧按钮 -->
       <div class="right flex-x-reverse">
         <div class="common-btn tip" @click.stop="toIndex">返回</div>
-        <div class="common-btn" v-show="nowBlockId" @click.stop="deleteMyBlock">删除区块</div>
-        <div class="common-btn tip" v-show="nowBlockId" @click.stop="editBlockShow = true">修改名称</div>
+        <div class="common-btn red" v-show="nowBlockId" @click.stop="deleteMyBlock">删除区块</div>
+        <div class="common-btn" v-show="nowBlockId" @click.stop="editBlockShow = true">修改名称</div>
         <div class="common-btn" @click.stop="newBlockShow = true">+ 添加区块</div>
       </div>
     </div>
@@ -27,19 +21,9 @@
       <div class="shelf-block flex-y">
         <!-- 书架 -->
         <div class="shelf flex-y" v-for="(item, index) in shelfList" :key="index">
-          <div
-            class="common-btn blue"
-            @click.stop="setNowShelfId(item)"
-            :class="{'blue-on': nowShelfId===item.shelfId}"
-          >{{ item.name }}</div>
+          <div class="common-btn blue" @click.stop="setNowShelfId(item)" :class="{'blue-on': nowShelfId===item.shelfId}">{{ item.name }}</div>
           <div class="books" v-show="nowShelfId === item.shelfId">
-            <div
-              class="common-btn orange"
-              v-for="(book, index) in item.books"
-              :key="index"
-              :class="{'orange-on': nowBookId === book.bookId}"
-              @click.stop="setNowBookId(book)"
-            >{{ book.name }}</div>
+            <div class="common-btn orange" v-for="(book, index) in item.books" :key="index" :class="{'orange-on': nowBookId === book.bookId}" @click.stop="setNowBookId(book)">{{ book.name }}</div>
             <div style="text-align: center;" v-show="!item.books.length">暂无书籍</div>
             <div class="book-admin flex-no-side">
               <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div>
@@ -58,14 +42,12 @@
       </div>
 
       <!-- 书籍内容 -->
-      <div class="block-book">
-        <div v-show="nowBookId" class="flex-y">
-          <div class="book-nav">
-            <div class="common-btn" @click.stop="getMyRichText">保存</div>
-          </div>
-          <div class="book">
-            <richText ref="myRichText" :content="nowBookContent" />
-          </div>
+      <div class="block-book" v-show="nowBookId">
+        <div class="book-nav">
+          <div class="common-btn" @click.stop="getMyRichText">保存</div>
+        </div>
+        <div class="book">
+          <richText ref="myRichText" :content="nowBookContent" />
         </div>
       </div>
     </div>
@@ -76,11 +58,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">添加区块</div>
         <div class="modal-content">
-          <commonInput
-            ref="myBlock"
-            :state="{ type:'none', holder:'请输入区块名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myBlock" :state="{ type:'none', holder:'请输入区块名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyBlock">添加</div>
@@ -93,11 +71,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">编辑区块</div>
         <div class="modal-content">
-          <commonInput
-            ref="myBlock"
-            :state="{ type:'none', holder:'请输入新区块名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myBlock" :state="{ type:'none', holder:'请输入新区块名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyBlock">修改</div>
@@ -110,11 +84,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">添加书架</div>
         <div class="modal-content">
-          <commonInput
-            ref="myShelf"
-            :state="{ type:'none', holder:'请输入书架名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myShelf" :state="{ type:'none', holder:'请输入书架名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyShelf">添加</div>
@@ -127,11 +97,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">添加书架</div>
         <div class="modal-content">
-          <commonInput
-            ref="myShelf"
-            :state="{ type:'none', holder:'请输入新书架名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myShelf" :state="{ type:'none', holder:'请输入新书架名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyShelf">修改</div>
@@ -144,11 +110,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">添加书籍</div>
         <div class="modal-content">
-          <commonInput
-            ref="myBook"
-            :state="{ type:'none', holder:'请输入书籍名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myBook" :state="{ type:'none', holder:'请输入书籍名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyBook">添加</div>
@@ -161,11 +123,7 @@
       <div class="common-modal-blank" style=" max-width: 30rem;">
         <div class="modal-title">编辑书籍</div>
         <div class="modal-content">
-          <commonInput
-            ref="myBook"
-            :state="{ type:'none', holder:'请输入新书名称' }"
-            style="margin-top: 1rem;"
-          />
+          <commonInput ref="myBook" :state="{ type:'none', holder:'请输入新书名称' }" style="margin-top: 1rem;" />
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyBookName">修改</div>
