@@ -208,18 +208,18 @@ export default {
       this.getMyShelfList();
     },
     deleteMyBlock() {
-      // let response = window.confirm(
-      //   "您正在删除这个区块，及其书架/书籍，确认要这么做吗？"
-      // );
-      // if (!response) return;
-      // let responseAgain = window.confirm(
-      //   "您真的要删除这个区块及其书架/书籍吗？"
-      // );
-      // if (response && responseAgain) {
-      removeBlock(this.nowBlockId);
-      this.clearLibrary();
-      this.getMyBlockList();
-      // }
+      let response = window.confirm(
+        "您正在删除这个区块，及其书架/书籍，确认要这么做吗？"
+      );
+      if (!response) return;
+      let responseAgain = window.confirm(
+        "您真的要删除这个区块及其书架/书籍吗？"
+      );
+      if (response && responseAgain) {
+        removeBlock(this.nowBlockId);
+        this.clearLibrary();
+        this.getMyBlockList();
+      }
     },
     // ************************************************ 书架
     createMyShelf() {
@@ -247,16 +247,16 @@ export default {
       this.nowShelfId = item.shelfId;
     },
     deleteMyShelf() {
-      // let response = window.confirm(
-      //   "您正在删除这个书架，及其书籍，确认要这么做吗？"
-      // );
-      // if (!response) return;
-      // let responseAgain = window.confirm("您真的要删除这个书架及其书籍吗？");
-      // if (response && responseAgain) {
-      removeShelf(this.nowShelfId);
-      this.nowShelfId = "";
-      this.getMyShelfList();
-      // }
+      let response = window.confirm(
+        "您正在删除这个书架，及其书籍，确认要这么做吗？"
+      );
+      if (!response) return;
+      let responseAgain = window.confirm("您真的要删除这个书架及其书籍吗？");
+      if (response && responseAgain) {
+        removeShelf(this.nowShelfId);
+        this.nowShelfId = "";
+        this.getMyShelfList();
+      }
     },
     // ************************************************ 3.书籍
     createMyBook() {
@@ -281,12 +281,12 @@ export default {
       this.nowBookContent = content;
     },
     deleteMyBook() {
-      // let response = window.confirm("您正在删除这个书籍，确认要这么做吗？");
-      // if (response) {
-      removeBook(this.nowBookId);
-      this.nowBookId = "";
-      this.getMyShelfList();
-      // }
+      let response = window.confirm("您正在删除这个书籍，确认要这么做吗？");
+      if (response) {
+        removeBook(this.nowBookId);
+        this.nowBookId = "";
+        this.getMyShelfList();
+      }
     },
     // 取得富文本内容 并且保存
     getMyRichText() {

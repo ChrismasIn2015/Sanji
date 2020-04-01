@@ -28,6 +28,7 @@ export default {
     },
     selectColor(color) {
       document.execCommand("ForeColor", false, color);
+      document.execCommand("Bold");
     },
     getContent() {
       let target = document.getElementById("richText");
