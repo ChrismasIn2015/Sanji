@@ -10,7 +10,7 @@
       <!-- 右侧按钮 -->
       <div class="right flex-x-reverse">
         <div class="common-btn tip" @click.stop="toIndex">返回</div>
-        <div class="common-btn red" v-show="nowBlockId" @click.stop="deleteMyBlock">删除区块</div>
+        <div class="common-btn red" v-show="nowBlockId" @click.stop="modalToConfirm('block')">删除区块</div>
         <div class="common-btn" v-show="nowBlockId" @click.stop="editBlockShow = true">修改名称</div>
         <div class="common-btn" @click.stop="newBlockShow = true">+ 添加区块</div>
       </div>
@@ -20,15 +20,17 @@
     <div class="library-block flex">
       <div class="shelf-block flex-y">
         <!-- 书架 -->
-        <div class="shelf flex-y" v-for="(item, index) in shelfList" :key="index">
-          <div class="common-btn blue" @click.stop="setNowShelfId(item)" :class="{'blue-on': nowShelfId===item.shelfId}">{{ item.name }}</div>
-          <div class="books" v-show="nowShelfId === item.shelfId">
-            <div class="common-btn orange" v-for="(book, index) in item.books" :key="index" :class="{'orange-on': nowBookId === book.bookId}" @click.stop="setNowBookId(book)">{{ book.name }}</div>
-            <div style="text-align: center;" v-show="!item.books.length">暂无书籍</div>
-            <div class="book-admin flex-no-side">
-              <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div>
-              <div class="common-btn red" v-show="nowBookId" @click.stop="deleteMyBook">删除书籍</div>
-              <div class="common-btn" v-show="nowBookId" @click.stop="editBookShow = true">编辑书籍</div>
+        <div class="shelfs">
+          <div class="shelf flex-y" v-for="(item, index) in shelfList" :key="index">
+            <div class="common-btn blue" @click.stop="setNowShelfId(item)" :class="{'blue-on': nowShelfId===item.shelfId}">{{ item.name }}</div>
+            <div class="books" v-show="nowShelfId === item.shelfId">
+              <div class="common-btn orange" v-for="(book, index) in item.books" :key="index" :class="{'orange-on': nowBookId === book.bookId}" @click.stop="setNowBookId(book)">{{ book.name }}</div>
+              <div style="text-align: center; margin-top: 2rem;" v-show="!item.books.length">暂无书籍</div>
+              <div class="book-admin flex-no-side">
+                <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div>
+                <div class="common-btn red" v-show="nowBookId" @click.stop="modalToConfirm('book')">删除书籍</div>
+                <div class="common-btn" v-show="nowBookId" @click.stop="editBookShow = true">编辑书籍</div>
+              </div>
             </div>
           </div>
         </div>
@@ -36,7 +38,7 @@
         <!-- 书架管理 -->
         <div class="shelf-admin flex-no-side">
           <div class="common-btn blue-on" v-show="nowBlockId" @click.stop="newShelfShow = true">添加书架</div>
-          <div class="common-btn red" v-show="nowShelfId" @click.stop="deleteMyShelf">删除书架</div>
+          <div class="common-btn red" v-show="nowShelfId" @click.stop="modalToConfirm('shelf')">删除书架</div>
           <div class="common-btn" v-show="nowShelfId" @click.stop="editShelfShow = true">修改书架</div>
         </div>
       </div>
@@ -131,10 +133,16 @@
         </div>
       </div>
     </div>
+    <!-- * 通用警告 -->
+    <WqaoModal :show="warnModal" title="提示" :content="warnModalContent" @action="warnModal = false" />
+    <WqaoModal :show="bookConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="bookConfirm" />
+    <WqaoModal :show="shelfConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="shelfConfirm" />
+    <WqaoModal :show="blockConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="blockConfirm" />
   </div>
 </template>
 
 <script>
+import WqaoModal from "@/utils/Wqao/wqao-modal/wqao-modal.vue";
 import commonInput from "@/ui/wqao-ui/common-input/common-input.vue";
 import richText from "@/utils/Wqao/richText/richText";
 import {
@@ -170,7 +178,14 @@ export default {
       nowBookId: "",
       nowBookContent: "",
       newBookShow: false,
-      editBookShow: false
+      editBookShow: false,
+      // 通用警告
+      warnModal: false,
+      warnModalContent: "",
+      // 确认警告
+      bookConfirmShow: false,
+      shelfConfirmShow: false,
+      blockConfirmShow: false
     };
   },
   mounted() {
@@ -178,7 +193,8 @@ export default {
   },
   components: {
     commonInput,
-    richText
+    richText,
+    WqaoModal
   },
   methods: {
     // ************************************************ 区块
@@ -187,7 +203,7 @@ export default {
       let blockName = this.$refs.myBlock.inputValue;
       createBlock(blockName);
       this.getMyBlockList();
-      // window.alert("添加成功");
+      this.modalToWarn("添加成功");
       this.newBlockShow = false;
     },
     editMyBlock() {
@@ -207,19 +223,14 @@ export default {
       this.nowBlockId = item.blockId;
       this.getMyShelfList();
     },
+    blockConfirm(bool) {
+      this.blockConfirmShow = false;
+      if (bool) this.deleteMyBlock();
+    },
     deleteMyBlock() {
-      let response = window.confirm(
-        "您正在删除这个区块，及其书架/书籍，确认要这么做吗？"
-      );
-      if (!response) return;
-      let responseAgain = window.confirm(
-        "您真的要删除这个区块及其书架/书籍吗？"
-      );
-      if (response && responseAgain) {
-        removeBlock(this.nowBlockId);
-        this.clearLibrary();
-        this.getMyBlockList();
-      }
+      removeBlock(this.nowBlockId);
+      this.clearLibrary();
+      this.getMyBlockList();
     },
     // ************************************************ 书架
     createMyShelf() {
@@ -227,7 +238,7 @@ export default {
       let shelfName = this.$refs.myShelf.inputValue;
       createShelf(this.nowBlockId, shelfName);
       this.getMyShelfList();
-      // window.alert("添加成功");
+      this.modalToWarn("添加成功");
       this.newShelfShow = false;
     },
     editMyShelf() {
@@ -246,26 +257,22 @@ export default {
       this.nowBookId = "";
       this.nowShelfId = item.shelfId;
     },
+    shelfConfirm(bool) {
+      this.shelfConfirmShow = false;
+      if (bool) this.deleteMyShelf();
+    },
     deleteMyShelf() {
-      let response = window.confirm(
-        "您正在删除这个书架，及其书籍，确认要这么做吗？"
-      );
-      if (!response) return;
-      let responseAgain = window.confirm("您真的要删除这个书架及其书籍吗？");
-      if (response && responseAgain) {
-        removeShelf(this.nowShelfId);
-        this.nowShelfId = "";
-        this.getMyShelfList();
-      }
+      removeShelf(this.nowShelfId);
+      this.nowShelfId = "";
+      this.getMyShelfList();
     },
     // ************************************************ 3.书籍
     createMyBook() {
       if (this.$refs.myBook.inputVerify()) return;
       let bookName = this.$refs.myBook.inputValue;
-      console.log(this.nowBlockId, this.nowShelfId, bookName, "");
       createBook(this.nowBlockId, this.nowShelfId, bookName, "");
       this.getMyShelfList();
-      // window.alert("添加成功");
+      this.modalToWarn("添加成功");
       this.newBookShow = false;
     },
     editMyBookName() {
@@ -280,18 +287,20 @@ export default {
       let content = getBookContent(item.bookId);
       this.nowBookContent = content;
     },
+    bookConfirm(bool) {
+      this.bookConfirmShow = false;
+      if (bool) this.deleteMyBook();
+    },
     deleteMyBook() {
-      let response = window.confirm("您正在删除这个书籍，确认要这么做吗？");
-      if (response) {
-        removeBook(this.nowBookId);
-        this.nowBookId = "";
-        this.getMyShelfList();
-      }
+      removeBook(this.nowBookId);
+      this.nowBookId = "";
+      this.getMyShelfList();
     },
     // 取得富文本内容 并且保存
     getMyRichText() {
       let content = this.$refs.myRichText.getContent();
       setBookContent(this.nowBookId, content);
+      this.modalToWarn("保存成功");
     },
     // ************************************************ 全局
     clearLibrary() {
@@ -302,6 +311,15 @@ export default {
     },
     toIndex() {
       this.$router.push({ name: "index" });
+    },
+    modalToWarn(content) {
+      this.warnModal = true;
+      this.warnModalContent = content;
+    },
+    modalToConfirm(key) {
+      if (key === "book") this.bookConfirmShow = true;
+      if (key === "shelf") this.shelfConfirmShow = true;
+      if (key === "block") this.blockConfirmShow = true;
     }
   }
 };

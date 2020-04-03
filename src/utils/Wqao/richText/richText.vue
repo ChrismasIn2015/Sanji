@@ -6,7 +6,6 @@
       <div class="nav-item" style="color: #4169E1;" @click.stop="selectColor('#4169E1')">Blue</div>
     </div>
     <div class="rich-content">
-
       <div id="richText" contenteditable="true" v-html="content" @keydown="keyListen"></div>
     </div>
   </div>
@@ -50,6 +49,7 @@ export default {
   background-color: $common-tip-lower;
   padding: 0.5rem;
   margin-top: 0.5rem;
+  max-width: 100%;
   .rich-nav {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid $common-tip;
@@ -69,7 +69,8 @@ export default {
   }
   .rich-content {
     overflow-y: auto;
-    height: 43.6rem;
+    word-wrap: break-word;
+    max-height: 43.6rem;
     #richText {
       padding: 0.5rem 0rem;
       &:focus {

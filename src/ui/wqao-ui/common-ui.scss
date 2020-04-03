@@ -66,12 +66,26 @@ body,
 // ################################################ 动画
 
 @keyframes opacityShow {
+  // animation: opacityShow 0.5s;
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
+}
+.fade {
+  transition: all 0.2s;
+}
+.fade-on {
+  opacity: 1;
+  // transform: scale(0);
+  visibility: visible;
+}
+.fade-off {
+  opacity: 0;
+  // transform: scale(1);
+  visibility: hidden;
 }
 // ################################################ 常用组件设置
 
@@ -224,9 +238,10 @@ body,
       }
     }
     .modal-content {
-      min-height: 10rem;
+      word-wrap: break-word;
+      min-height: 6rem;
       padding: 0rem 1rem;
-      overflow: auto;
+      overflow-x: auto;
     }
     .modal-btns {
       min-height: 4rem;
