@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     selectBlod() {
+      document.execCommand("ForeColor", false, "black");
       document.execCommand("Bold");
     },
     selectColor(color) {
