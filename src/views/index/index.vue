@@ -18,43 +18,78 @@ export default {
       this.$router.push({ name: "library" });
     },
     leetCode() {
-      // 1.
+      // ++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++ 构造函数
       function MyPromise(excutor) {
-        var self = this;
-        self.onResolvedCallback = [];
+        // 1.
+        this.onResolvedCallback = [];
+
+        // 2.
         function resolve(value) {
           setTimeout(() => {
-            self.data = value;
-            self.onResolvedCallback.forEach(callback => callback(value));
+            console.log("async resolve run !", value);
+            this.data = value;
+            this.onResolvedCallback.forEach(callback => callback(value));
           });
         }
-        excutor(resolve.bind(self));
+
+        // 3.
+        excutor(resolve.bind(this));
       }
       MyPromise.prototype.then = function(onResolved) {
-        var self = this;
-        // 一定要返回一个新的promise
-        // promise2
-        var async2 = resolve => {
-          console.log("执行then的同步代码");
-          self.onResolvedCallback.push(function() {
-            var result = onResolved(self.data);
-            result instanceof Promise ? result.then(resolve) : resolve(result);
+        console.log("then wanner return a new Promise! ↓↓");
+        let thenExcutor = temp => {
+          this.onResolvedCallback.push(() => {
+            let result = onResolved(this.data);
+            result instanceof MyPromise2 ? result.then(temp) : temp(result);
           });
+          console.log("excute when building !", this);
         };
-
-        return new MyPromise(async2);
+        return new MyPromise2(thenExcutor);
       };
-      // 2.
-      function myAsync(resolve) {
-        setTimeout(() => {
-          console.log("执行用户的异步代码");
-          resolve("async 500");
-        }, 500);
+      function MyPromise2(excutor) {
+        this.onResolvedCallback = [];
+        function resolve(value) {
+          setTimeout(() => {
+            console.log("async resolve run !", value);
+            this.data = value;
+            this.onResolvedCallback.forEach(callback => callback(value));
+          });
+        }
+        console.log("build a Promise!");
+        excutor(resolve.bind(this));
       }
-      var tt = new MyPromise(myAsync).then(res => {
-        console.log("then res");
-      });
-      console.log("sync 0");
+      MyPromise2.prototype.then = mythen;
+      // ++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++ then 方法
+
+      // 2.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++.++++++++++++++ 实例
+      function myAsync(resolve) {
+        console.log("user excute when building !");
+        setTimeout(() => {
+          resolve("user result");
+        }, 1000);
+      }
+      var tt = new MyPromise(myAsync);
+      tt.then(res => {
+        return "then 1";
+      })
+        .then(res => {
+          return new MyPromise(function(resolve) {
+            setTimeout(() => {
+              resolve("then 2");
+            }, 4000);
+          });
+          // return "then 2";
+        })
+        .then(res => {
+          return new MyPromise(function(resolve) {
+            setTimeout(() => {
+              resolve("then 3");
+            }, 4000);
+          });
+        })
+        .then(res => {
+          return "then 4";
+        });
     }
   }
 };
