@@ -4,13 +4,16 @@
     <div class="library-nav flex-side">
       <!-- 左侧区块列表 -->
       <div class="left">
-        <div class="common-btn tip" v-for="(item, index) in blockList" :key="index" @click.stop="setNowBlockId(item)" :class="{'tip-on': nowBlockId===item.blockId}">{{ item.name }}</div>
+        <div class="common-btn tip" v-for="(item, index) in blockList" :key="index" @click.stop="setNowBlockId(item)" :class="{'tip-on': nowBlockId===item.blockId}">
+          <span class="pot" v-show="nowBlockId === item.blockId" @click.stop="modalToConfirm('block')">✖</span>
+          <span>{{ item.name }}</span>
+        </div>
         <div class="nav-tip" v-show="!blockList.length">暂无数据</div>
       </div>
       <!-- 右侧按钮 -->
       <div class="right flex-x-reverse">
         <div class="common-btn tip" @click.stop="toIndex">返回</div>
-        <div class="common-btn red" v-show="nowBlockId" @click.stop="modalToConfirm('block')">删除区块</div>
+        <!-- <div class="common-btn red" v-show="nowBlockId" @click.stop="modalToConfirm('block')">删除区块</div> -->
         <div class="common-btn" v-show="nowBlockId" @click.stop="editBlockShow = true">修改名称</div>
         <div class="common-btn" @click.stop="newBlockShow = true">+ 添加区块</div>
       </div>
@@ -22,13 +25,21 @@
         <!-- 书架 -->
         <div class="shelfs">
           <div class="shelf flex-y" v-for="(item, index) in shelfList" :key="index">
-            <div class="common-btn blue" @click.stop="setNowShelfId(item)" :class="{'blue-on': nowShelfId===item.shelfId}">{{ item.name }}</div>
+            <div class="common-btn blue" @click.stop="setNowShelfId(item)" :class="{'blue-on': nowShelfId===item.shelfId}">
+              <span class="pot" v-show="nowShelfId === item.shelfId" @click.stop="modalToConfirm('shelf')">✖</span>
+              <span>{{ item.name }}（{{item.books.length}}）</span>
+            </div>
+
+            <!-- 3.书籍列表 -->
             <div class="books" v-show="nowShelfId === item.shelfId">
-              <div class="common-btn orange" v-for="(book, index) in item.books" :key="index" :class="{'orange-on': nowBookId === book.bookId}" @click.stop="setNowBookId(book)">{{ book.name }}</div>
+              <div class="common-btn orange" v-for="(book, index) in item.books" :key="index" :class="{'orange-on': nowBookId === book.bookId}" @click.stop="setNowBookId(book)">
+                <span class="pot" v-show="nowBookId === book.bookId" @click.stop="modalToConfirm('book')">✖</span>
+                <span>{{ book.name }}</span>
+              </div>
               <div style="text-align: center; margin-top: 2rem;" v-show="!item.books.length">暂无书籍</div>
               <div class="book-admin flex-no-side">
                 <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div>
-                <div class="common-btn red" v-show="nowBookId" @click.stop="modalToConfirm('book')">删除书籍</div>
+                <!-- <div class="common-btn red" v-show="nowBookId" @click.stop="modalToConfirm('book')">删除书籍</div> -->
                 <div class="common-btn" v-show="nowBookId" @click.stop="editBookShow = true">编辑书籍</div>
               </div>
             </div>
@@ -38,7 +49,7 @@
         <!-- 书架管理 -->
         <div class="shelf-admin flex-no-side">
           <div class="common-btn blue-on" v-show="nowBlockId" @click.stop="newShelfShow = true">添加书架</div>
-          <div class="common-btn red" v-show="nowShelfId" @click.stop="modalToConfirm('shelf')">删除书架</div>
+          <!-- <div class="common-btn red" v-show="nowShelfId" @click.stop="modalToConfirm('shelf')">删除书架</div> -->
           <div class="common-btn" v-show="nowShelfId" @click.stop="editShelfShow = true">修改书架</div>
         </div>
       </div>
