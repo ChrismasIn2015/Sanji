@@ -957,7 +957,7 @@
       "shelfId": "v1x8EzKB6",
       "bookId": "5WWpMPDhf",
       "name": "DOM 绘图",
-      "content": ""
+      "content": "<font color=\"#ff0000\"><b>EchartsJS</b></font><div>&nbsp; &nbsp;<b> 使用：npm install echarts</b></div><div>&nbsp; &nbsp; <b>1.需要为一个Echarts实例准备一个具有宽高的DOM容器，并初始化这个实例</b></div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"main\"</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">\"width: 600px;height:400px;\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span></div><div><span class=\"hljs-tag\">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span class=\"hljs-keyword\">var</span> <font color=\"#4169e1\"><b>myChart </b></font>= echarts.init(<span class=\"hljs-built_in\">document</span>.getElementById(<span class=\"hljs-string\">'main'</span>));</div><div>&nbsp; &nbsp; <b>2.指定实例的图表类型和数据</b></div><div><b>&nbsp; &nbsp;&nbsp;</b><b style=\"color: rgb(65, 105, 225);\">myChart .setOption({</b></div><div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; series:[</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; type:</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; data:</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ......</b></div><div><b>&nbsp; &nbsp; &nbsp; &nbsp; ]</b></div></div><div><b style=\"color: rgb(65, 105, 225);\">&nbsp; &nbsp; })</b></div>"
     },
     "QaZb5jCcY": {
       "blockId": "DCgJdlX5R",
