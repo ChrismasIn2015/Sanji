@@ -5,18 +5,18 @@
 
 export class WqaoTest {
     // 变量
-    LOG_SWITCH = false;
+    LOG_SWITCH = false
 
     // 构造函数
     constructor(logState) {
-        this.LOG_SWITCH = logState ? true : false;
-        console.log("wqao-test is running ?", this.LOG_SWITCH);
+        this.LOG_SWITCH = logState ? true : false
+        console.log('wqao-test is running ?', this.LOG_SWITCH)
     }
 
     // 打印语句
     log(...statement) {
         if (this.LOG_SWITCH) {
-            console.log(...statement);
+            console.log(...statement)
         }
     }
 }
