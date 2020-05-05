@@ -2,8 +2,7 @@
   <div class="index">
     <div class="index-entry">
       <div class="entry common-btn" @click.stop="toLibrary">笔记系统</div>
-      <div class="entry common-btn blue-on">资源地图</div>
-      <div class="entry common-btn blue-on" @click.stop="leetCode">Leet Code Test</div>
+      <div class="entry common-btn blue-on" @click.stop="toHistory">时间</div>
     </div>
   </div>
 </template>
@@ -17,15 +16,8 @@ export default {
     toLibrary() {
       this.$router.push({ name: "library" });
     },
-    async leetCode() {
-      try {
-        console.log(typeof (await this.te()));
-      } catch (e) {
-        window.alert(e);
-      }
-    },
-    te() {
-      return 1;
+    toHistory() {
+      this.$router.push({ name: "history" });
     }
   }
 };

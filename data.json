@@ -87,11 +87,6 @@
       "shelfId": "Ho01HabXF",
       "name": "经济学"
     },
-    "23a3PBcDa": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "23a3PBcDa",
-      "name": "数学"
-    },
     "MMuN17Zro": {
       "blockId": "YxnegsTMH",
       "shelfId": "MMuN17Zro",
@@ -101,6 +96,26 @@
       "blockId": "DCgJdlX5R",
       "shelfId": "YKdKtabb9",
       "name": "工作"
+    },
+    "w9SAKBPW2": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "w9SAKBPW2",
+      "name": "英语"
+    },
+    "N7V_Hcwg1": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "name": "数学分析"
+    },
+    "wxtju1CwP": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "name": "线性代数"
+    },
+    "Tp27bPbEj": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "name": "概率论与数理统计"
     }
   },
   "books": {
@@ -188,27 +203,6 @@
       "name": "基础",
       "content": "局域网 LAN 概念&nbsp;<div>&nbsp; &nbsp; - 以太网技术：一条以太网线连接多台计算机（MAC地址）</div><div>广域网 WAN 概念</div><div>&nbsp; &nbsp; - 服务商 ISP 管理</div><div>&nbsp; &nbsp; - 数据包传输协议（IP）根据IP地址负责找到正确的计算机</div><div>&nbsp; &nbsp; - 更多应用协议（UDP/TCP）负责送到正确的程序</div>"
     },
-    "rRLdmjJbK": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "23a3PBcDa",
-      "bookId": "rRLdmjJbK",
-      "name": "数学分析(计算)",
-      "content": ""
-    },
-    "TgJ2tJx6e": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "23a3PBcDa",
-      "bookId": "TgJ2tJx6e",
-      "name": "线性代数",
-      "content": ""
-    },
-    "afdu-jqlw": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "23a3PBcDa",
-      "bookId": "afdu-jqlw",
-      "name": "统计学",
-      "content": ""
-    },
     "rTi82kJre": {
       "blockId": "YxnegsTMH",
       "shelfId": "Ho01HabXF",
@@ -220,7 +214,7 @@
       "blockId": "YxnegsTMH",
       "shelfId": "q6_9Db-FR",
       "bookId": "AZ2G447Hy",
-      "name": "基础",
+      "name": "文章",
       "content": "<div><font color=\"#ff0000\"><b>政治目标</b></font></div><div><font color=\"#ff0000\"><b><br></b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp;&nbsp;</b></font>失去了人口红利的中国会怎样？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/354301326/answer/946847312</div><div>&nbsp; &nbsp;&nbsp;人们研究如甲骨文之类的古文字的意义是什么？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/24164877/answer/735299839</div><div>&nbsp; &nbsp; 美国为什么不侵略邻近且资源丰富的加拿大？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/21685448/answer/426741248</div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp;&nbsp;</b></font></div><div><font color=\"#ff0000\"><b>各时间政策分析</b></font></div><div><font color=\"#ff0000\"><b><br></b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp;&nbsp;</b></font>* 有哪些行为堪比「1949 年加入国民党」？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/265048690/answer/297995221</div><div>&nbsp; &nbsp; *&nbsp;知乎用户有哪些预言最终被证实了？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/265334984/answer/1098369373</div><div>&nbsp; &nbsp; *“实体经济越来越不行了”这种流行观点是否成立？为什么？</div><div>&nbsp; &nbsp; https://www.zhihu.com/collection/46005262</div><div>&nbsp; &nbsp;<br></div><div><font color=\"#ff0000\"><b>人物立场分析</b></font></div><div><font color=\"#ff0000\"><b><br></b></font></div><div>&nbsp; &nbsp; *&nbsp;沙僧真的是因为打碎了玻璃盏才被赶到下界的吗？</div><div>&nbsp; &nbsp; &nbsp; https://www.zhihu.com/question/371515636/answer/1016244372</div><div>&nbsp; &nbsp; * 生活中有没有特别绿茶的女生？</div><div>&nbsp; &nbsp; &nbsp; https://www.zhihu.com/question/328524632/answer/995660728</div><div>&nbsp; &nbsp;&nbsp;怎样在机关事业单位不被老油条欺负？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/337531740/answer/886984703</div><div>&nbsp; &nbsp;&nbsp;最失败的一次外交活动</div><div>&nbsp; &nbsp; https://zhuanlan.zhihu.com/p/84372675</div><div>&nbsp; &nbsp;&nbsp;英国打过几乎所有国家，为什么没几个国家恨它？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/46770386/answer/797812681</div><div>&nbsp; &nbsp;&nbsp;曹操比刘邦到底差哪儿，为何不能一统天下？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/308017350/answer/626051963</div><div>&nbsp; &nbsp;&nbsp;为何史书少有令人有「跪感」的「烧脑」的权谋反转？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/54826697/answer/678424196</div><div>&nbsp; &nbsp;&nbsp;是不是外国人活得想得很简单？</div><div>&nbsp; &nbsp; https://www.zhihu.com/question/308268014/answer/620768338</div><div>&nbsp; &nbsp;&nbsp;</div><div><br></div>"
     },
     "EkK7jwTlc": {
@@ -291,7 +285,7 @@
       "shelfId": "YKdKtabb9",
       "bookId": "Ery30sSVe",
       "name": "每日工作任务",
-      "content": "<font color=\"#ff0000\"><b>000001</b></font><div>&nbsp; &nbsp; 1.根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; 2.根据数据值 渲染特定组件的动态渲染</div><div>&nbsp; &nbsp;&nbsp;<b>* 突发问题：0.5px 如何表示</b>200428</div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;<span style=\"color: rgb(156, 220, 254); background-color: rgb(30, 30, 30); font-family: Consolas, &quot;Courier New&quot;, monospace; font-size: 14px; white-space: pre;\">postcss-px-to-viewport</span>，</div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; * 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</div><div><br></div><div><font color=\"#ff0000\"><b>000002</b></font></div><div>&nbsp; &nbsp; 前端方向：浏览器DOM渲染原理</div><div>&nbsp; &nbsp; 语言方向：JS语言 / 模板语言 原理：运行原理 / 编译原理</div><div>&nbsp; &nbsp; 通用方向：</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 用线性代数做出3D地球地图</div><div>&nbsp; &nbsp; &nbsp; &nbsp; Sanji 需要一个历史线应用</div><div>&nbsp; &nbsp; 后端方向：熟悉操作系统各个模块</div>"
+      "content": "<font color=\"#ff0000\"><b>000001</b></font><div>&nbsp; &nbsp; √ 根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; √&nbsp;根据数据值 渲染特定组件的动态渲染</div><div><br></div><div>&nbsp; &nbsp;&nbsp;<b>* 突发问题：0.5px 如何表示</b>200428</div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;<span style=\"color: rgb(156, 220, 254); background-color: rgb(30, 30, 30); font-family: Consolas, &quot;Courier New&quot;, monospace; font-size: 14px; white-space: pre;\">postcss-px-to-viewport</span>，</div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; * 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</div><div><br></div><div><font color=\"#ff0000\"><b>000002</b></font></div><div>&nbsp; &nbsp; 前端方向：浏览器DOM渲染原理</div><div>&nbsp; &nbsp; 语言方向：JS语言 / 模板语言 原理：运行原理 / 编译原理</div><div>&nbsp; &nbsp; 通用方向：</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 用线性代数做出3D地球地图</div><div>&nbsp; &nbsp; &nbsp; &nbsp; Sanji 需要一个历史线应用</div><div>&nbsp; &nbsp; 后端方向：熟悉操作系统各个模块</div>"
     },
     "D8b55PZ7m": {
       "blockId": "DCgJdlX5R",
@@ -355,6 +349,62 @@
       "bookId": "iNcsNNsRn",
       "name": "函数防抖/节流",
       "content": "<font color=\"#ff0000\"><b>函数防抖 debounce</b></font><div>&nbsp; &nbsp; * 高频触发函数只执行一次，<font color=\"#ff0000\"><b>限制了触发条件</b></font>，需要触发存在一定间隔才能再次执行</div><div><br></div><div><font color=\"#ff0000\"><b>函数节流 throttle</b></font></div><div>&nbsp; &nbsp; * 高频触发函数，<font color=\"#ff0000\"><b>限制了执行次数</b></font>，函数只执行一定次数</div>"
+    },
+    "uuKM1wRS_": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "w9SAKBPW2",
+      "bookId": "uuKM1wRS_",
+      "name": "0504-0510",
+      "content": ""
+    },
+    "WQJvQNaVo": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "MMuN17Zro",
+      "bookId": "WQJvQNaVo",
+      "name": "时间安排",
+      "content": "<p>网上咨询：9月22日—26日（每天9：00-17：00）</p><p>预报名：9月25日—9月28日（每天9：00-22：00）</p><p>正式报名：10月10日—31日（每天9：00-22：00）</p><p>现场确认：11月10日至11月14日</p><p>考试时间：12月23日-24日</p><p>考研分数（总分500分）</p><p>&nbsp; &nbsp; 政治：100分&nbsp;</p><p>&nbsp; &nbsp; 数学：150分</p><p>&nbsp; &nbsp; 英语：100分&nbsp;&nbsp;</p><p>&nbsp; &nbsp; 专业课：150分</p>"
+    },
+    "61_KQNS6w": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "q6_9Db-FR",
+      "bookId": "61_KQNS6w",
+      "name": "1.马克思主义基本原理概论",
+      "content": ""
+    },
+    "NPyJWhGVT": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "q6_9Db-FR",
+      "bookId": "NPyJWhGVT",
+      "name": "2.毛泽东思想和中国特色社会主义理论体系概论",
+      "content": ""
+    },
+    "VBA2ImZs_": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "q6_9Db-FR",
+      "bookId": "VBA2ImZs_",
+      "name": "3.中国近现代史纲要",
+      "content": ""
+    },
+    "yWsIhGnKA": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "q6_9Db-FR",
+      "bookId": "yWsIhGnKA",
+      "name": "4.思想道德修养与法律基础",
+      "content": ""
+    },
+    "gf6jf1nnx": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "q6_9Db-FR",
+      "bookId": "gf6jf1nnx",
+      "name": "5.形势与政策以及当代世界经济与政治",
+      "content": ""
+    },
+    "Z67MOJxx9": {
+      "blockId": "U2EWIATls",
+      "shelfId": "AvNgmhcbf",
+      "bookId": "Z67MOJxx9",
+      "name": "C++",
+      "content": ""
     }
   }
 }

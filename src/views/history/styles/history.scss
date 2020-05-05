@@ -1,0 +1,32 @@
+.history-line {
+    padding: 0.5rem;
+    height: 100%;
+    .line-nav {
+        .common-btn {
+            margin-left: 0.5rem;
+        }
+    }
+    .line-content {
+        height: 100%;
+        overflow: auto;
+        margin: 0.5rem 0rem;
+        background-color: $common-tip-lower;
+        .line-item {
+            width: 100%;
+            word-break: break-word;
+            background-color: $common-tip;
+            margin: 0.1rem;
+            padding: 0.1rem;
+            &:first-child {
+                max-width: 4rem;
+                color: red;
+                font-weight: bold;
+            }
+        }
+    }
+    .line-now {
+        .common-btn {
+            margin-right: 0.5rem;
+        }
+    }
+}
