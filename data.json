@@ -405,6 +405,160 @@
       "bookId": "Z67MOJxx9",
       "name": "C++",
       "content": ""
+    },
+    "EjKeEugPO": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "EjKeEugPO",
+      "name": "连续与极限",
+      "content": ""
+    },
+    "AIJFa9Yi9": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "AIJFa9Yi9",
+      "name": "一元函数微分",
+      "content": ""
+    },
+    "AXSIhsxjv": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "AXSIhsxjv",
+      "name": "一元函数积分",
+      "content": ""
+    },
+    "EfbhVsgMJ": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "EfbhVsgMJ",
+      "name": "向量代数与空间解析几何",
+      "content": ""
+    },
+    "wowY47qlp": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "wowY47qlp",
+      "name": "多元函数微分",
+      "content": ""
+    },
+    "TvEYNHxmn": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "TvEYNHxmn",
+      "name": "6.多元函数积分",
+      "content": ""
+    },
+    "sP5016-ML": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "sP5016-ML",
+      "name": "7.无穷级数",
+      "content": ""
+    },
+    "X_Y-yao1S": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "X_Y-yao1S",
+      "name": "8.微分方程",
+      "content": ""
+    },
+    "4W4S9h18X": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "4W4S9h18X",
+      "name": "行列式",
+      "content": ""
+    },
+    "RQtqZE9En": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "RQtqZE9En",
+      "name": "矩阵",
+      "content": ""
+    },
+    "ye1V4Kcg9": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "ye1V4Kcg9",
+      "name": "向量",
+      "content": ""
+    },
+    "rhm88UazE": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "rhm88UazE",
+      "name": "线性方程组",
+      "content": ""
+    },
+    "ghsw2crdF": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "ghsw2crdF",
+      "name": "特征值 特征向量 相似矩阵",
+      "content": ""
+    },
+    "ZFSu6kih-": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "wxtju1CwP",
+      "bookId": "ZFSu6kih-",
+      "name": "二次型",
+      "content": ""
+    },
+    "l6tYAJ78B": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "l6tYAJ78B",
+      "name": "随机事件和概率",
+      "content": ""
+    },
+    "1ec8MnJBZ": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "1ec8MnJBZ",
+      "name": "随机变量 概率分布",
+      "content": ""
+    },
+    "Nv2L25Kzw": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "Nv2L25Kzw",
+      "name": "多维随机变量 分布",
+      "content": ""
+    },
+    "HX-EWnp-D": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "HX-EWnp-D",
+      "name": "随机变量的数字特征",
+      "content": ""
+    },
+    "TyUQDEtei": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "TyUQDEtei",
+      "name": "大数定律和中心极限定理",
+      "content": ""
+    },
+    "gBjjgLxz1": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "gBjjgLxz1",
+      "name": "数理统计概念",
+      "content": ""
+    },
+    "YDFNVqh8f": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "YDFNVqh8f",
+      "name": "参数估计",
+      "content": ""
+    },
+    "X2bd68QDS": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "Tp27bPbEj",
+      "bookId": "X2bd68QDS",
+      "name": "假设检验",
+      "content": ""
     }
   }
 }
