@@ -1,8 +1,53 @@
 .index {
-  padding: 0.5rem;
-  .index-entry {
-    .entry {
-      margin-right: 1rem;
+    padding: 0.5rem;
+    .index-entry {
+        .entry {
+            margin-right: 1rem;
+        }
     }
-  }
+
+    // Time Block
+    .color-block {
+        // width: 18rem;
+        // height: 18rem;
+        .block {
+            width: 8rem;
+            height: 8rem;
+            line-height: 8rem;
+            margin: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .c-red {
+            background-color: rgba(255, 125, 212, 0.5);
+            &:hover {
+                background-color: rgba(255, 125, 212, 1);
+            }
+        }
+        .c-yellow {
+            background-color: rgba(235, 255, 125, 0.5);
+            &:hover {
+                background-color: rgba(235, 255, 125, 1);
+            }
+        }
+        .c-blue {
+            background-color: rgba(125, 229, 255, 0.5);
+            &:hover {
+                background-color: rgba(125, 229, 255, 1);
+            }
+        }
+        .c-green {
+            background-color: rgba(125, 255, 194, 0.5);
+            &:hover {
+                background-color: rgba(125, 255, 194, 1);
+            }
+        }
+        .c-white {
+            background-color: rgba(207, 207, 207, 0.5);
+            &:hover {
+                background-color: rgba(207, 207, 207, 1);
+            }
+        }
+    }
 }

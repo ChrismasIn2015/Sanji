@@ -32,6 +32,24 @@ export function getDD(mills) {
     return String(day)
 }
 
+// 判断当前时间是否在某个营业范围内
+export function chargeHHMMRange(range) {
+    // 传入的是字符串数组 ["09:00", "02:00"]
+    let start = getYYMMDD(Date.now()) + ' ' + range[0]
+    let end = getYYMMDD(Date.now()) + ' ' + range[1]
+
+    // 跨日，把 start 变为明日0点
+    if (Date.parse(start) > Date.parse(end)) {
+        let tomorrow = getYYMMDD(Date.now() + 86400000) + ' ' + '00:00'
+        end = getYYMMDD(Date.parse(tomorrow)) + ' ' + range[1]
+    }
+
+    // 判断
+    let charge =
+        Date.parse(start) <= Date.now() && Date.now() <= Date.parse(end)
+    return charge
+}
+
 // *********************************** 2.文件类 ***********************************
 // 2.1 图片类
 // base64 => Blob : 从网上完全复制的
