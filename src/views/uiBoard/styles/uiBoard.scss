@@ -1,0 +1,33 @@
+.uiBoard {
+  padding: 1rem;
+  .board-nav {
+  }
+  .board-ad {
+    margin: 0.5rem 0rem;
+    .ad {
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 0.2rem;
+      background-color: $common-tip-lower;
+      transition: all 0.2s;
+      color: $common-tip-higher;
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+      &:hover {
+        background-color: $common-tip;
+        color: $common-white;
+      }
+      img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .board-mine {
+    margin: 0.5rem 0rem;
+    div {
+      margin-right: 0.5rem;
+    }
+  }
+}

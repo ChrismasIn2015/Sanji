@@ -3,7 +3,7 @@
     <!-- 1.头部区块 -->
     <div class="library-nav flex-side">
       <!-- 左侧区块列表 -->
-      <div class="left">
+      <div class="left flex">
         <div
           class="common-btn tip"
           v-for="(item, index) in blockList"
@@ -15,12 +15,14 @@
             class="pot"
             v-show="nowBlockId === item.blockId"
             @click.stop="modalToConfirm('block')"
-          >✖</span>
+            >✖</span
+          >
           <span
             class="pot pot-edit"
             v-show="nowBlockId === item.blockId"
             @click.stop="editBlockShow = true"
-          >··</span>
+            >··</span
+          >
           <span>{{ item.name }}</span>
         </div>
         <div class="common-btn" @click.stop="newBlockShow = true">+</div>
@@ -28,7 +30,7 @@
       </div>
       <!-- 右侧按钮 -->
       <div class="right flex-x-reverse">
-        <div class="common-btn tip" @click.stop="toIndex">返回</div>
+        <div class="common-btn toggle" @click.stop="toIndex">返回</div>
         <!-- <div class="common-btn" v-show="nowBlockId" @click.stop="editBlockShow = true">修改名称</div> -->
         <!-- <div class="common-btn" @click.stop="newBlockShow = true">+ 添加区块</div> -->
       </div>
@@ -39,52 +41,64 @@
       <div class="shelf-block flex-y">
         <!-- 书架 -->
         <div class="shelfs">
-          <div class="shelf flex-y" v-for="(item, index) in shelfList" :key="index">
+          <div
+            class="shelf flex-y"
+            v-for="(item, index) in shelfList"
+            :key="index"
+          >
             <div
-              class="common-btn blue"
+              class="common-btn blue-on"
               @click.stop="setNowShelfId(item)"
-              :class="{ 'blue-on': nowShelfId === item.shelfId }"
+              :class="{ blue: nowShelfId === item.shelfId }"
             >
               <span
                 class="pot"
                 v-show="nowShelfId === item.shelfId"
                 @click.stop="modalToConfirm('shelf')"
-              >✖</span>
-              <span>
-                {{ item.name }}（{{
-                item.books.length
-                }}）
-              </span>
+                >✖</span
+              >
+              <span> {{ item.name }}（{{ item.books.length }}） </span>
             </div>
 
             <!-- 3.书籍列表 -->
-            <div class="books" v-show="nowShelfId === item.shelfId">
+            <div class="books flex-wrap" v-show="nowShelfId === item.shelfId">
               <div
-                class="common-btn orange"
+                class="common-btn orange-on"
                 v-for="(book, index) in item.books"
                 :key="index"
                 :class="{
-                                    'orange-on': nowBookId === book.bookId,
-                                }"
+                  orange: nowBookId === book.bookId,
+                }"
                 @click.stop="setNowBookId(book)"
               >
                 <span
                   class="pot"
                   v-show="nowBookId === book.bookId"
                   @click.stop="modalToConfirm('book')"
-                >✖</span>
+                  >✖</span
+                >
                 <span
                   class="pot pot-edit"
                   v-show="nowBookId === book.bookId"
                   @click.stop="editBookShow = true"
-                >··</span>
+                  >··</span
+                >
                 <span>{{ book.name }}</span>
               </div>
-              <div class="common-btn orange-on" @click.stop="newBookShow = true">+</div>
-              <div style="text-align: center; margin-top: 2rem;" v-show="!item.books.length">暂无书籍</div>
+              <div
+                class="common-btn orange-on"
+                @click.stop="newBookShow = true"
+              >
+                +
+              </div>
+              <div
+                style="text-align: center; margin-top: 2rem;"
+                v-show="!item.books.length"
+              >
+                暂无书籍
+              </div>
               <div class="book-admin flex-no-side">
                 <!-- <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div> -->
-                <!-- <div class="common-btn red" v-show="nowBookId" @click.stop="modalToConfirm('book')">删除书籍</div> -->
                 <!-- <div class="common-btn" v-show="nowBookId" @click.stop="editBookShow = true">编辑书籍</div> -->
               </div>
             </div>
@@ -93,15 +107,26 @@
         <div class="shelf-tip" v-show="!shelfList.length">暂无数据</div>
         <!-- 书架管理 -->
         <div class="shelf-admin flex-no-side">
-          <div class="common-btn blue-on" v-show="nowBlockId" @click.stop="newShelfShow = true">添加书架</div>
-          <!-- <div class="common-btn red" v-show="nowShelfId" @click.stop="modalToConfirm('shelf')">删除书架</div> -->
-          <div class="common-btn" v-show="nowShelfId" @click.stop="editShelfShow = true">修改书架</div>
+          <div
+            class="common-btn blue-on"
+            v-show="nowBlockId"
+            @click.stop="newShelfShow = true"
+          >
+            添加书架
+          </div>
+          <div
+            class="common-btn"
+            v-show="nowShelfId"
+            @click.stop="editShelfShow = true"
+          >
+            修改书架
+          </div>
         </div>
       </div>
 
       <!-- 书籍内容 -->
       <div class="block-book" v-show="nowBookId">
-        <div class="book-nav">
+        <div class="book-nav flex-wrap">
           <div class="common-btn" @click.stop="getMyRichText">保存</div>
         </div>
         <div class="book">
@@ -124,7 +149,9 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyBlock">添加</div>
-          <div class="common-btn tip" @click.stop="newBlockShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="newBlockShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +168,9 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyBlock">修改</div>
-          <div class="common-btn tip" @click.stop="editBlockShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="editBlockShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
@@ -158,7 +187,9 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyShelf">添加</div>
-          <div class="common-btn tip" @click.stop="newShelfShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="newShelfShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
@@ -175,7 +206,9 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyShelf">修改</div>
-          <div class="common-btn tip" @click.stop="editShelfShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="editShelfShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
@@ -192,7 +225,9 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="createMyBook">添加</div>
-          <div class="common-btn tip" @click.stop="newBookShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="newBookShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
@@ -209,202 +244,196 @@
         </div>
         <div class="modal-btns">
           <div class="common-btn" @click.stop="editMyBookName">修改</div>
-          <div class="common-btn tip" @click.stop="editBookShow = false">取消</div>
+          <div class="common-btn tip" @click.stop="editBookShow = false">
+            取消
+          </div>
         </div>
       </div>
     </div>
-    <!-- * 通用警告 -->
-    <sjAlert :show="warnModal" title="提示" :content="warnModalContent" @action="warnModal = false" />
-    <sjAlert :show="bookConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="bookConfirm" />
-    <sjAlert :show="shelfConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="shelfConfirm" />
-    <sjAlert :show="blockConfirmShow" title="提示" content="确定要这么做吗_(xз」∠)_？" @action="blockConfirm" />
   </div>
 </template>
 
 <script>
-import sjAlert from "@/utils/sanJi-UI/sjAlert.vue";
-import sjInput from "@/utils/sanJi-UI/sjInput.vue";
-import richText from "./components/richText";
-import {
-  block_create,
-  getBlockList,
-  block_editName,
-  block_remove,
-  shelf_create,
-  getShelfList,
-  shelf_editName,
-  shelf_remove,
-  book_create,
-  book_editName,
-  book_remove,
-  book_getContent,
-  book_setContent
-} from "@/utils/lowDB/control/libraryAPI.js";
+  import sjInput from '@/utils/sanJi-UI/sjInput.vue'
+  import richText from './components/richText'
+  import {
+    block_create,
+    getBlockList,
+    block_editName,
+    block_remove,
+    shelf_create,
+    getShelfList,
+    shelf_editName,
+    shelf_remove,
+    book_create,
+    book_editName,
+    book_remove,
+    book_getContent,
+    book_setContent,
+  } from '@/utils/lowDB/control/libraryAPI.js'
 
-export default {
-  data() {
-    return {
-      // 选中区块
-      blockList: [],
-      nowBlockId: "",
-      newBlockShow: false,
-      editBlockShow: false,
-      // 选中书架
-      shelfList: [],
-      nowShelfId: "",
-      newShelfShow: false,
-      editShelfShow: false,
-      // 选中书籍
-      nowBookId: "",
-      nowBookContent: "",
-      newBookShow: false,
-      editBookShow: false,
-      // 通用警告
-      warnModal: false,
-      warnModalContent: "",
-      // 确认警告
-      bookConfirmShow: false,
-      shelfConfirmShow: false,
-      blockConfirmShow: false
-    };
-  },
-  mounted() {
-    this.getMyBlockList();
-  },
-  components: {
-    sjInput,
-    richText,
-    sjAlert
-  },
-  methods: {
-    // ************************************************ 区块
-    createMyBlock() {
-      if (this.$refs.myBlock.inputVerify()) return;
-      let blockName = this.$refs.myBlock.inputValue;
-      block_create(blockName);
-      this.getMyBlockList();
-      this.modalToWarn("添加成功");
-      this.newBlockShow = false;
+  export default {
+    data() {
+      return {
+        // 选中区块
+        blockList: [],
+        nowBlockId: '',
+        newBlockShow: false,
+        editBlockShow: false,
+        // 选中书架
+        shelfList: [],
+        nowShelfId: '',
+        newShelfShow: false,
+        editShelfShow: false,
+        // 选中书籍
+        nowBookId: '',
+        nowBookContent: '',
+        newBookShow: false,
+        editBookShow: false,
+      }
     },
-    editMyBlock() {
-      if (this.$refs.myBlock.inputVerify()) return;
-      let blockName = this.$refs.myBlock.inputValue;
-      block_editName(this.nowBlockId, blockName);
-      this.getMyBlockList();
-      this.editBlockShow = false;
+    mounted() {
+      this.getMyBlockList()
     },
-    getMyBlockList() {
-      let list = getBlockList();
-      this.blockList = Object.assign([], list);
-      // this.$test.log("取得区块列表", list);
+    components: {
+      sjInput,
+      richText,
     },
-    setNowBlockId(item) {
-      this.clearLibrary();
-      this.nowBlockId = item.blockId;
-      this.getMyShelfList();
+    methods: {
+      // ************************************************ 区块
+      createMyBlock() {
+        if (this.$refs.myBlock.inputVerify()) return
+        let blockName = this.$refs.myBlock.inputValue
+        block_create(blockName)
+        this.getMyBlockList()
+        this.$tip('添加成功')
+        this.newBlockShow = false
+      },
+      editMyBlock() {
+        if (this.$refs.myBlock.inputVerify()) return
+        let blockName = this.$refs.myBlock.inputValue
+        block_editName(this.nowBlockId, blockName)
+        this.getMyBlockList()
+        this.editBlockShow = false
+      },
+      getMyBlockList() {
+        let list = getBlockList()
+        this.blockList = Object.assign([], list)
+        // this.$test.log("取得区块列表", list);
+      },
+      setNowBlockId(item) {
+        this.clearLibrary()
+        this.nowBlockId = item.blockId
+        this.getMyShelfList()
+      },
+      deleteMyBlock() {
+        block_remove(this.nowBlockId)
+        this.clearLibrary()
+        this.getMyBlockList()
+      },
+      // ************************************************ 书架
+      createMyShelf() {
+        if (this.$refs.myShelf.inputVerify()) return
+        let shelfName = this.$refs.myShelf.inputValue
+        shelf_create(this.nowBlockId, shelfName)
+        this.getMyShelfList()
+        this.$tip('添加成功')
+        this.newShelfShow = false
+      },
+      editMyShelf() {
+        if (this.$refs.myShelf.inputVerify()) return
+        let shelfName = this.$refs.myShelf.inputValue
+        shelf_editName(this.nowShelfId, shelfName)
+        this.getMyShelfList()
+        this.editShelfShow = false
+      },
+      getMyShelfList() {
+        let list = getShelfList(this.nowBlockId)
+        this.shelfList = Object.assign([], list)
+        console.log('取得书架列表', list)
+      },
+      setNowShelfId(item) {
+        this.nowBookId = ''
+        this.nowShelfId = item.shelfId
+      },
+      deleteMyShelf() {
+        shelf_remove(this.nowShelfId)
+        this.nowShelfId = ''
+        this.getMyShelfList()
+      },
+      // ************************************************ 3.书籍
+      createMyBook() {
+        if (this.$refs.myBook.inputVerify()) return
+        let bookName = this.$refs.myBook.inputValue
+        book_create(this.nowBlockId, this.nowShelfId, bookName, '')
+        this.getMyShelfList()
+        this.$tip('添加成功')
+        this.newBookShow = false
+      },
+      editMyBookName() {
+        if (this.$refs.myBook.inputVerify()) return
+        let bookName = this.$refs.myBook.inputValue
+        book_editName(this.nowBookId, bookName)
+        this.getMyShelfList()
+        this.editBookShow = false
+      },
+      setNowBookId(item) {
+        this.nowBookId = item.bookId
+        let content = book_getContent(item.bookId)
+        this.nowBookContent = content
+      },
+      deleteMyBook() {
+        book_remove(this.nowBookId)
+        this.nowBookId = ''
+        this.getMyShelfList()
+      },
+      // 取得富文本内容 并且保存
+      getMyRichText() {
+        let content = this.$refs.myRichText.getContent()
+        book_setContent(this.nowBookId, content)
+        this.$tip('保存成功')
+      },
+      // ************************************************ 全局
+      clearLibrary() {
+        this.nowBlockId = ''
+        this.nowShelfId = ''
+        this.nowBookId = ''
+        this.nowBookContent = ''
+      },
+      toIndex() {
+        this.$router.push({ name: 'index' })
+      },
+      modalToConfirm(key) {
+        let option = {
+          title: '确认',
+          content: '确认要删除吗',
+        }
+        if (key === 'book')
+          this.$confirm(option, (res) => {
+            if (res) {
+              this.deleteMyBook()
+              this.$tip('删除成功')
+            }
+          })
+        if (key === 'shelf')
+          this.$confirm(option, (res) => {
+            if (res) {
+              this.deleteMyShelf()
+              this.$tip('删除成功')
+            }
+          })
+        if (key === 'block')
+          this.$confirm(option, (res) => {
+            if (res) {
+              this.deleteMyBlock()
+              this.$tip('删除成功')
+            }
+          })
+      },
     },
-    blockConfirm(bool) {
-      this.blockConfirmShow = false;
-      if (bool) this.deleteMyBlock();
-    },
-    deleteMyBlock() {
-      block_remove(this.nowBlockId);
-      this.clearLibrary();
-      this.getMyBlockList();
-    },
-    // ************************************************ 书架
-    createMyShelf() {
-      if (this.$refs.myShelf.inputVerify()) return;
-      let shelfName = this.$refs.myShelf.inputValue;
-      shelf_create(this.nowBlockId, shelfName);
-      this.getMyShelfList();
-      this.modalToWarn("添加成功");
-      this.newShelfShow = false;
-    },
-    editMyShelf() {
-      if (this.$refs.myShelf.inputVerify()) return;
-      let shelfName = this.$refs.myShelf.inputValue;
-      shelf_editName(this.nowShelfId, shelfName);
-      this.getMyShelfList();
-      this.editShelfShow = false;
-    },
-    getMyShelfList() {
-      let list = getShelfList(this.nowBlockId);
-      this.shelfList = Object.assign([], list);
-      console.log("取得书架列表", list);
-    },
-    setNowShelfId(item) {
-      this.nowBookId = "";
-      this.nowShelfId = item.shelfId;
-    },
-    shelfConfirm(bool) {
-      this.shelfConfirmShow = false;
-      if (bool) this.deleteMyShelf();
-    },
-    deleteMyShelf() {
-      shelf_remove(this.nowShelfId);
-      this.nowShelfId = "";
-      this.getMyShelfList();
-    },
-    // ************************************************ 3.书籍
-    createMyBook() {
-      if (this.$refs.myBook.inputVerify()) return;
-      let bookName = this.$refs.myBook.inputValue;
-      book_create(this.nowBlockId, this.nowShelfId, bookName, "");
-      this.getMyShelfList();
-      this.modalToWarn("添加成功");
-      this.newBookShow = false;
-    },
-    editMyBookName() {
-      if (this.$refs.myBook.inputVerify()) return;
-      let bookName = this.$refs.myBook.inputValue;
-      book_editName(this.nowBookId, bookName);
-      this.getMyShelfList();
-      this.editBookShow = false;
-    },
-    setNowBookId(item) {
-      this.nowBookId = item.bookId;
-      let content = book_getContent(item.bookId);
-      this.nowBookContent = content;
-    },
-    bookConfirm(bool) {
-      this.bookConfirmShow = false;
-      if (bool) this.deleteMyBook();
-    },
-    deleteMyBook() {
-      book_remove(this.nowBookId);
-      this.nowBookId = "";
-      this.getMyShelfList();
-    },
-    // 取得富文本内容 并且保存
-    getMyRichText() {
-      let content = this.$refs.myRichText.getContent();
-      book_setContent(this.nowBookId, content);
-      this.modalToWarn("保存成功");
-    },
-    // ************************************************ 全局
-    clearLibrary() {
-      this.nowBlockId = "";
-      this.nowShelfId = "";
-      this.nowBookId = "";
-      this.nowBookContent = "";
-    },
-    toIndex() {
-      this.$router.push({ name: "index" });
-    },
-    modalToWarn(content) {
-      this.warnModal = true;
-      this.warnModalContent = content;
-    },
-    modalToConfirm(key) {
-      if (key === "book") this.bookConfirmShow = true;
-      if (key === "shelf") this.shelfConfirmShow = true;
-      if (key === "block") this.blockConfirmShow = true;
-    }
   }
-};
 </script>
 
 <style lang="scss" scoped>
-@import "./styles/library.scss";
+  @import './styles/library.scss';
 </style>

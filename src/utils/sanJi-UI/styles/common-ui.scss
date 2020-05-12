@@ -64,31 +64,26 @@ body,
 }
 
 // ################################################ 动画
-
-@keyframes opacityShow {
-  // animation: opacityShow 0.5s;
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.fade {
+.fade-off {
   transition: all 0.2s;
+  visibility: hidden;
+  opacity: 0;
 }
 .fade-on {
-  opacity: 1;
-  // transform: scale(0);
   visibility: visible;
+  opacity: 1;
 }
-.fade-off {
+.top-scroll-off {
+  transition: all 0.2s;
+  transform: translateY(-100%);
   opacity: 0;
-  // transform: scale(1);
-  visibility: hidden;
 }
-// ################################################ 常用组件设置
+.top-scroll-on {
+  transform: translateY(100%);
+  opacity: 1;
+}
 
+// ################################################ 常用组件 连接
 // 连接
 .common-link {
   display: inline;
@@ -99,12 +94,14 @@ body,
   }
 }
 
+// ################################################ 常用组件 按钮
 // 按钮
 .common-btn {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   text-align: center;
-  padding: 0.7rem 1.5rem;
+  padding: 0.5rem 1rem;
   transition: all 0.2s;
   border-radius: 0.2rem;
   color: $common-white;
@@ -116,8 +113,7 @@ body,
   img {
     width: 1rem !important;
     height: 1rem !important;
-    margin: 0rem !important;
-    margin: 0rem !important;
+    margin-right: 0.5rem;
   }
 }
 .toggle {
@@ -153,7 +149,17 @@ body,
     background-color: rgb(207, 0, 0);
   }
 }
-.blue {
+.red-on {
+  color: $common-tip;
+  border: 1px solid $common-tip;
+  background-color: $common-white;
+  &:hover {
+    color: rgb(207, 0, 0);
+    border: 1px solid rgb(207, 0, 0);
+    background-color: $common-white;
+  }
+}
+.blue-on {
   color: $common-tip-higher;
   border: 1px solid $common-tip;
   background-color: $common-white;
@@ -163,7 +169,7 @@ body,
     background-color: $common-white;
   }
 }
-.blue-on {
+.blue {
   color: $common-white;
   border: 1px solid rgb(79, 145, 207);
   background-color: rgb(79, 145, 207);
@@ -173,24 +179,44 @@ body,
     background-color: rgb(55, 115, 172);
   }
 }
-.orange {
-  color: $common-tip-higher;
+.orange-on {
+  color: $common-tip;
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(0, 0, 0);
-    border: 1px solid rgb(241, 171, 57);
-    background-color: rgb(241, 171, 57);
+    color: rgb(214, 149, 43);
+    border: 1px solid rgb(214, 149, 43);
+    background-color: $common-white;
   }
 }
-.orange-on {
-  color: rgb(0, 0, 0);
+.orange {
+  color: $common-white;
   border: 1px solid rgb(241, 171, 57);
   background-color: rgb(241, 171, 57);
   &:hover {
-    color: rgb(0, 0, 0);
-    border: 1px solid rgb(241, 171, 57);
-    background-color: rgb(241, 171, 57);
+    color: $common-white;
+    border: 1px solid rgb(214, 149, 43);
+    background-color: rgb(214, 149, 43);
+  }
+}
+.pink-on {
+  color: $common-tip;
+  border: 1px solid $common-tip;
+  background-color: $common-white;
+  &:hover {
+    color: rgb(255, 146, 240);
+    border: 1px solid rgb(255, 146, 240);
+    background-color: $common-white;
+  }
+}
+.pink {
+  color: $common-white;
+  border: 1px solid rgb(255, 174, 244);
+  background-color: rgb(255, 174, 244);
+  &:hover {
+    color: $common-white;
+    border: 1px solid rgb(255, 146, 240);
+    background-color: rgb(255, 146, 240);
   }
 }
 .disable {
@@ -205,8 +231,10 @@ body,
   }
 }
 
+// ################################################ 常用组件 居中板
 // 居中板
 .common-modal {
+  // 居中板 - 灰色背景层
   position: fixed;
   top: 0rem;
   left: 0rem;
@@ -219,6 +247,7 @@ body,
   justify-content: center;
   align-items: center;
   .common-modal-blank {
+    // 居中板 - 内容层
     background-color: $common-white;
     width: 80%;
     max-height: 80%;
@@ -227,24 +256,23 @@ body,
     flex-direction: column;
     padding-bottom: 1rem;
     .modal-title {
+      // 1.内容层 - 顶部标题
       font-size: 1.2rem;
       display: flex;
       justify-content: space-between;
       padding: 1rem;
       border-bottom: 1px solid $common-tip-lower;
-      margin-bottom: 1rem;
       span {
         cursor: pointer;
       }
     }
     .modal-content {
+      // 2.内容层 - 中央内容
       word-wrap: break-word;
       min-height: 6rem;
-      padding: 0rem 1rem;
-      overflow-x: auto;
+      padding: 1rem 1rem 0rem;
     }
     .modal-btns {
-      min-height: 4rem;
       padding: 1rem 1rem 0rem;
       display: flex;
       flex-direction: row-reverse;

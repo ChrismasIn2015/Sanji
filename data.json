@@ -178,7 +178,7 @@
       "shelfId": "8ehQoNmob",
       "bookId": "ofIlda18c",
       "name": "Git",
-      "content": "<div><font color=\"#ff0000\"><b>Git</b></font></div><div><font color=\"#4169e1\"><b>1.在代码托管区创建远程仓库：</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; Github/码云</div><div><br></div><div><font color=\"#4169e1\"><b>2.获取</b></font></div><div><span style=\"white-space: pre;\">\t</span>- 创建本地仓库</div><div><span style=\"white-space: pre;\">\t\t</span>$ git init</div><div><span style=\"white-space: pre;\">\t</span>- 通过远程仓库提供的 URL 克隆代码</div><div>&nbsp; &nbsp; &nbsp; &nbsp; - HTTPS: 需要手动输入服务器账号密码</div><div>&nbsp; &nbsp; &nbsp; &nbsp; - SSH: 需要本地生成/服务器设置SSH keys</div><div><span style=\"white-space: pre;\">\t\t</span>$ git clone [url]</div><div>&nbsp; &nbsp; - 查看这个项目对应的远程仓库</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git remote -v</div><div><span style=\"white-space: pre;\">\t</span>- 获取最新代码</div><div><span style=\"white-space: pre;\">\t\t</span>$ git pull</div><div><span style=\"white-space: pre;\">\t\t</span>- git fetch: 获取远程代码</div><div><span style=\"white-space: pre;\">\t\t</span>- git merge: 和本地库合并</div><div><span style=\"white-space: pre;\">\t</span></div><div><font color=\"#4169e1\"><b>3.本地更改</b></font></div><div><span style=\"white-space: pre;\">\t</span>- 工作区 → 暂存区</div><div>&nbsp; &nbsp; $ git add readme.txt</div><div>&nbsp; &nbsp; - 暂存区 → 本地库</div><div>&nbsp; &nbsp; $ git commit -m \"description\"</div><div>&nbsp; &nbsp;&nbsp;</div><div><font color=\"#4169e1\"><b>4.查看本地版本</b></font></div><div><font color=\"#4169e1\"><b>&nbsp; &nbsp; </b></font>- 查看工作区及暂存区的状态</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git status</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; on branch master</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; no commits yet</div><div><span style=\"white-space: pre;\">\t</span>- 想知道历史提交 /空格翻页/b向上/q退出</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git log</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git log -pretty=oneline 或 git reflog // 获取索引值</div><div>&nbsp; &nbsp; <font color=\"#ff0000\"><b>- 本地回退版本</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; 通过对 HEAD 指针来决定本地版本</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; $ git reflog // 获取索引值</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; $ git reset --hard 'key' // 设置 HEAD 指针</b></font></div><div>&nbsp; &nbsp; - 比较</div><div>&nbsp; &nbsp; &nbsp; &nbsp; git 以ROW为比较单位</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git diff [(或)文件名/版本] // 查看明细</div><div>&nbsp; &nbsp; &nbsp; <font color=\"#ff0000\"><b>生成本地 SSH keys 用于提供远程仓库访问权限</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; 1.生成本地SSH目录</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ ssh-keygen -t rsa -C '邮箱/账号'</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; 2.查看生成的SSH keys</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ cat id_rsa.pub</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; 3.在托管服务器上设置</b></font></div><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 添加 SSH keys&nbsp;</b></font></div><div>&nbsp; &nbsp; # 外包</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ git fork 关联复制</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ pull request 分支发起请求</div><div>&nbsp; &nbsp; &nbsp; &nbsp; $ merge 同意请求并合并</div><div><br></div><div><font color=\"#4169e1\"><b>配置签名</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; - 提交时用于标识开发人员身份/与服务器账号密码无关</div><div>&nbsp; &nbsp; &nbsp; &nbsp; - 项目级别</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ git config user.name</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ git config user.email</div><div>&nbsp; &nbsp; &nbsp; &nbsp; - 系统级别</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ git config --global user.name \"Your Name\"</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $ git config --global user.email \"email@example.com\"</div><div>&nbsp; &nbsp; &nbsp; &nbsp; - 这些信息会保存到 .git/config 中</div>"
+      "content": "<div><font color=\"#ff0000\"><b>Git</b></font></div><div>&nbsp; &nbsp; 1.在代码托管服务上创建远程仓库：如 Github / gitlab / 码云</div><div><br></div><div>&nbsp; &nbsp; 2.获取代码</div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 创建本地仓库 <font color=\"#4169e1\" style=\"\"><b>$ git init</b></font></div><span style=\"white-space: pre;\">\t</span>* 通过远程仓库提供的 URL 克隆代码&nbsp;<font color=\"#4169e1\"><b>$ git clone</b></font><b style=\"color: rgb(255, 0, 0);\">&nbsp;</b><div><font color=\"#ff0000\"><b>&nbsp; &nbsp; &nbsp; &nbsp; * 分支相关<br></b></font><div><font color=\"#ff0000\" style=\"font-weight: bold;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</font>** 查看本地分支 <font color=\"#ff0000\"><b>$ git branch 所有分支 -r</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 在当前分支下新建本地分支 <font color=\"#ff0000\"><b>$ git checkout -b name</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 提交分支到服务 <font color=\"#ff0000\"><b>$ git push --set-upstream origin&nbsp;name</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 切换分支 <font color=\"#ff0000\"><b>$ git checkout name</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 使当前分支与远程某个分支本地合并 <font color=\"#ff0000\"><b>$ git merge name</b></font> &gt; push origin thisBranch</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 删除远程分支&nbsp;<font color=\"#ff0000\"><b>git push origin --delete name</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ** 删除本地分支&nbsp;<font color=\"#ff0000\"><b>git branch -d name</b></font></div><div><font color=\"#ff0000\"><b><br></b></font></div><div>&nbsp; &nbsp; 3.更新本地代码</div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 添加到缓存区 <font color=\"#4169e1\"><b>$ git stash save 'message'</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 取值并删除缓存<font color=\"#4169e1\"><b> $ git stash pop stash@{0}</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 更新并合并 <font color=\"#4169e1\"><b>$ git pull= $ git fetch &gt; diff &gt; merge</b></font></div><div><br></div><div>&nbsp; &nbsp; 4.更新远程代码</div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 添加到暂存区 <font color=\"#4169e1\"><b>$ git add .</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 更新本地版本 <font color=\"#4169e1\"><b>$ git commit -m 'message'</b></font></div><div><font color=\"#4169e1\" style=\"font-weight: bold;\">&nbsp; &nbsp; &nbsp; &nbsp; </font>* 更新远程代码 <font color=\"#4169e1\"><b>$ git push origin 分支名称</b></font></div><div><br></div><div>&nbsp; &nbsp; 5.权限管理</div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 账号 <b>$ git config --global user.name / user.email \"message\"</b></div><div>&nbsp; &nbsp; &nbsp; &nbsp; * 秘钥</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 生成本地SSK目录 <b>$ ssh-keygen -t rsa -C '邮箱/账号'</b></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查看SSH秘钥 <b>$ cat id_rsa.pub</b> 同时需要在托管服务上添加本地SSH秘钥</div><div><br></div><div>&nbsp; &nbsp; * 通用</div>&nbsp; &nbsp; &nbsp; &nbsp; - 查看当前版本及本地提交状态 <b>$ git status</b><div>&nbsp; &nbsp; &nbsp; &nbsp; - 查看这个项目对应的远程仓库 <b>$ git remote -v</b></div></div>"
     },
     "aSA3uhCIT": {
       "blockId": "U2EWIATls",
@@ -234,7 +234,7 @@
       "shelfId": "YKdKtabb9",
       "bookId": "nyF-QQmkl",
       "name": "公司账号",
-      "content": "<div><font color=\"#ff0000\"><b>麦年</b></font></div>&nbsp; &nbsp; JIRA huangwenqiang a123456789<div>&nbsp; &nbsp; Gitlab wqao123456 974879409</div><div><br></div><div><div>&nbsp; &nbsp; 项目设计稿原型：</div><div>&nbsp; &nbsp; 金邻APP：https://ku1nos.axshare.com</div><div>&nbsp; &nbsp; 岛主APP：https://ee6atz.axshare.com</div><div>&nbsp; &nbsp; 蓝湖设计稿：https://lanhuapp.com/url/Ys9wV-87ZWO</div></div><div><br></div><div><font color=\"#ff0000\"><b>驴妈妈</b></font></div><div>&nbsp; &nbsp; gitlab：http://10.200.5.103</div><div>&nbsp; &nbsp; name / email：huangwenqiang / huangwenqiang@lvmama.com</div><div>&nbsp; &nbsp; password：huangwenqiang</div>"
+      "content": "<div><font color=\"#ff0000\"><b>麦年</b></font></div>&nbsp; &nbsp; JIRA huangwenqiang a123456789<div>&nbsp; &nbsp; Gitlab wqao123456 974879409</div><div><br></div><div><div>&nbsp; &nbsp; 项目设计稿原型：</div><div>&nbsp; &nbsp; 金邻APP：https://ku1nos.axshare.com</div><div>&nbsp; &nbsp; 岛主APP：https://ee6atz.axshare.com</div><div>&nbsp; &nbsp; 蓝湖设计稿：https://lanhuapp.com/url/Ys9wV-87ZWO</div></div><div><br></div><div><font color=\"#ff0000\"><b>驴妈妈</b></font></div><div>&nbsp; &nbsp; gitlab：http://10.200.5.103</div><div>&nbsp; &nbsp; name / email：huangwenqiang / huangwenqiang@lvmama.com</div><div>&nbsp; &nbsp; password：huangwenqiang</div><div>&nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; 需求实现 * 从master上新建本地<font color=\"#ff0000\"><b>需求分支</b></font>并推送该分支至服务</div><div>&nbsp; &nbsp; 需求测试 * 切换至 dev-ark 分支，并将其与<font color=\"#ff0000\"><b>需求分支</b></font>合并，通知服务端人员重新部署服务</div><div>&nbsp; &nbsp; 需求上线 * 再议</div>"
     },
     "Y-zYr0P3f": {
       "blockId": "DCgJdlX5R",
@@ -276,7 +276,7 @@
       "shelfId": "YKdKtabb9",
       "bookId": "Ery30sSVe",
       "name": "每日工作任务",
-      "content": "<font color=\"#ff0000\"><b>000001</b></font><div>&nbsp; &nbsp; √ 根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; √&nbsp;根据数据值 渲染特定组件的动态渲染</div><div><br></div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;<font color=\"#4169e1\"><b>postcss-px-to-viewport</b></font></div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; <b>* 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</b></div>&nbsp; &nbsp;&nbsp;<b>* 突发问题：0.5px 如何表示</b><div><b><br></b><div><font color=\"#ff0000\"><b>000002</b></font></div><div><font color=\"#ff0000\" style=\"font-weight: bold;\">&nbsp; &nbsp; </font>需要 计算机组成原理 JS高级程序设计 搭配了解程序运行的本质</div></div><div><br></div><div><font color=\"#ff0000\"><b>000003</b></font></div><div>&nbsp; &nbsp; 需要自设计的UI框架</div><div><br></div><div>000004</div><div>&nbsp; &nbsp; 时间字符串的规范</div>"
+      "content": "000001<div>&nbsp; &nbsp; √ 根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; √&nbsp;根据数据值 渲染特定组件的动态渲染</div><div><br></div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;postcss-px-to-viewport</div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; * 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</div>&nbsp; &nbsp;&nbsp;* 突发问题：0.5px 如何表示<div><b><br></b><div><font color=\"#ff0000\"><b>000002</b></font></div><div><font color=\"#ff0000\" style=\"font-weight: bold;\">&nbsp; &nbsp; </font>需要 计算机组成原理 JS高级程序设计 搭配了解程序运行的本质</div></div><div><br></div><div>000003</div><div>&nbsp; &nbsp; √ 需要自设计的UI框架</div><div><br></div><div><font color=\"#ff0000\"><b>000004</b></font></div><div>&nbsp; &nbsp; 时间字符串的规范</div><div><br></div><div><font color=\"#ff0000\"><b>000005</b></font></div><div>&nbsp; &nbsp; 多媒体管理</div><div>&nbsp; &nbsp; * 图片转字体</div><div>&nbsp; &nbsp; * 音频解码 / 视频解码</div><div>&nbsp; &nbsp; * 地图应用</div><div>&nbsp; &nbsp; * Canvas 数据可视化</div>"
     },
     "eL-JcIQrF": {
       "blockId": "DCgJdlX5R",
@@ -674,8 +674,71 @@
       "blockId": "U2EWIATls",
       "shelfId": "rWmTUaczK",
       "bookId": "rVKs0696t",
-      "name": "基础",
+      "name": "导论",
       "content": "<font color=\"#ff0000\"><b>操作系统概念</b></font><div>&nbsp; &nbsp; 取得CPU，内存，磁盘等物理资源进行虚拟化</div><div>&nbsp; &nbsp; 处理与并发有关的问题</div><div>&nbsp; &nbsp; 持久地读取存储文件</div><div><br></div><div><font color=\"#ff0000\"><b>操作系统目标</b></font><br></div><div>&nbsp; &nbsp; 最小的开销和最大的运算性能</div><div>&nbsp; &nbsp; 各个软件之间的隔离保护</div><div>&nbsp; &nbsp; 操作系统的不间断运行</div><div><br></div><div><font color=\"#ff0000\"><b>操作系统发展史</b></font></div><div>&nbsp; &nbsp; * 封装CPU指令库 提供常用服务 + <font color=\"#4169e1\"><b>操作员</b></font> = 按批处理程序</div><div>&nbsp; &nbsp; * 限制程序的访问权限：内核模式 / 用户模式</div><div>&nbsp; &nbsp; * 需要处理多个程序的并发问题</div>"
+    },
+    "EbE_VzpkL": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "EbE_VzpkL",
+      "name": "进程 & 线程",
+      "content": ""
+    },
+    "jgWAu4jo7": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "jgWAu4jo7",
+      "name": "存储管理",
+      "content": ""
+    },
+    "PPbSUf9YR": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "PPbSUf9YR",
+      "name": "文件系统",
+      "content": ""
+    },
+    "iiz9lZMNH": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "iiz9lZMNH",
+      "name": "输入 & 输出",
+      "content": ""
+    },
+    "hceZU38dQ": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "hceZU38dQ",
+      "name": "死锁",
+      "content": ""
+    },
+    "b-X4pOoed": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "b-X4pOoed",
+      "name": "多媒体OS",
+      "content": ""
+    },
+    "Kqa68dOPC": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "Kqa68dOPC",
+      "name": "多处理机系统",
+      "content": ""
+    },
+    "izCsRC6pW": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "izCsRC6pW",
+      "name": "安全",
+      "content": ""
+    },
+    "HRgDB6u_m": {
+      "blockId": "U2EWIATls",
+      "shelfId": "rWmTUaczK",
+      "bookId": "HRgDB6u_m",
+      "name": "操作系统设计",
+      "content": ""
     }
   }
 }

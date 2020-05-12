@@ -10,49 +10,56 @@
     <div class="line-content">
       <div class="flex" v-for="(list, time) in timeMap" :key="time">
         <div class="line-item">{{ list[0] }}</div>
-        <div class="line-item" v-for="(title, index) in list[1]" :key="index" v-html="title" />
+        <div
+          class="line-item"
+          v-for="(title, index) in list[1]"
+          :key="index"
+          v-html="title"
+        />
       </div>
     </div>
     <!-- 倒计时 -->
     <div class="line-now flex">
       <div
-        class="common-btn blue"
+        class="common-btn blue-on"
         v-for="value in 12"
         :key="value"
-        :class="{'blue-on': value >= 5 }"
-      >{{ value }}</div>
+        :class="{ blue: value >= 5 }"
+      >
+        {{ value }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import worldTime from "./data/wordLine.js";
-import chinaTime from "./data/chinaLine.js";
-export default {
-  data() {
-    return {
-      timeMap: new Map()
-    };
-  },
-  mounted() {
-    this.renderWorld();
-  },
-  methods: {
-    renderWorld() {
-      this.timeMap = worldTime;
-      // Object.assign({}, { temp: null });
+  import worldTime from './data/wordLine.js'
+  import chinaTime from './data/chinaLine.js'
+  export default {
+    data() {
+      return {
+        timeMap: new Map(),
+      }
     },
-    renderChina() {
-      this.timeMap = chinaTime;
-      // Object.assign({}, { temp: null });
+    mounted() {
+      this.renderWorld()
     },
-    toIndex() {
-      this.$router.push({ name: "index" });
-    }
+    methods: {
+      renderWorld() {
+        this.timeMap = worldTime
+        // Object.assign({}, { temp: null });
+      },
+      renderChina() {
+        this.timeMap = chinaTime
+        // Object.assign({}, { temp: null });
+      },
+      toIndex() {
+        this.$router.push({ name: 'index' })
+      },
+    },
   }
-};
 </script>
 
 <style lang="scss" scoped>
-@import "./styles/history.scss";
+  @import './styles/history.scss';
 </style>
