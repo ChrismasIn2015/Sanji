@@ -128,14 +128,7 @@
     methods: {
       copyURL(url) {
         mouseCopy(url, (res) => {
-          this.$confirm(
-            { title: '', content: `复制成功 ${url} \n 是否打开该网址?` },
-            (res) => {
-              if (res) {
-                window.open(url)
-              }
-            }
-          )
+          this.$confirm({ title: '', content: `复制成功 ${url}` }, null)
         })
       },
       toIndex() {

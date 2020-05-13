@@ -1,5 +1,5 @@
 <template>
-  <div class="common-calendar">
+  <div class="sj-calendar">
     <input
       v-model="inputValue"
       @click.self="setCalendarBoard"
@@ -23,7 +23,7 @@
             class="day"
             v-for="(day, _index) in days"
             :key="_index"
-            @click.self="setCalendarDate(month, _index)"
+            @click.self="getCalendarDate(month, _index)"
           >
             {{ day }}
           </div>
@@ -58,28 +58,36 @@
       }
     },
     mounted() {
+      this.setDefaultDate()
       document.addEventListener('click', () => {
         if (!event.target.offsetParent) return
-        // console.log(event.target.offsetParent.className);
-        if (!event.target.offsetParent.className.includes('common-calendar')) {
+        if (!event.target.offsetParent.className.includes('sj-calendar')) {
           this.calendarBoardShow = false
         }
       })
     },
     methods: {
-      setDefaultDate() {
-        // 设置默认值
-        let later = new Date().getTime()
-        this.inputValue = getYYMMDD(later + 86400000 * 7)
-      },
+      // 展示日历面板
       setCalendarBoard() {
         if (this.state.type === 'gap') {
           this.initCalendarHistory(180)
         }
         if (!this.state.type) {
-          this.initCalendarDate(7)
+          this.initCalendarDate(30)
         }
         this.calendarBoardShow = true
+      },
+      // 点击某个日期 设置输入框的值
+      getCalendarDate(key, index) {
+        this.inputWarn = ''
+        this.calendarBoardShow = false
+        let date = this.calendarDate[key][index]
+        this.inputValue = key + '-' + date
+      },
+      setDefaultDate() {
+        // 设置默认值
+        let later = new Date().getTime()
+        this.inputValue = getYYMMDD(later + 86400000 * 7)
       },
       initCalendarHistory(gap) {
         // 初始化数据
@@ -94,7 +102,6 @@
           }
           this.calendarDate[month].push(day)
         }
-        // this.$test.log("取得日历值", this.calendarDate);
       },
       initCalendarDate(gap) {
         // 初始化数据
@@ -109,30 +116,12 @@
           }
           this.calendarDate[month].push(day)
         }
-        // this.$test.log("取得日历值", this.calendarDate);
-      },
-      setCalendarDate(key, index) {
-        this.inputWarn = ''
-        this.calendarBoardShow = false
-        let date = this.calendarDate[key][index]
-        this.inputValue = key + '-' + date
-        // this.inputValue = new Date().getFullYear() + "-" + key + "-" + date;
       },
       inputVerify() {
         // 验证日期
         if (this.inputValue.length === 0) {
           return (this.inputWarn = '请选择日期')
         }
-        // 七天之内
-        let date = new Date(this.inputValue).getTime()
-        let today = new Date().getTime()
-        let gap = date - today
-        if (!isNaN(date) && gap < 86400000 * 7 && gap > 0) {
-          // console.log("七天之内");
-        } else {
-          return (this.inputWarn = '请输入七天内日期')
-        }
-
         // # 外部验证需要返回值
         return this.inputWarn
       },
@@ -141,7 +130,7 @@
 </script>
 
 <style lang="scss">
-  .common-calendar {
+  .sj-calendar {
     position: relative;
     input {
       cursor: pointer;
@@ -149,7 +138,7 @@
       height: 3.125rem;
       line-height: 3.125rem;
       vertical-align: middle;
-      transition: all 0.2s;
+      transition: all 0.5s;
       padding: 0rem 0.5rem;
       vertical-align: text-top;
       width: 100%;
@@ -173,9 +162,9 @@
       border-radius: 0.2rem;
       z-index: 999;
       position: absolute;
-      top: 3.125rem;
+      top: 3.2rem;
       left: 0rem;
-      width: 10rem;
+      width: 17rem;
       max-height: 14rem;
       background-color: $common-white;
       border: 1px solid $common-main;
@@ -187,6 +176,7 @@
       }
       .board-content {
         max-height: 11rem;
+        padding-left: 0.5rem;
         overflow: auto;
         &::-webkit-scrollbar {
           display: none;
@@ -205,7 +195,6 @@
           text-align: center;
           font-size: 1.2rem;
           color: $common-main;
-          // padding: 0.2rem;
           cursor: pointer;
           transition: all 0.2s;
           &:hover {
