@@ -42,7 +42,29 @@ export function chargeHHMMRange(range) {
 }
 
 // *********************************** 2.文件类 ***********************************
-// 2.1 图片类
+// URL图片下载
+export function getUrlImage(targetName) {
+  let canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    img = new Image()
+  img.crossOrigin = 'Anonymous'
+  img.src = url
+  img.onload = function() {
+    canvas.height = img.height
+    canvas.width = img.width
+    ctx.drawImage(img, 0, 0)
+    let dataURL = canvas.toDataURL('image/png')
+    let a = document.createElement('a')
+    a.href = dataURL
+    a.download = targetName || 'image.png'
+    document.body.appendChild(a)
+    a.click()
+    setTimeout(() => {
+      document.body.removeChild(a)
+      canvas = null
+    }, 500)
+  }
+}
 // base64 => Blob : 从网上完全复制的
 export function base64toBlob(base64) {
   let arr = base64.split(','),
@@ -58,12 +80,21 @@ export function base64toBlob(base64) {
 // Blob => File : 从网上完全复制的
 export function blobToFile(theBlob, fileName, fileType) {
   let file = new window.File([theBlob], fileName, fileType)
-  // theBlob.lastModifiedDate = new Date();
-  // theBlob.name = fileName;
   return file
 }
-
-// *********************************** 3.系统类 ***********************************
+// H5获取本地图片
+export function getLocalImage(isMultiple, callback) {
+  let tag = document.createElement('input')
+  tag.type = 'file'
+  tag.accept = 'image/*'
+  tag.ref = 'file'
+  tag.style.display = 'none'
+  tag.multiple = isMultiple
+  tag.addEventListener('change', callback)
+  document.getElementById('app').appendChild(tag)
+  tag.click()
+}
+// 复制网页选中内容
 export function mouseCopy(target, next) {
   let transfer = document.createElement('input')
   document.body.appendChild(transfer)
@@ -77,3 +108,28 @@ export function mouseCopy(target, next) {
   document.body.removeChild(transfer)
   next ? next(target) : ''
 }
+
+// *********************************** 移动端长按 @touchstart="start" @touchmove="move" @touchend="end"
+// **************** 从网上复制下来的移动端长按触发 ****************
+export const longClick = {
+  start() {
+    this.longClick = 0
+    this.timeOutEvent = setTimeout(() => {
+      this.longClick = 1
+      // async
+    }, 500)
+  },
+  move(e) {
+    clearTimeout(this.timeOutEvent)
+    this.timeOutEvent = 0
+    e.preventDefault()
+  },
+  end() {
+    clearTimeout(this.timeOutEvent)
+    if (this.timeOutEvent && this.longClick === 0) {
+      //此处为点击事件
+    }
+    return false
+  },
+}
+// **************** 从网上复制下来的移动端长按触发 End ****************

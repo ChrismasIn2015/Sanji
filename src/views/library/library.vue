@@ -41,11 +41,7 @@
       <div class="shelf-block flex-y">
         <!-- 书架 -->
         <div class="shelfs">
-          <div
-            class="shelf flex-y"
-            v-for="(item, index) in shelfList"
-            :key="index"
-          >
+          <div class="shelf" v-for="(item, index) in shelfList" :key="index">
             <div
               class="common-btn blue-on"
               @click.stop="setNowShelfId(item)"
@@ -103,10 +99,13 @@
               </div>
             </div>
           </div>
+          <div class="shelf">
+            <div class="common-btn blue">+</div>
+          </div>
         </div>
         <div class="shelf-tip" v-show="!shelfList.length">暂无数据</div>
         <!-- 书架管理 -->
-        <div class="shelf-admin flex-no-side">
+        <!-- <div class="shelf-admin flex-no-side">
           <div
             class="common-btn blue-on"
             v-show="nowBlockId"
@@ -121,7 +120,7 @@
           >
             修改书架
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- 书籍内容 -->

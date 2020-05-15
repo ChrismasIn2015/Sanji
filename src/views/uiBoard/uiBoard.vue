@@ -13,7 +13,7 @@
         :key="index"
         @click.stop="copyURL(item.url)"
       >
-        <img :src="item.icon" alt="" />
+        <img :src="item.icon" alt />
         <span>{{ item.name }}</span>
       </div>
     </div>
@@ -25,12 +25,25 @@
         :key="index"
         @click.stop="copyURL(item.url)"
       >
-        <img :src="item.icon" alt="" />
+        <img :src="item.icon" alt />
         <span>{{ item.name }}</span>
       </div>
     </div>
     <!-- SanJi UI -->
-    <h2>SanJi UI</h2>
+    <h2>* 表单</h2>
+    <div class="board-mine flex">
+      <sjInput
+        :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }"
+      />
+      <sjCalendar />
+      <sjInput :state="{ holder: '文本框', type: 'textarea' }" />
+    </div>
+    <h2>* 提示</h2>
+    <div class="board-mine flex">
+      <div class="common-btn toggle" @click.stop="showConfirm">用户确认</div>
+      <div class="common-btn toggle" @click.stop="showTip">系统提示</div>
+    </div>
+    <h2>* 按钮</h2>
     <div class="board-mine flex">
       <div class="common-btn">common-btn</div>
       <div class="common-btn red">red</div>
@@ -48,17 +61,6 @@
         <img :src="mobileUIList[1].icon" alt />
         <span>图标Icon</span>
       </div>
-    </div>
-    <div class="board-mine flex">
-      <sjInput
-        :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }"
-      />
-      <sjCalendar />
-      <sjInput :state="{ holder: '文本框', type: 'textarea' }" />
-    </div>
-    <div class="board-mine flex">
-      <div class="common-btn toggle" @click.stop="showConfirm">用户确认</div>
-      <div class="common-btn toggle" @click.stop="showTip">系统提示</div>
     </div>
   </div>
 </template>
