@@ -184,19 +184,19 @@ body,
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(214, 149, 43);
-    border: 1px solid rgb(214, 149, 43);
+    color: rgb(238, 155, 23);
+    border: 1px solid rgb(238, 155, 23);
     background-color: $common-white;
   }
 }
 .orange {
   color: $common-white;
-  border: 1px solid rgb(241, 171, 57);
-  background-color: rgb(241, 171, 57);
+  border: 1px solid rgb(255, 170, 32);
+  background-color: rgb(255, 170, 32);
   &:hover {
     color: $common-white;
-    border: 1px solid rgb(214, 149, 43);
-    background-color: rgb(214, 149, 43);
+    border: 1px solid rgb(238, 155, 23);
+    background-color: rgb(238, 155, 23);
   }
 }
 .pink-on {

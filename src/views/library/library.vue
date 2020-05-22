@@ -53,6 +53,12 @@
                 @click.stop="modalToConfirm('shelf')"
                 >✖</span
               >
+              <span
+                class="pot pot-edit"
+                v-show="nowShelfId === item.shelfId"
+                @click.stop="editShelfShow = true"
+                >..</span
+              >
               <span> {{ item.name }}（{{ item.books.length }}） </span>
             </div>
 
@@ -81,46 +87,22 @@
                 >
                 <span>{{ book.name }}</span>
               </div>
-              <div
-                class="common-btn orange-on"
-                @click.stop="newBookShow = true"
-              >
+              <div class="common-btn orange" @click.stop="newBookShow = true">
                 +
               </div>
-              <div
-                style="text-align: center; margin-top: 2rem;"
-                v-show="!item.books.length"
-              >
+              <div class="common-btn disable" v-show="!item.books.length">
                 暂无书籍
               </div>
-              <div class="book-admin flex-no-side">
-                <!-- <div class="common-btn orange-on" @click.stop="newBookShow = true">添加书籍</div> -->
-                <!-- <div class="common-btn" v-show="nowBookId" @click.stop="editBookShow = true">编辑书籍</div> -->
-              </div>
+              <div class="book-admin flex-no-side"></div>
             </div>
           </div>
-          <div class="shelf">
-            <div class="common-btn blue">+</div>
+          <div class="shelf" v-show="nowBlockId">
+            <div class="common-btn blue" @click.stop="newShelfShow = true">
+              + 添加书架
+            </div>
           </div>
         </div>
         <div class="shelf-tip" v-show="!shelfList.length">暂无数据</div>
-        <!-- 书架管理 -->
-        <!-- <div class="shelf-admin flex-no-side">
-          <div
-            class="common-btn blue-on"
-            v-show="nowBlockId"
-            @click.stop="newShelfShow = true"
-          >
-            添加书架
-          </div>
-          <div
-            class="common-btn"
-            v-show="nowShelfId"
-            @click.stop="editShelfShow = true"
-          >
-            修改书架
-          </div>
-        </div> -->
       </div>
 
       <!-- 书籍内容 -->
@@ -195,7 +177,7 @@
     <!-- * 编辑书架 -->
     <div class="common-modal" v-if="editShelfShow">
       <div class="common-modal-blank" style=" max-width: 30rem;">
-        <div class="modal-title">添加书架</div>
+        <div class="modal-title">编辑书架</div>
         <div class="modal-content">
           <sjInput
             ref="myShelf"
@@ -329,6 +311,7 @@
         block_remove(this.nowBlockId)
         this.clearLibrary()
         this.getMyBlockList()
+        this.shelfList = []
       },
       // ************************************************ 书架
       createMyShelf() {

@@ -19,11 +19,6 @@
       "blockId": "YxnegsTMH",
       "name": "人文社科",
       "color": "#666666"
-    },
-    "ojTIK96lm": {
-      "blockId": "ojTIK96lm",
-      "name": "123",
-      "color": "#666666"
     }
   },
   "shelfs": {
@@ -239,7 +234,7 @@
       "shelfId": "YKdKtabb9",
       "bookId": "nyF-QQmkl",
       "name": "公司账号",
-      "content": "<div><font color=\"#ff0000\"><b>麦年</b></font></div>&nbsp; &nbsp; JIRA huangwenqiang a123456789<div>&nbsp; &nbsp; Gitlab wqao123456 974879409</div><div><br></div><div><div>&nbsp; &nbsp; 项目设计稿原型：</div><div>&nbsp; &nbsp; 金邻APP：https://ku1nos.axshare.com</div><div>&nbsp; &nbsp; 岛主APP：https://ee6atz.axshare.com</div><div>&nbsp; &nbsp; 蓝湖设计稿：https://lanhuapp.com/url/Ys9wV-87ZWO</div></div><div><br></div><div><font color=\"#ff0000\"><b>驴妈妈</b></font></div><div>&nbsp; &nbsp; gitlab：http://10.200.5.103</div><div>&nbsp; &nbsp; name / email：huangwenqiang / huangwenqiang@lvmama.com</div><div>&nbsp; &nbsp; password：huangwenqiang</div><div>&nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; 需求实现 * 从master上新建本地<font color=\"#ff0000\"><b>需求分支</b></font>并推送该分支至服务</div><div>&nbsp; &nbsp; 需求测试 * 切换至 dev-ark 分支，并将其与<font color=\"#ff0000\"><b>需求分支</b></font>合并，通知服务端人员重新部署服务</div><div>&nbsp; &nbsp; 需求上线 * 再议</div>"
+      "content": "<div><font color=\"#ff0000\"><b>麦年</b></font></div>&nbsp; &nbsp; JIRA huangwenqiang a123456789<div>&nbsp; &nbsp; Gitlab<br><div>&nbsp; &nbsp;&nbsp;http://222.66.148.78:3030/<br><div>&nbsp; &nbsp; wqao123456 974879409</div><div><br></div><div><div>&nbsp; &nbsp; 项目设计稿原型：</div><div>&nbsp; &nbsp; 金邻APP：https://ku1nos.axshare.com</div><div>&nbsp; &nbsp; 岛主APP：https://ee6atz.axshare.com</div><div>&nbsp; &nbsp; 蓝湖设计稿：https://lanhuapp.com/url/Ys9wV-87ZWO</div></div><div><br></div><div><font color=\"#ff0000\"><b>驴妈妈</b></font></div><div>&nbsp; &nbsp; gitlab：http://10.200.5.103</div><div>&nbsp; &nbsp; name / email：huangwenqiang / huangwenqiang@lvmama.com</div><div>&nbsp; &nbsp; password：huangwenqiang</div><div>&nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; 需求实现 * 从master上新建本地<font color=\"#ff0000\"><b>需求分支</b></font>并推送<font color=\"#ff0000\"><b>该分支</b></font>至服务</div><div>&nbsp; &nbsp; 需求测试 * 切换至 dev-ark 分支，并将其与<font color=\"#ff0000\"><b>需求分支</b></font>合并，通知服务端人员重新部署服务</div><div>&nbsp; &nbsp; 需求上线 * 再议</div></div></div>"
     },
     "Y-zYr0P3f": {
       "blockId": "DCgJdlX5R",
@@ -281,7 +276,7 @@
       "shelfId": "YKdKtabb9",
       "bookId": "Ery30sSVe",
       "name": "每日工作任务",
-      "content": "000001<div>&nbsp; &nbsp; √ 根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; √&nbsp;根据数据值 渲染特定组件的动态渲染</div><div><br></div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;postcss-px-to-viewport</div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; * 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</div>&nbsp; &nbsp;&nbsp;* 突发问题：0.5px 如何表示<div><b><br></b><div><font color=\"#ff0000\"><b>000002</b></font></div><div><font color=\"#ff0000\" style=\"font-weight: bold;\">&nbsp; &nbsp; </font>需要 计算机组成原理 JS高级程序设计 搭配了解程序运行的本质</div></div><div><br></div><div>000003</div><div>&nbsp; &nbsp; √ 需要自设计的UI框架</div><div>&nbsp; &nbsp; √ 色彩搭配简单入门</div><div><br></div><div><font color=\"#ff0000\"><b>000004</b></font></div><div>&nbsp; &nbsp; 时间字符串的规范</div><div><br></div><div><font color=\"#ff0000\"><b>000005</b></font></div><div>&nbsp; &nbsp; 多媒体管理</div><div>&nbsp; &nbsp; * 图片转字体</div><div>&nbsp; &nbsp; * 音频解码 / 视频解码</div><div>&nbsp; &nbsp; * 地图应用</div><div>&nbsp; &nbsp; * Canvas 数据可视化</div>"
+      "content": "<font color=\"#ff0000\"><b>未来需求</b></font><div>&nbsp; &nbsp; * 聊天前后端架构 *PC *Mobile</div><div>&nbsp; &nbsp; * 销售系统前后端架构 *PC</div><div>&nbsp; &nbsp; * 商城系统前后端架构 *PC *Mobile</div><div><br></div><div>000001<div>&nbsp; &nbsp; √ 根据&nbsp;<a data-pjax=\"#js-repo-pjax-container\" href=\"https://github.com/surmon-china/vue-awesome-swiper\" style=\"\">vue-awesome-swiper</a>&nbsp;完成产品要求的各种轮播图组件</div><div>&nbsp; &nbsp; √&nbsp;根据数据值 渲染特定组件的动态渲染</div><div><br></div><div>&nbsp; &nbsp; 依据CSS预处理器，新增适配方案&nbsp;postcss-px-to-viewport</div><div>&nbsp; &nbsp; 其中可以自定义适配单位（如‘PX’）使其转为视图单位‘vw / vh’</div><div>&nbsp; &nbsp; * 其单位可能会被代码格式化工具 prettier / vuet 格式化，需要一些配置详见IDE书籍</div>&nbsp; &nbsp;&nbsp;* 突发问题：0.5px 如何表示<div><b><br></b><div><font color=\"#ff0000\"><b>000002</b></font></div><div><font color=\"#ff0000\" style=\"font-weight: bold;\">&nbsp; &nbsp; </font>需要 计算机组成原理 JS高级程序设计 搭配了解程序运行的本质</div></div><div><br></div><div>000003</div><div>&nbsp; &nbsp; √ 需要自设计的UI框架</div><div>&nbsp; &nbsp; √ 色彩搭配简单入门</div><div><br></div><div><font color=\"#ff0000\"><b>000004</b></font></div><div>&nbsp; &nbsp; 时间字符串的规范</div><div><br></div><div><font color=\"#ff0000\"><b>000005</b></font></div><div>&nbsp; &nbsp; 多媒体管理</div><div>&nbsp; &nbsp; * 图片转字体</div><div>&nbsp; &nbsp; * 音频解码 / 视频解码</div><div>&nbsp; &nbsp; * 地图应用</div><div>&nbsp; &nbsp; * Canvas 数据可视化</div></div>"
     },
     "eL-JcIQrF": {
       "blockId": "DCgJdlX5R",
@@ -378,57 +373,8 @@
       "blockId": "YxnegsTMH",
       "shelfId": "N7V_Hcwg1",
       "bookId": "EjKeEugPO",
-      "name": "连续与极限",
-      "content": ""
-    },
-    "AIJFa9Yi9": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "AIJFa9Yi9",
-      "name": "一元函数微分",
-      "content": ""
-    },
-    "AXSIhsxjv": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "AXSIhsxjv",
-      "name": "一元函数积分",
-      "content": ""
-    },
-    "EfbhVsgMJ": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "EfbhVsgMJ",
-      "name": "向量代数与空间解析几何",
-      "content": ""
-    },
-    "wowY47qlp": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "wowY47qlp",
-      "name": "多元函数微分",
-      "content": ""
-    },
-    "TvEYNHxmn": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "TvEYNHxmn",
-      "name": "6.多元函数积分",
-      "content": ""
-    },
-    "sP5016-ML": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "sP5016-ML",
-      "name": "7.无穷级数",
-      "content": ""
-    },
-    "X_Y-yao1S": {
-      "blockId": "YxnegsTMH",
-      "shelfId": "N7V_Hcwg1",
-      "bookId": "X_Y-yao1S",
-      "name": "8.微分方程",
-      "content": ""
+      "name": "1.函数与图像",
+      "content": "<font color=\"#ff0000\"><b>函数</b></font><div>&nbsp; &nbsp; * 函数<font color=\"#ff0000\"><b> f </b></font>是将一个对象转化为另外一个对象的规则<font color=\"#ff0000\"><b> f</b></font></div>&nbsp; &nbsp; * 一个函数必须给每一个有效的输入指定唯一的输出<div>&nbsp; &nbsp; * 函数的组成</div>&nbsp; &nbsp; &nbsp; &nbsp; 0.通过&nbsp;<font color=\"#4169e1\"><b>垂直检验&nbsp;</b></font>来判断一个图像是不是函数图像（有些图像可能由两个函数组成：如圆 y2 + x2 = 1）<div>&nbsp; &nbsp; &nbsp; &nbsp; 1.起始对象<font color=\"#4169e1\"><b> x </b></font>称为输入，来自定义域集合</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 函数的定义中一般会包括定义域，但大部分情况下需要根据函数的变化公式<font color=\"#4169e1\"><b>自行推导</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; 2.返回对象<font color=\"#4169e1\"><b> f(x) </b></font>称为输出，来自上域集合（所有可能的输出）上域的子集 值域 是实际输出的集合</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 可以使用图像推导函数的值域</div><div>&nbsp; &nbsp; * 用区间表示法表示集合<font color=\"#4169e1\" style=\"\"><b> {x：2&lt;= x &lt;= 5}</b></font> 或<font color=\"#4169e1\" style=\"\"><b> [2, 5]</b></font></div><div><font color=\"#4169e1\" style=\"\"><b><br></b></font></div><div><div><font color=\"#ff0000\"><b>反函数</b></font></div><div>&nbsp; &nbsp; * 反函数<font color=\"#ff0000\"><b> f^-1 </b></font>就像是<font color=\"#ff0000\"><b> f </b></font>的撤销按钮，通过其来撤销 f 变化</div><div>&nbsp; &nbsp; * 求反函数步骤</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 通过 <font color=\"#4169e1\"><b>水平线检验 </b></font>来判断一个函数图像，有没有反函数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 通常通过公式变化求反函数公式是<font color=\"#ff0000\"><b>不可能的</b></font>，但很容易通过函数图像 + y=x 图像，来求得反函数图像</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 有可能存在只有部分定义存在反函数的情况，需要限制定义域（如只取一半的 y=x2）</div><div><br></div><div><font color=\"#ff0000\"><b>函数复合</b></font></div><div>&nbsp; &nbsp; * 另 g(x) = x2，则可以用 f(x) = g(x)2 表示 f(x) = x4</div><div><br></div><div><font color=\"#ff0000\"><b>奇偶函数</b></font></div><div>&nbsp; &nbsp; * 必须对定义域中的所有x都成立</div>&nbsp; &nbsp; * 对于 f(x) = f(-x) 成立时的变化规则成为偶函数<br>&nbsp; &nbsp; * 对于 -f(x) = f(-x) 成立时的变化规则成为偶函数</div><div>&nbsp; &nbsp; * 一般通过替换 -x 判断最终式子是否为 -f(x) 来判断函数是否为奇偶函数</div><div>&nbsp; &nbsp; * JO = J , OO = O , JJ = O</div><div><font color=\"#ff0000\"><b><br></b></font><div><font color=\"#ff0000\"><b>函数图像</b></font></div></div><div>&nbsp; &nbsp; * 多项式 p(x) = anxn + a(n-1)x(n-1) ... + a2x2 + a1x1 + a0</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 其中 x^n 称为多项式的<font color=\"#4169e1\"><b>基本项&nbsp;</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 系数 an 成为其<font color=\"#4169e1\"><b>首项系数</b></font></div><div><font color=\"#4169e1\"><b>&nbsp; &nbsp; &nbsp; &nbsp; ** 次数为2的多项式：需要掌握配方法求解 x 判别式求解 x 个数</b></font></div><div>&nbsp; &nbsp; * 一般多项式的图像是很难画的</div><div>&nbsp; &nbsp; * 但是实际上我们只需要判断 首项系数 的正负，基本项次数的奇偶性就能判断图像两端的走势</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 偶数+正数 v 偶数+负数 ^ 奇数+正数 / 奇数+负数 \\</div><div>&nbsp; &nbsp; * 有理函数 = p/q 其中 p/q 均为多项式</div><div>&nbsp; &nbsp; * 指数 / 对数函数：ax / loga(x)：互为反函数</div><div>&nbsp; &nbsp; * 三角函数</div><div>&nbsp; &nbsp; * 绝对值函数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 最好使用分段函数来定义绝对值函数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** |x-y| 表示数轴上两点之间的距离（如 |x-1|&lt;=3 表示为 [-2, 4]）</div>"
     },
     "4W4S9h18X": {
       "blockId": "YxnegsTMH",
@@ -744,6 +690,34 @@
       "bookId": "HRgDB6u_m",
       "name": "操作系统设计",
       "content": ""
+    },
+    "foJ-QI6ri": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "foJ-QI6ri",
+      "name": "RedBook",
+      "content": "导数与极限<div><br></div><div>一元函数微分</div><div>一元函数积分</div><div><br></div><div>向量代数与空间解析几何</div><div><br></div><div>多元函数微分</div><div>多元函数积分</div><div><br></div><div>无穷级数</div><div><br></div><div>微分方程</div>"
+    },
+    "JU6idvku7": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "JU6idvku7",
+      "name": "2.三角学",
+      "content": "<font color=\"#ff0000\"><b>角的弧度的概念</b></font><div>&nbsp; &nbsp; * 单位 π</div><div>&nbsp; &nbsp; * 坐标系按逆时针方向，自右上开始为第1-4象限，弧度 0~2π</div><div><br></div><div><font color=\"#ff0000\"><b>角的三角函数</b></font></div><div>&nbsp; &nbsp; * 正弦 <font color=\"#4169e1\"><b>cos0</b></font>&nbsp;正割 <font color=\"#4169e1\"><b>sec0</b></font> = 1/cos0</div><div>&nbsp; &nbsp; * 余弦 sin0 余割&nbsp;csc0 = 1/sin0&nbsp;</div><div>&nbsp; &nbsp; * 正切 tan0 余切 cot0 = 1/tan0</div><div>&nbsp; &nbsp; * 都具有周期性</div><div>&nbsp; &nbsp; * sin csc tan cot 都为奇函数</div><div><br></div><div><font color=\"#ff0000\"><b>三角恒等式</b></font></div><div>&nbsp; &nbsp; * 毕达哥拉斯定理</div><div>&nbsp; &nbsp; &nbsp; &nbsp; **&nbsp;<font color=\"#4169e1\"><b> cos2 + sin2 = 1（勾股定理）</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 毕达哥拉斯 · 数学之父 · 古希腊</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 定理推演（/cos2） 1+tan2 = sec2 = 1/cos2</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 定理推演（/sin2） cot2 +1 = csc2</div><div>&nbsp; &nbsp; * 常用公式</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** sin(A+B) = sinAcosB + sinBcosA</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** cos(A+B) = cosAcosB - sinAsinB</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** sin2X = 2sinXcosX</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** cos2X = 2(cosX)^2 - 1 = 1- 2(sinX)^2</div>"
+    },
+    "R1C9jOp9T": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "R1C9jOp9T",
+      "name": "3.极限导论",
+      "content": "<font color=\"#ff0000\"><b>概念</b></font><div>&nbsp; &nbsp; * 恰当地定义一个极限是相当棘手的事情，且极限本身就是一个奇怪的问题</div><div>&nbsp; &nbsp; * 在一段函数图像中，存在某个输入值，我们希望探讨无限逼近它时的极限输出值</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 从左端逼近 <font color=\"#4169e1\"><b>左极限：x</b></font><b style=\"color: rgb(65, 105, 225);\">→</b><font color=\"#4169e1\"><b>n-，f(x)</b></font><b style=\"color: rgb(65, 105, 225);\">→1</b></div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 从右端逼近 <font color=\"#4169e1\"><b>右极限</b></font><font color=\"#4169e1\"><b>：x</b></font><b style=\"color: rgb(65, 105, 225);\">→</b><font color=\"#4169e1\"><b>n+，f(x)</b></font><b style=\"color: rgb(65, 105, 225);\">→1</b>，也可能是其他值</div><div><font color=\"#4169e1\" style=\"font-weight: bold;\">&nbsp; &nbsp; &nbsp; &nbsp; </font>**<font color=\"#4169e1\" style=\"font-weight: bold;\">&nbsp;</font>读作当 x 趋向于n，f(x) 的极限等于 1</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 当上述左右极限不相等时，<b>x→n，f(x) </b>不存在，即<font color=\"#4169e1\"><b>极限不存在</b></font></div><div>&nbsp; &nbsp; * 对于 ∞，</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 下面<font color=\"#4169e1\" style=\"\"><b>推导 x→∞，f(x)=sin(1/x)</b></font> 的极限</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1. x→∞时，1/x 会非常接近于 0</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2.由于sin(0)=0，则 x→∞，f(x)=sin(1/x)&nbsp;= 0</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 当 x→n，f(x)=∞，则称 f(x) 在n处有一条<font color=\"#4169e1\"><b>渐近线</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 函数有可能和它的某条渐近线相交，如 x→∞，sinX/X = 0</div><div><font color=\"#ff0000\"><b><br></b></font></div><div><font color=\"#ff0000\"><b>夹逼定理</b></font></div><div>&nbsp; &nbsp; * 对于 <font color=\"#4169e1\"><b>g ≤ f ≤ h</b></font> ，<font color=\"#ff0000\"><b>如果 x→a，g = h = 1</b></font>，则 x→a，f=1（三个函数在 a 处有相同的极限）</div><div>&nbsp; &nbsp; * 下面<font color=\"#4169e1\" style=\"\"><b>推导 x→∞，f(x)=sin(x)/x</b></font><b style=\"color: rgb(255, 0, 0);\"> </b>的极限</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 1.恒有 -1≤ sinx ≤ 1，则有 -1/x ≤ sinx/x ≤ 1/x</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 2.对于 x→∞，-1/x 和 1/x = 0，则 sinx/x 的极限是 0</div>"
+    },
+    "EqEY2uNPp": {
+      "blockId": "YxnegsTMH",
+      "shelfId": "N7V_Hcwg1",
+      "bookId": "EqEY2uNPp",
+      "name": "4.求解多项式的极限",
+      "content": "<font color=\"#ff0000\"><b>研究特定函数的极限取法</b></font><div>&nbsp; &nbsp; <font color=\"#4169e1\"><b>* x→ a，有理函数</b></font></div><div>&nbsp; &nbsp; &nbsp; &nbsp; **&nbsp;有理数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&nbsp;<b>Rational number</b>：其英文词根为ratio，就是比率</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - 是整数（正整数、0、负整数）和分数的统称，是整数和分数的集合</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 无理数：不是有理数的实数称为无理数，即无理数的小数部分是无限不循环的数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ** 有理函数</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - 为啥</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; - 通过多项式函数的加减乘除得到的函数</div>&nbsp; &nbsp; * x→ a，涉及平方根的函数<div>&nbsp; &nbsp; * x→ ∞，有理函数</div>&nbsp; &nbsp; * x→ ∞，多项式函数的比<div>&nbsp; &nbsp; * x→ (-∞)，有理函数 &amp; 多项式函数</div>&nbsp; &nbsp; * 绝对值函数"
     }
   }
 }

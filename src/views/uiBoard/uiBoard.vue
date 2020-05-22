@@ -30,14 +30,6 @@
       </div>
     </div>
     <!-- SanJi UI -->
-    <h2>* 表单</h2>
-    <div class="board-mine flex">
-      <sjInput
-        :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }"
-      />
-      <sjCalendar />
-      <sjInput :state="{ holder: '文本框', type: 'textarea' }" />
-    </div>
     <h2>* 提示</h2>
     <div class="board-mine flex">
       <div class="common-btn toggle" @click.stop="showConfirm">用户确认</div>
@@ -61,6 +53,14 @@
         <img :src="mobileUIList[1].icon" alt />
         <span>图标Icon</span>
       </div>
+    </div>
+    <h2>* 表单</h2>
+    <div class="board-mine flex">
+      <sjInput
+        :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }"
+      />
+      <sjCalendar />
+      <sjInput :state="{ holder: '文本框', type: 'textarea' }" />
     </div>
   </div>
 </template>
