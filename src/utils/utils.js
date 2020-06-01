@@ -26,6 +26,7 @@ export function getDD(mills) {
 
 // 判断当前时间是否在某个营业范围内
 export function chargeHHMMRange(range) {
+  if (!range || typeof range !== 'object' || range.length < 2) return false
   // 传入的是字符串数组 ["09:00", "02:00"]
   let start = getYYMMDD(Date.now()) + ' ' + range[0]
   let end = getYYMMDD(Date.now()) + ' ' + range[1]
