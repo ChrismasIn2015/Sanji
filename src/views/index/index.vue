@@ -5,12 +5,8 @@
       <div class="entry common-btn blue" @click.stop="toHistory">
         历史大事件
       </div>
-      <div class="entry common-btn orange" @click.stop="toUI">
-        sjUI
-      </div>
-      <div class="entry common-btn pink" @click.stop="toColor">
-        Color
-      </div>
+      <div class="entry common-btn orange" @click.stop="toUI">sjUI</div>
+      <div class="entry common-btn pink" @click.stop="toColor">Color</div>
       <div
         class="entry common-btn toggle"
         style="margin-left: auto;"
@@ -68,6 +64,21 @@
           {
             time: ['21:00', '00:00'],
             affair: ['Comprehension', 'Writing'],
+            style: { 'background-color': 'rgb(125, 255, 194)' },
+          },
+          {
+            time: ['09:00', '20:00'],
+            affair: [
+              'A1.（√√）中台UI=1920',
+              'B1.（xx）点击+登录判断',
+              'B2.（xx）点击+小程序',
+              'B31.（x√）功能链接+小红点消息中心',
+              'B32.（xx）功能链接+扫描二维码',
+              'B41.（xx）图文导航+圆角',
+              'B42.（xx）图文导航+背景图',
+              'B5.（xx）图片广告+是否轮播',
+              'B6.（x√）Tab资讯+样式更改',
+            ],
             style: { 'background-color': 'rgb(125, 255, 194)' },
           },
         ],

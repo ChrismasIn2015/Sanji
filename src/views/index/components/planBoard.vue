@@ -10,11 +10,15 @@
           :style="item.style"
           :class="{ 'block-on': chargeRange(item.time) }"
         >
-          <div v-for="_item in item.time" :key="_item">
+          <div class="block-time" v-for="_item in item.time" :key="_item">
             {{ _item }}
           </div>
           <div v-show="item.time" class="block-margin"></div>
-          <div v-for="(__item, __index) in item.affair" :key="__index">
+          <div
+            class="block-affair"
+            v-for="(__item, __index) in item.affair"
+            :key="__index"
+          >
             {{ __item }}
           </div>
         </div>
@@ -52,11 +56,9 @@
     .block-list {
       align-items: flex-start;
       .block {
-        width: 10rem;
         margin-right: 0.5rem;
-        padding: 0.5rem;
-        cursor: pointer;
         opacity: 0.3;
+        padding: 0.5rem 0rem;
         transition: all 0.2s;
         &:hover {
           opacity: 1;
@@ -67,6 +69,16 @@
       }
       .block-on {
         opacity: 1;
+      }
+      .block-time {
+        padding: 0rem 0.5rem;
+      }
+      .block-affair {
+        cursor: pointer;
+        padding: 0.5rem;
+        &:hover {
+          background-color: white;
+        }
       }
     }
   }

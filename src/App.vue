@@ -10,6 +10,6 @@ export default {};
 
 
 <style lang="scss">
-@import "./utils/sanJi-UI/styles/common-ui-consts.scss";
-@import "./utils/sanJi-UI/styles/common-ui.scss";
+@import "./utils/sanJi-UI/common-ui-consts.scss";
+@import "./utils/sanJi-UI/common-ui.scss"; 
 </style>
