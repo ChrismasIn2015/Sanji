@@ -58,7 +58,7 @@
       .block {
         margin-right: 0.5rem;
         opacity: 0.3;
-        padding: 0.5rem 0rem;
+        padding: 0.3rem 0rem;
         transition: all 0.2s;
         &:hover {
           opacity: 1;
@@ -75,7 +75,7 @@
       }
       .block-affair {
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 0.3rem;
         &:hover {
           background-color: white;
         }

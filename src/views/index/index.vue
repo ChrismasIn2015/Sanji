@@ -41,6 +41,8 @@
               '操作系统',
               '内存 & C++',
               'WebServe & C++',
+              '32bit ≈ 43Y',
+              '64bit ≈ 1844YY',
             ],
             style: { 'background-color': 'rgb(235, 255, 125)' },
           },
