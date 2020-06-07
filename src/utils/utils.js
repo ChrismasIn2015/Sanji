@@ -1,4 +1,5 @@
 // *********************************** 1.时间类 ***********************************
+// 返回'2020-12-05'
 export function getYYMMDD(mills) {
   // 传入的是毫秒
   let time = new Date(mills)
@@ -9,6 +10,7 @@ export function getYYMMDD(mills) {
   return String(year) + '-' + String(month) + '-' + String(day)
 }
 
+// 返回'2020-12-05'中的'12'
 export function getMM(mills) {
   // 传入的是毫秒
   let time = new Date(mills)
@@ -17,6 +19,7 @@ export function getMM(mills) {
   return String(month)
 }
 
+// 返回'2020-12-05'中的'05'
 export function getDD(mills) {
   // 传入的是毫秒
   let time = new Date(mills)
@@ -24,7 +27,7 @@ export function getDD(mills) {
   return String(day)
 }
 
-// 判断当前时间是否在某个营业范围内
+// 判断当前时间是否在某个营业范围 ["09:00", "02:00"] 内
 export function chargeHHMMRange(range) {
   if (!range || typeof range !== 'object' || range.length < 2) return false
   // 传入的是字符串数组 ["09:00", "02:00"]
@@ -40,6 +43,40 @@ export function chargeHHMMRange(range) {
   // 判断
   let charge = Date.parse(start) <= Date.now() && Date.now() <= Date.parse(end)
   return charge
+}
+
+// 输入开始日期的毫秒数，结束日期的毫秒数，返回(年份：月份：数组)的Map
+export function getCalendarMatrix(startMills, endMills) {
+  // Tip：一天是 86400000 毫秒
+  let calendarMatrix = new Map()
+  if (!(endMills - startMills)) return calendarMatrix
+  let dayCount = (endMills - startMills) / 86400000
+
+  // 制作日历矩阵
+  for (let i = 0; i <= dayCount; i++) {
+    // 如果没有年份，则设置年份
+    let nowDayMill = startMills + i * 86400000
+    let yearKey = new Date(nowDayMill).getFullYear().toString()
+    let yearValue = calendarMatrix.get(yearKey)
+    if (!yearValue) calendarMatrix.set(yearKey, new Map())
+    // 如果没有月份，则设置月份
+    let monthKey = getMM(nowDayMill)
+    let monthValue = calendarMatrix.get(yearKey).get(monthKey)
+    if (!monthValue) calendarMatrix.get(yearKey).set(monthKey, [])
+    // 往月份数组里添加日期
+    let dateEntry = {
+      year: yearKey,
+      month: monthKey,
+      day: getDD(nowDayMill),
+      past: nowDayMill < Date.now(),
+    }
+    calendarMatrix
+      .get(yearKey)
+      .get(monthKey)
+      .push(dateEntry)
+  }
+  console.log(calendarMatrix)
+  return calendarMatrix
 }
 
 // *********************************** 2.文件类 ***********************************

@@ -10,16 +10,17 @@
           :style="item.style"
           :class="{ 'block-on': chargeRange(item.time) }"
         >
-          <div class="block-time" v-for="_item in item.time" :key="_item">
+          <span class="block-time" v-for="_item in item.time" :key="_item">
             {{ _item }}
-          </div>
+          </span>
           <div v-show="item.time" class="block-margin"></div>
           <div
             class="block-affair"
             v-for="(__item, __index) in item.affair"
             :key="__index"
+            :class="{ 'block-affair-done': __item.done }"
           >
-            {{ __item }}
+            {{ __item.name }}
           </div>
         </div>
       </div>
@@ -79,6 +80,9 @@
         &:hover {
           background-color: white;
         }
+      }
+      .block-affair-done {
+        background-color: white;
       }
     }
   }

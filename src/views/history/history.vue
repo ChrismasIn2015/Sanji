@@ -3,54 +3,63 @@
     <!-- 导航 -->
     <div class="line-nav flex-x-reverse">
       <div class="common-btn" @click.stop="toIndex">返回</div>
-      <div class="common-btn blue-on" @click.stop="renderChina">新中国史</div>
-      <div class="common-btn blue-on" @click.stop="renderWorld">世界史</div>
+      <div class="common-btn blue-on" @click.stop="renderCalendar">日历</div>
     </div>
     <!-- 内容 -->
     <div class="line-content">
-      <div class="flex" v-for="(list, time) in timeMap" :key="time">
-        <div class="line-item">{{ list[0] }}</div>
-        <div class="line-item" v-for="(title, index) in list[1]" :key="index" v-html="title" />
+      <!-- 年 -->
+      <div v-for="(yearEntry, yearIndex) in calendarMap" :key="yearIndex">
+        <h1>{{ yearEntry[0] }}</h1>
+        <!-- 月份 -->
+        <div class="flex-wrap">
+          <div
+            style="width: 27rem;"
+            v-for="(monthEntry, monthIndex) in yearEntry[1]"
+            :key="monthIndex"
+          >
+            <h2>{{ monthEntry[0] }}</h2>
+            <!-- 日期 -->
+            <div class="flex-wrap">
+              <div
+                class="common-btn orange-on"
+                v-for="(date, index) in monthEntry[1]"
+                :key="index"
+                :class="{ orange: date.past }"
+              >
+                {{ date.day }}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- 倒计时 -->
-    <div class="line-now flex">
-      <div
-        class="common-btn blue-on"
-        v-for="value in 12"
-        :key="value"
-        :class="{ blue: value >= 6 }"
-      >{{ value }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import worldTime from "./data/wordLine.js";
-import chinaTime from "./data/chinaLine.js";
-export default {
-  data() {
-    return {
-      timeMap: new Map()
-    };
-  },
-  mounted() {
-    this.renderWorld();
-  },
-  methods: {
-    renderWorld() {
-      this.timeMap = worldTime;
-      // Object.assign({}, { temp: null });
+  import { getCalendarMatrix } from '@/utils/utils.js'
+  export default {
+    data() {
+      return {
+        calendarMap: new Map(),
+      }
     },
-    renderChina() {
-      this.timeMap = chinaTime;
-      // Object.assign({}, { temp: null });
+    mounted() {
+      this.renderCalendar()
     },
-    toIndex() {
-      this.$router.push({ name: "index" });
-    }
+    methods: {
+      renderCalendar() {
+        let map = getCalendarMatrix(
+          Date.parse('2020-06-01'),
+          Date.parse('2020-12-20')
+        )
+        this.calendarMap = map
+      },
+      toIndex() {
+        this.$router.push({ name: 'index' })
+      },
+    },
   }
-};
 </script>
 
 <style lang="scss" scoped>
