@@ -27,15 +27,62 @@
       return {
         myScheduleA: [
           {
-            time: null,
-            tip: 'Start: 0515',
+            time: ['09:00', '20:00'],
             affair: [
-              { name: 'sjUI', done: 0 },
-              { name: 'erpUI', done: 0 },
-              { name: 'WebServer C++', done: 0 },
+              { name: '【1.1】中台', done: 0 },
+              { name: '配置值·登录判断', done: 0 },
+              { name: '配置值·小程序跳转', done: 1 },
+              { name: '配置值·功能链接：消息中心/二维码扫描', done: 0 },
+              { name: '配置值·图文导航：圆角/背景图', done: 0 },
+              { name: '配置值·图片广告：不轮播/自动轮播等...', done: 0 },
+              {
+                name: '【建议】图文导航：卡片样式可以使用圆角+背景图完成',
+                done: 0,
+              },
             ],
-            style: { 'background-color': 'rgb(255, 125, 212)' },
+            style: { 'background-color': 'rgb(125, 255, 194)' },
           },
+          {
+            time: ['09:00', '20:00'],
+            affair: [
+              { name: '【1.1】C端', done: 0 },
+              { name: '功能·点击登录判断', done: 1 },
+              { name: '功能·点击跳转小程序', done: 1 },
+              { name: '功能·功能链接：消息中心逻辑', done: 1 },
+              { name: '功能·功能链接：相机扫描', done: 1 },
+              { name: '样式·图文导航支持圆角', done: 1 },
+              { name: '样式·图文导航支持背景图', done: 1 },
+              { name: '样式·图片广告支持不轮播/自动轮播等...', done: 1 },
+              { name: '样式·Tab资讯根据设计建议修改', done: 1 },
+            ],
+            style: { 'background-color': 'rgb(255,0,112)' },
+          },
+          {
+            time: ['09:00', '20:00'],
+            affair: [
+              { name: '【1.2】中台', done: 0 },
+              { name: '配置值·新组件：Tab推荐位', done: 0 },
+              { name: '配置值·新组件：推荐切换', done: 0 },
+              { name: '配置值·组件标题:更多链接', done: 0 },
+              { name: '配置值·图片广告:新增的样式', done: 0 },
+            ],
+            style: { 'background-color': 'rgb(125, 255, 194)' },
+          },
+          {
+            time: ['09:00', '20:00'],
+            affair: [
+              { name: '【1.2】C端', done: 0 },
+              { name: '新组件：Tab推荐位', done: 0 },
+              { name: 'BUG·合并Tab资讯,Tab列表,Tab推荐位,推荐切换', done: 0 },
+              { name: '新组件：推荐切换', done: 0 },
+              { name: '功能·组件标题:更多链接', done: 0 },
+              { name: '样式·图片广告:新增的样式', done: 0 },
+              { name: 'BUG·中台切换图片广告样式不生效', done: 0 },
+            ],
+            style: { 'background-color': 'rgb(255,0,112)' },
+          },
+        ],
+        myScheduleB: [
           {
             time: null,
             affair: [
@@ -47,49 +94,40 @@
             ],
             style: { 'background-color': 'rgb(235, 255, 125)' },
           },
-        ],
-        myScheduleB: [
           {
             time: ['07:00', '09:00'],
             affair: [
+              { name: '■ ■', done: 0 },
               { name: 'Politics', done: 0 },
               { name: 'Calculus', done: 0 },
             ],
             style: { 'background-color': 'rgb(255, 125, 212)' },
           },
           {
-            time: ['10:00', '12:00'],
+            time: ['09:00', '12:00'],
             affair: [
+              { name: '■ ■ ■', done: 0 },
               { name: 'Politics', done: 0 },
               { name: 'Calculus', done: 0 },
             ],
             style: { 'background-color': 'rgb(235, 255, 125)' },
           },
           {
-            time: ['14:00', '17:00'],
-            affair: [{ name: 'Computer Science', done: 0 }],
+            time: ['14:00', '18:00'],
+            affair: [
+              { name: '■ ■ ■ ■', done: 0 },
+              { name: 'Computer Science', done: 0 },
+            ],
             style: { 'background-color': 'rgb(125, 229, 255)' },
           },
           {
             time: ['21:00', '00:00'],
             affair: [
+              { name: '■ ■ ■', done: 0 },
               { name: 'Comprehension', done: 0 },
               { name: 'Writing', done: 0 },
-            ],
-            style: { 'background-color': 'rgb(125, 255, 194)' },
-          },
-          {
-            time: ['09:00', '20:00'],
-            affair: [
-              { name: 'x点击+登录判断', done: 1 },
-              { name: 'x点击+小程序', done: 1 },
-              { name: 'x功能链接+消息中心小红点', done: 1 },
-              { name: 'x功能链接+扫描二维码', done: 1 },
-              { name: 'x图文导航+圆角', done: 0 },
-              { name: 'x图文导航+背景图', done: 0 },
-              { name: 'x图片广告+是否轮播', done: 0 },
-              { name: '中台UI=1920', done: 1 },
-              { name: 'Tab资讯+样式更改', done: 1 },
+              { name: 'sjUI / erpUI', done: 0 },
+              { name: '', done: 0 },
             ],
             style: { 'background-color': 'rgb(125, 255, 194)' },
           },
