@@ -61,6 +61,7 @@
             time: ['09:00', '20:00'],
             affair: [
               { name: '【1.2】中台', done: 0 },
+              { name: '配置值·新组件：领取优惠券', done: 0 },
               { name: '配置值·新组件：Tab推荐位', done: 0 },
               { name: '配置值·新组件：推荐切换', done: 0 },
               { name: '配置值·组件标题:更多链接', done: 0 },
@@ -72,9 +73,9 @@
             time: ['09:00', '20:00'],
             affair: [
               { name: '【1.2】C端', done: 0 },
-              { name: '新组件：Tab推荐位', done: 0 },
+              { name: '新组件：领取优惠券', done: 0 },
+              { name: '新组件：1 Tab推荐位 2 推荐切换', done: 0 },
               { name: 'BUG·合并Tab资讯,Tab列表,Tab推荐位,推荐切换', done: 0 },
-              { name: '新组件：推荐切换', done: 0 },
               { name: '功能·组件标题:更多链接', done: 0 },
               { name: '样式·图片广告:新增的样式', done: 0 },
               { name: 'BUG·中台切换图片广告样式不生效', done: 0 },
@@ -104,7 +105,7 @@
             style: { 'background-color': 'rgb(255, 125, 212)' },
           },
           {
-            time: ['09:00', '12:00'],
+            time: ['10:00', '12:00'],
             affair: [
               { name: '■ ■ ■', done: 0 },
               { name: 'Politics', done: 0 },
