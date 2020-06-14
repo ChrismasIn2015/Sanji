@@ -15,8 +15,8 @@
     </div>
 
     <!-- 每日标记 -->
-    <planBoard :schedule="myScheduleA" />
     <planBoard :schedule="myScheduleB" />
+    <planBoard :schedule="myScheduleA" />
   </div>
 </template>
 
@@ -39,27 +39,6 @@
                 name: '【建议】图文导航：卡片样式可以使用圆角+背景图完成',
                 done: 0,
               },
-            ],
-            style: { 'background-color': 'rgb(125, 255, 194)' },
-          },
-          {
-            time: ['09:00', '20:00'],
-            affair: [
-              { name: '【1.1】C端', done: 0 },
-              { name: '功能·点击登录判断', done: 1 },
-              { name: '功能·点击跳转小程序', done: 1 },
-              { name: '功能·功能链接：消息中心逻辑', done: 1 },
-              { name: '功能·功能链接：相机扫描', done: 1 },
-              { name: '样式·图文导航支持圆角', done: 1 },
-              { name: '样式·图文导航支持背景图', done: 1 },
-              { name: '样式·图片广告支持不轮播/自动轮播等...', done: 1 },
-              { name: '样式·Tab资讯根据设计建议修改', done: 1 },
-            ],
-            style: { 'background-color': 'rgb(255,0,112)' },
-          },
-          {
-            time: ['09:00', '20:00'],
-            affair: [
               { name: '【1.2】中台', done: 0 },
               { name: '配置值·新组件：领取优惠券', done: 0 },
               { name: '配置值·新组件：Tab推荐位', done: 0 },
@@ -72,13 +51,22 @@
           {
             time: ['09:00', '20:00'],
             affair: [
-              { name: '【1.2】C端', done: 0 },
+              { name: '*****【1.1】C端 *****', done: 0 },
+              { name: '功能·点击登录判断', done: 1 },
+              { name: '功能·点击跳转小程序', done: 1 },
+              { name: '功能·功能链接：消息中心逻辑', done: 1 },
+              { name: '功能·功能链接：相机扫描', done: 1 },
+              { name: '样式·图文导航支持圆角', done: 1 },
+              { name: '样式·图文导航支持背景图', done: 1 },
+              { name: '样式·图片广告支持不轮播/自动轮播等...', done: 1 },
+              { name: '样式·Tab资讯根据设计建议修改', done: 1 },
+              { name: '*****【1.2】C端 *****', done: 0 },
+              { name: '组件标题: 功能 更多链接', done: 1 },
+              { name: '图片广告: 样式 新增的样式', done: 0 },
+              { name: '图片广告: BUG 切换 optiopn 样式不生效', done: 0 },
               { name: '新组件：领取优惠券', done: 0 },
               { name: '新组件：1 Tab推荐位 2 推荐切换', done: 0 },
               { name: 'BUG·合并Tab资讯,Tab列表,Tab推荐位,推荐切换', done: 0 },
-              { name: '功能·组件标题:更多链接', done: 0 },
-              { name: '样式·图片广告:新增的样式', done: 0 },
-              { name: 'BUG·中台切换图片广告样式不生效', done: 0 },
             ],
             style: { 'background-color': 'rgb(255,0,112)' },
           },

@@ -20,7 +20,7 @@
             :key="__index"
             :class="{ 'block-affair-done': __item.done }"
           >
-            {{ __item.name }}
+            {{ `${__item.done ? '(√) ' : ''}${__item.name}` }}
           </div>
         </div>
       </div>
