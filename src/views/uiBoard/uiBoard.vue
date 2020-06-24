@@ -33,13 +33,14 @@
 
     <!-- 1 -->
     <h2>* 轮播图</h2>
-    <div class="board-mine flex">
-      <div style="width: 30rem; border: 1px solid red;">
-        <sjSwiper :config="swiperConfigX" />
+    <div class="board-mine">
+      <div style="width: 30rem; border: 1px solid red; margin: 0rem;">
+        <sjSwiperX :config="swiperConfigX" />
       </div>
-      <div style="margin: 0.5rem"></div>
-      <div style="width: 30rem; border: 1px solid red;">
-        <sjSwiper :config="swiperConfigY" />
+    </div>
+    <div class="board-mine">
+      <div style="width: 30rem; border: 1px solid red; margin: 0rem;">
+        <sjSwiperY :config="swiperConfigX" />
       </div>
     </div>
     <h2>* 提示</h2>
@@ -80,7 +81,8 @@
 <script>
   import { mouseCopy } from '@/utils/utils.js'
   import sjInput from '@/utils/sanJi-UI/sjInput.vue'
-  import sjSwiper from '@/utils/sanJi-UI/sjSwiper.vue'
+  import sjSwiperX from '@/utils/sanJi-UI/sjSwiperX.vue'
+  import sjSwiperY from '@/utils/sanJi-UI/sjSwiperY.vue'
   import sjCalendar from '@/utils/sanJi-UI/sjCalendar.vue'
 
   export default {
@@ -136,47 +138,36 @@
         ],
         alertShow: false,
         swiperConfigX: {
-          type: 'x',
-          height: 200,
-          pots: 1,
-          itemWidth: 310,
-          gap: 0,
+          pots: 0,
+          imageRate: 1,
+          gap: 20,
+          auto: 0,
           images: [
             {
               url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-22/jtour_op_sys_1590111262923.png',
+                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
+              '3d': 0,
+              title: '暂时只支持文字A',
+
+              mediaShow: 1,
             },
             {
               url:
                 'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
-            },
-            {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-22/jtour_op_sys_1590111262923.png',
-            },
-            {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
-            },
-          ],
-        },
-        swiperConfigY: {
-          type: 'y',
-          height: 100,
-          itemWidth: 200,
-          gap: 0,
-          images: [
-            {
+              '3d': 0,
               title: '暂时只支持文字A',
             },
             {
-              title: '暂时只支持文字B',
+              url:
+                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-22/jtour_op_sys_1590111262923.png',
+              '3d': 0,
+              title: '暂时只支持文字A',
             },
             {
-              title: '暂时只支持文字C',
-            },
-            {
-              title: '暂时只支持文字D',
+              url:
+                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
+              '3d': 0,
+              title: '暂时只支持文字A',
             },
           ],
         },
@@ -185,7 +176,8 @@
     components: {
       sjInput,
       sjCalendar,
-      sjSwiper,
+      sjSwiperX,
+      sjSwiperY,
     },
     methods: {
       copyURL(url) {
