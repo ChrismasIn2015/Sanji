@@ -9,20 +9,19 @@
           transition: `top ${stripAllowMove ? '0s' : '0.1s'}`,
           top: `${stripDisValue / htmlFontSize}rem`,
         }"
-        @mousedown.stop="setStripSwitch_x(1)"
-        @mousemove.prevent.stop="setStripLocation_x"
-        @mouseup.stop="setStripSwitch_x(0)"
-        @mouseleave.stop="setStripSwitch_x(0)"
-        @touchstart.stop="setStripSwitch_x(1)"
-        @touchmove.prevent.stop="setStripLocation_x"
-        @touchend.stop="setStripSwitch_x(0)"
-        @touchcancel.stop="setStripSwitch_x(0)"
       >
         <div
           class="img-item flex-middle-y"
           v-for="(item, index) in config.images"
           :key="index"
-          @click.stop="swiperAction(item)"
+          @mousedown.prevent="setStripSwitch_x(1)"
+          @touchstart.prevent="setStripSwitch_x(1)"
+          @mousemove.prevent="setStripLocation_x"
+          @touchmove.prevent="setStripLocation_x"
+          @mouseleave.prevent="setStripSwitch_x(0)"
+          @touchcancel.prevent="setStripSwitch_x(0)"
+          @mouseup.prevent="setStripSwitch_x(0, item)"
+          @touchend.prevent="setStripSwitch_x(0, item)"
         >
           <span>{{ item.title }}</span>
         </div>
@@ -91,7 +90,7 @@
       // 鼠标按下：Strip允许移动
       // 鼠标移动：Strip开始移动
       // 鼠标松开/离开：Strip禁止移动，根据移动偏移量重新设置Strip位置
-      setStripSwitch_x(bool) {
+      setStripSwitch_x(bool, swiperItem) {
         if (this.stripAllowMove === bool) return
         if (bool) {
           // 鼠标按下
@@ -102,7 +101,7 @@
         } else {
           // 鼠标松开/离开
           this.stripAllowMove = 0
-          this.resetStripLocation_y()
+          this.resetStripLocation_y(swiperItem, event)
           this.stripTopStart = this.stripDisValue
         }
       },
@@ -114,7 +113,25 @@
         this.stripDisValue = this.stripTopStart + this.stripDisValueMock
       },
       // 鼠标松开/离开：开始重新设置Strip位置
-      resetStripLocation_y() {
+      resetStripLocation_y(swiperItem, event) {
+        //
+        if (event.changedTouches) {
+          let clickMockGap = Math.abs(
+            event.changedTouches[0].clientY - this.stripDisStart
+          )
+          console.log(clickMockGap)
+          if (clickMockGap < 5) {
+            // console.log("mousedown mock click", swiperItem);
+            let temp = {
+              linkType: 'product',
+              productList: [
+                { productTypeName: '资讯', productId: swiperItem.infoId },
+              ],
+            }
+            this.$emit('clickAction', temp)
+          }
+        }
+        //
         let direction = this.stripDisValueMock > 0 ? 1 : -1 // 负数说明Strip需要向后移动
         let isMoveOver = Math.abs(this.stripDisValueMock) > 0.05 // * 如果偏移量 > 5% 则进入下一图 (3)
         if (isMoveOver) {
@@ -168,14 +185,15 @@
         this.stripWidth = config.images.length * unitHeight
         this.stripTopMax = unitHeight - this.stripWidth
       },
-      swiperAction(item) {
-        // console.log(item)
+      swiperAction(data) {
+        this.$emit('clickAction', data)
       },
     },
   }
 </script>
 
 <style lang="scss" scoped>
+  // @import 'public.less';
   .img-frame {
     width: 100%;
     height: 2.5rem;
@@ -189,7 +207,6 @@
         width: 100%;
         overflow: hidden;
         transition: transform 0.5s;
-        background-color: rgba(255, 255, 255, 0.3);
       }
     }
   }

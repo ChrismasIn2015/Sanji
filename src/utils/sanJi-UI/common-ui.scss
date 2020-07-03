@@ -139,24 +139,24 @@ body,
   color: $common-main;
   border: 1px solid $common-main;
 }
+.red-on {
+  color: $common-tip;
+  border: 1px solid $common-tip;
+  background-color: $common-white;
+  &:hover {
+    color: rgb(255, 80, 0);
+    border: 1px solid rgb(255, 80, 0);
+    background-color: $common-white;
+  }
+}
 .red {
   color: $common-white;
   border: 1px solid rgb(255, 0, 0);
   background-color: rgb(255, 0, 0);
   &:hover {
     color: $common-white;
-    border: 1px solid rgb(207, 0, 0);
-    background-color: rgb(207, 0, 0);
-  }
-}
-.red-on {
-  color: $common-tip;
-  border: 1px solid $common-tip;
-  background-color: $common-white;
-  &:hover {
-    color: rgb(207, 0, 0);
-    border: 1px solid rgb(207, 0, 0);
-    background-color: $common-white;
+    border: 1px solid rgb(255, 80, 0);
+    background-color: rgb(255, 80, 0);
   }
 }
 .blue-on {
@@ -164,15 +164,15 @@ body,
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(79, 145, 207);
-    border: 1px solid rgb(79, 145, 207);
+    color: rgb(0, 144, 255);
+    border: 1px solid rgb(0, 144, 255);
     background-color: $common-white;
   }
 }
 .blue {
   color: $common-white;
-  border: 1px solid rgb(79, 145, 207);
-  background-color: rgb(79, 145, 207);
+  border: 1px solid rgb(0, 144, 255);
+  background-color: rgb(0, 144, 255);
   &:hover {
     color: $common-white;
     border: 1px solid rgb(55, 115, 172);
@@ -184,8 +184,8 @@ body,
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(238, 155, 23);
-    border: 1px solid rgb(238, 155, 23);
+    color: rgb(255, 128, 0);
+    border: 1px solid rgb(255, 128, 0);
     background-color: $common-white;
   }
 }
@@ -195,8 +195,8 @@ body,
   background-color: rgb(255, 170, 32);
   &:hover {
     color: $common-white;
-    border: 1px solid rgb(238, 155, 23);
-    background-color: rgb(238, 155, 23);
+    border: 1px solid rgb(255, 128, 0);
+    background-color: rgb(255, 128, 0);
   }
 }
 .pink-on {
@@ -204,19 +204,19 @@ body,
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(255, 146, 240);
-    border: 1px solid rgb(255, 146, 240);
+    color: rgb(255, 0, 160);
+    border: 1px solid rgb(255, 0, 160);
     background-color: $common-white;
   }
 }
 .pink {
   color: $common-white;
-  border: 1px solid rgb(255, 174, 244);
-  background-color: rgb(255, 174, 244);
+  border: 1px solid rgb(255, 0, 160);
+  background-color: rgb(255, 0, 160);
   &:hover {
     color: $common-white;
-    border: 1px solid rgb(255, 146, 240);
-    background-color: rgb(255, 146, 240);
+    border: 1px solid rgb(184, 0, 116);
+    background-color: rgb(184, 0, 116);
   }
 }
 .disable {

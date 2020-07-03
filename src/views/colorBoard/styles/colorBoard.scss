@@ -1,11 +1,10 @@
 .color-board {
-  padding: 1rem;
+  padding: 0.5rem;
   height: 100%;
   // max-height: 100%;
   .board-nav {
-    padding: 0.5rem;
     .common-btn {
-      margin-left: 0.5rem;
+      margin-right: 0.5rem;
     }
   }
   .board-content {
@@ -13,6 +12,7 @@
     overflow: auto;
     padding: 0.5rem;
     margin: 0.5rem 0rem;
+    margin-right: 8rem;
     border: 1px solid $common-tip-lower;
     .color-show {
       min-height: 3.4rem;

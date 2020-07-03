@@ -1,10 +1,12 @@
 <template>
   <div class="color-board flex-y">
-    <!-- 导航条 -->
-    <div class="board-nav flex-x-reverse">
+    <!-- 导航条1 -->
+    <div class="board-nav flex">
       <div class="common-btn toggle" @click.stop="toIndex">返回</div>
       <div class="common-btn toggle" @click.stop="clearColor">清空</div>
     </div>
+    <!-- 导航条2 -->
+    <indexEntry />
     <!-- 内容 -->
     <div class="board-content">
       <!-- ----------------------------------------功能区---------------------------------------- -->
@@ -112,33 +114,34 @@
 </template>
 
 <script>
-  import ring from '@/utils/sanJi-UI/shape/ring.vue'
-  import { mouseCopy } from '@/utils/utils.js'
-  export default {
-    data() {
-      return {
-        mainColor: [],
-      }
+import indexEntry from "@/components/indexEntry/indexEntry.vue";
+import ring from "@/utils/sanJi-UI/shape/ring.vue";
+import { mouseCopy } from "@/utils/utils.js";
+export default {
+  data() {
+    return {
+      mainColor: []
+    };
+  },
+  components: {
+    ring,
+    indexEntry
+  },
+  methods: {
+    clearColor() {
+      this.mainColor = [];
     },
-    mounted() {},
-    components: {
-      ring,
+    toIndex() {
+      this.$router.push({ name: "index" });
     },
-    methods: {
-      clearColor() {
-        this.mainColor = []
-      },
-      toIndex() {
-        this.$router.push({ name: 'index' })
-      },
-      getColor(color) {
-        this.mainColor.push(color)
-        mouseCopy(color, (res) => this.$tip(`复制成功 ${res}`))
-      },
-    },
+    getColor(color) {
+      this.mainColor.push(color);
+      mouseCopy(color, res => this.$tip(`复制成功 ${res}`));
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  @import './styles/colorBoard.scss';
+@import "./styles/colorBoard.scss";
 </style>

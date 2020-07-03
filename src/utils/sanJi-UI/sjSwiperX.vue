@@ -9,14 +9,6 @@
           left: `${stripDisValue}px`,
           width: `${stripWidth}px`,
         }"
-        @mousedown.prevent.stop="setStripSwitch_x(1)"
-        @touchstart.prevent.stop="setStripSwitch_x(1)"
-        @mousemove.prevent.stop="setStripLocation_x"
-        @touchmove.prevent.stop="setStripLocation_x"
-        @mouseleave.prevent.stop="setStripSwitch_x(0)"
-        @touchcancel.prevent.stop="setStripSwitch_x(0)"
-        @mouseup.prevent.stop="setStripSwitch_x(0)"
-        @touchend.prevent.stop="setStripSwitch_x(0)"
       >
         <div
           class="img-item"
@@ -27,13 +19,20 @@
             'margin-right': `${
               index !== config.images.length - 1 ? config.gap : 0
             }px`,
-            'border-radius': `${item['radius'] ? 0.5 : 0}rem`,
+            'border-radius': `${item['radius'] ? 0.4 : 0}rem`,
             'font-size': `${item.fontSize / htmlFontSize}rem`,
             transform: `scale(${
-              indexNumber !== index && item['3d'] ? 0.8 : 1
+              indexNumber !== index && item['3d'] ? 0.9 : 1
             })`,
           }"
-          @click.prevent.stop="swiperAction(item)"
+          @mousedown.prevent="setStripSwitch_x(1)"
+          @mousemove.prevent="setStripLocation_x"
+          @mouseleave.prevent="setStripSwitch_x(0)"
+          @mouseup.prevent="setStripSwitch_x(0, item)"
+          @touchstart.prevent="setStripSwitch_x(1)"
+          @touchmove.prevent="setStripLocation_x"
+          @touchcancel.prevent="setStripSwitch_x(0)"
+          @touchend.prevent="setStripSwitch_x(0, item)"
         >
           <div class="img-block">
             <img :src="item.url" alt @mousedown.prevent />
@@ -126,7 +125,7 @@
       // 鼠标按下：Strip允许移动
       // 鼠标移动：Strip开始移动
       // 鼠标松开/离开：Strip禁止移动，根据移动偏移量重新设置Strip位置
-      setStripSwitch_x(bool) {
+      setStripSwitch_x(bool, swiperItem) {
         if (this.stripAllowMove === bool) return
         if (bool) {
           // 鼠标按下
@@ -137,7 +136,7 @@
         } else {
           // 鼠标松开/离开
           this.stripAllowMove = 0
-          this.resetStripLocation_x()
+          this.resetStripLocation_x(swiperItem, event)
           this.stripLeftStart = this.stripDisValue
         }
       },
@@ -149,7 +148,18 @@
         this.stripDisValue = this.stripLeftStart + this.stripDisValueMock
       },
       // 鼠标松开/离开：开始重新设置Strip位置
-      resetStripLocation_x() {
+      resetStripLocation_x(swiperItem, event) {
+        //
+        if (event.changedTouches) {
+          let clickMockGap = Math.abs(
+            event.changedTouches[0].clientX - this.stripDisStart
+          )
+          if (clickMockGap < 15) {
+            // console.log("mousedown mock click", swiperItem);
+            this.$emit('clickAction', swiperItem)
+          }
+        }
+        //
         let direction = this.stripDisValueMock > 0 ? 1 : -1 // 负数说明Strip需要向后移动
         let isMoveOver =
           Math.abs(this.stripDisValueMock) / this.frameWidth > 0.1 // * 如果偏移量 > 5% 则进入下一图 (3)
@@ -169,12 +179,12 @@
           }
           // * 如果Strip已为极限值 且希望向右移动
           if (this.stripLeftStart === this.stripLeftMax && direction === 1) {
-            let gap = 0
             if (this.stripUnitStyleWidth <= this.frameWidth) {
-              gap =
-                (this.frameWidth % this.stripUnitStyleWidth) + this.config.gap
+              let gap =
+                this.stripUnitStyleWidth -
+                (this.frameWidth % this.stripUnitStyleWidth)
+              leftEnd = this.stripLeftStart + gap
             }
-            leftEnd -= gap
           }
           // * 坐标不能为 images 长度
           if (targetIndex > this.config.images.length - 1) {
@@ -203,8 +213,10 @@
           if (targetIndex === imageLength - 1) {
             leftEnd = this.stripLeftMax
           }
+          //
+          if (leftEnd < this.stripLeftMax) leftEnd = this.stripLeftMax
           this.stripDisValue = leftEnd
-        }, 1000)
+        }, 2000)
       },
       // *********************************** 辅助方法区 ***********************************
       setStripUnit(val) {
@@ -227,59 +239,61 @@
 </script>
 
 <style lang="scss" scoped>
+  // @import "public.less";
+  /* prettier-ignore */
   .img-frame {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  .img-strip {
     position: relative;
-    .img-strip {
+    .img-item {
+      width: 100%;
       position: relative;
-      .img-item {
-        width: 100%;
+      overflow: hidden;
+      transition: transform 0.5s;
+      background-color: rgba(255, 255, 255, 0.3);
+      .img-block {
         position: relative;
-        overflow: hidden;
-        transition: transform 0.5s;
-        background-color: rgba(255, 255, 255, 0.3);
-        .img-block {
-          position: relative;
-          img {
-            display: block;
+        img {
+          display: block;
+          width: 100%;
+        }
+        .img-item-info {
+          width: 100%;
+          position: absolute;
+          padding: 0rem 12PX 12PX;
+          left: 0PX;
+          bottom: 0PX;
+          color: white;
+          .title {
             width: 100%;
+            margin-right: 1rem;
           }
-          .img-item-info {
-            width: 100%;
-            position: absolute;
-            padding: 0rem 1.2rem 1rem;
-            left: 0px;
-            bottom: 0px;
-            color: white;
-            .title {
-              width: 100%;
-              margin-right: 1rem;
-            }
-            .icon {
-              img {
-                width: 2rem;
-                height: 2rem;
-              }
+          .icon {
+            img {
+              width: 2rem;
+              height: 2rem;
             }
           }
         }
       }
     }
-    .img-pots {
-      position: absolute;
-      bottom: 1rem;
-      z-index: 1;
-      left: 50%;
-      transform: translateX(-50%);
-      .pot {
-        width: 0.5rem;
-        height: 0.5rem;
-        margin: 0rem 0.2rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
-        background-color: rgba(255, 255, 255, 0.3);
-      }
+  }
+  .img-pots {
+    position: absolute;
+    bottom: 1rem;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    .pot {
+      width: 0.5rem;
+      height: 0.5rem;
+      margin: 0rem 0.2rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+      background-color: rgba(255, 255, 255, 0.3);
     }
   }
+}
 </style>
