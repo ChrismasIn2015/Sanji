@@ -14,6 +14,7 @@
           class="img-item flex-middle-y"
           v-for="(item, index) in config.images"
           :key="index"
+          :style="config.style"
           @mousedown.prevent="setStripSwitch_x(1)"
           @touchstart.prevent="setStripSwitch_x(1)"
           @mousemove.prevent="setStripLocation_x"
@@ -23,7 +24,7 @@
           @mouseup.prevent="setStripSwitch_x(0, item)"
           @touchend.prevent="setStripSwitch_x(0, item)"
         >
-          <span>{{ item.title }}</span>
+          <div class="text-cut">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -38,6 +39,7 @@
         default: () => {
           return {
             images: [],
+            style: {},
           }
         },
       },
@@ -119,16 +121,15 @@
           let clickMockGap = Math.abs(
             event.changedTouches[0].clientY - this.stripDisStart
           )
-          console.log(clickMockGap)
           if (clickMockGap < 5) {
             // console.log("mousedown mock click", swiperItem);
-            let temp = {
-              linkType: 'product',
-              productList: [
-                { productTypeName: '资讯', productId: swiperItem.infoId },
-              ],
-            }
-            this.$emit('clickAction', temp)
+            // let temp = {
+            //   linkType: "product",
+            //   productList: [
+            //     { productTypeName: "资讯", productId: swiperItem.infoId }
+            //   ]
+            // };
+            this.$emit('clickAction', swiperItem)
           }
         }
         //
@@ -193,7 +194,6 @@
 </script>
 
 <style lang="scss" scoped>
-  // @import 'public.less';
   .img-frame {
     width: 100%;
     height: 2.5rem;
@@ -207,6 +207,9 @@
         width: 100%;
         overflow: hidden;
         transition: transform 0.5s;
+        div {
+          width: 80%;
+        }
       }
     }
   }

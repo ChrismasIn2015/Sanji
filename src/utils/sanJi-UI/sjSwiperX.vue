@@ -5,42 +5,49 @@
       <div
         class="img-strip flex"
         :style="{
-          transition: `left ${stripAllowMove ? '0s' : '0.1s'}`,
+          transition: `left ${stripAllowMove ? '0s' : '0.2s'}`,
           left: `${stripDisValue}px`,
           width: `${stripWidth}px`,
         }"
       >
         <div
-          class="img-item"
+          class="img-item flex-middle-y"
           v-for="(item, index) in config.images"
           :key="index"
           :style="{
             width: `${config.imageRate * frameWidth}px`,
+            height: `${stripHeight}px`,
             'margin-right': `${
               index !== config.images.length - 1 ? config.gap : 0
             }px`,
             'border-radius': `${item['radius'] ? 0.4 : 0}rem`,
             'font-size': `${item.fontSize / htmlFontSize}rem`,
+            'line-height': `${item.fontSize / htmlFontSize + 0.2}rem`,
             transform: `scale(${
               indexNumber !== index && item['3d'] ? 0.9 : 1
             })`,
           }"
-          @mousedown.prevent="setStripSwitch_x(1)"
-          @mousemove.prevent="setStripLocation_x"
-          @mouseleave.prevent="setStripSwitch_x(0)"
-          @mouseup.prevent="setStripSwitch_x(0, item)"
-          @touchstart.prevent="setStripSwitch_x(1)"
-          @touchmove.prevent="setStripLocation_x"
-          @touchcancel.prevent="setStripSwitch_x(0)"
-          @touchend.prevent="setStripSwitch_x(0, item)"
+          @mousedown="setStripSwitch_x(1)"
+          @mousemove="setStripLocation_x"
+          @mouseleave="setStripSwitch_x(0)"
+          @mouseup="setStripSwitch_x(0, item)"
+          @touchstart="setStripSwitch_x(1)"
+          @touchmove="setStripLocation_x"
+          @touchcancel="setStripSwitch_x(0)"
+          @touchend="setStripSwitch_x(0, item)"
         >
           <div class="img-block">
-            <img :src="item.url" alt @mousedown.prevent />
-            <div class="img-item-info flex-side flex-middle-y">
-              <div class="title text-cut">{{ item.title }}</div>
-              <div class="icon" v-show="item.mediaShow">
-                <img :src="mediaIcon" alt />
-              </div>
+            <img
+              :src="item.url"
+              alt
+              @mousedown.prevent
+              :onerror="defaultHeader"
+            />
+          </div>
+          <div class="img-item-info flex-side flex-middle-y">
+            <div class="title text-cut">{{ item.title }}</div>
+            <div class="icon" v-show="item.mediaShow">
+              <img :src="mediaIcon" alt :onerror="defaultHeader" />
             </div>
           </div>
         </div>
@@ -77,6 +84,8 @@
     data() {
       return {
         // 容器相关
+        defaultHeader:
+          'this.src="http://pic.lvmama.com/uploads/pc/place2/jtour/2020-06-30/jtour_op_sys_1593508573890.png"',
         htmlFontSize: 16,
         frameWidth: 0,
         mediaIcon:
@@ -84,16 +93,19 @@
         // Strip参数相关
         stripAllowMove: false,
         stripWidth: 0,
+        stripHeight: 0,
         stripLeftMax: 0,
         stripUnitStyleWidth: 0,
         // Strip移动相关
         stripDisStart: 0,
         stripLeftStart: 0,
+        stripYStart: 0,
         stripDisValueMock: 0,
         stripDisValue: 0,
         // 坐标相关
         indexNumber: 0,
         indexTimer: null,
+        random: Math.random().toFixed(5),
       }
     },
     watch: {
@@ -133,6 +145,11 @@
           this.stripAllowMove = 1
           let tempClientX = event.clientX || event.targetTouches[0].clientX
           this.stripDisStart = tempClientX
+
+          // **** 为点击事件预备参数 ****
+          let tempClientY = event.clientY || event.targetTouches[0].clientY
+          this.stripYStart = tempClientY
+          // **** 为点击事件预备参数 End ****
         } else {
           // 鼠标松开/离开
           this.stripAllowMove = 0
@@ -142,6 +159,9 @@
       },
       // 鼠标移动：Strip开始根据鼠标事件移动
       setStripLocation_x() {
+        // **** 禁止滑动 ****
+        if (this.config.imagesStatic) return
+        // **** 禁止滑动 End ****
         if (!this.stripAllowMove) return
         let tempClientX = event.clientX || event.targetTouches[0].clientX
         this.stripDisValueMock = tempClientX - this.stripDisStart // 如果偏移量 > 5% 则进入下一图 否则就返回 (1)
@@ -149,17 +169,21 @@
       },
       // 鼠标松开/离开：开始重新设置Strip位置
       resetStripLocation_x(swiperItem, event) {
-        //
+        // **** 点击事件 ****
         if (event.changedTouches) {
-          let clickMockGap = Math.abs(
+          let clickMockGapX = Math.abs(
             event.changedTouches[0].clientX - this.stripDisStart
           )
-          if (clickMockGap < 15) {
+          let clickMockGapY = Math.abs(
+            event.changedTouches[0].clientY - this.stripYStart
+          )
+          if (clickMockGapX < 15 && clickMockGapY < 15) {
             // console.log("mousedown mock click", swiperItem);
             this.$emit('clickAction', swiperItem)
           }
         }
-        //
+        // **** 点击事件 End ****
+
         let direction = this.stripDisValueMock > 0 ? 1 : -1 // 负数说明Strip需要向后移动
         let isMoveOver =
           Math.abs(this.stripDisValueMock) / this.frameWidth > 0.1 // * 如果偏移量 > 5% 则进入下一图 (3)
@@ -168,11 +192,12 @@
           targetIndex += -direction
           let leftEnd =
             this.stripLeftStart + this.stripUnitStyleWidth * direction // 目标偏移量
-          // * 如果在左边缘
-          if (leftEnd > 0) {
-            leftEnd = 0
-            targetIndex = 0
-          }
+
+          // console.log("0", targetIndex, leftEnd);
+          // console.log(this.stripLeftStart, this.stripUnitStyleWidth, direction);
+          // * 下标不可能小于0
+          if (targetIndex < 0) targetIndex = 0
+
           // * 偏移量的不能超出最大值
           if (leftEnd <= this.stripLeftMax) {
             leftEnd = this.stripLeftMax
@@ -190,7 +215,13 @@
           if (targetIndex > this.config.images.length - 1) {
             targetIndex = this.config.images.length - 1
           }
+          // * 如果在左边缘
+          if (leftEnd > 0) {
+            leftEnd = 0
+            targetIndex = 0
+          }
           // * 实际移动
+          // console.log("1", targetIndex, leftEnd);
           this.stripDisValue = leftEnd
           this.indexNumber = targetIndex
         } else {
@@ -228,6 +259,32 @@
         let unitWidth = this.frameWidth * config.imageRate + gap
         //
         this.stripWidth = config.images.length * unitWidth - gap
+
+        // **** 获取图片最小高度 ****
+        let tempWidth = 0
+        let tempHeight = 0
+        for (let i = 0; i < config.images.length; i++) {
+          new Promise((resolve, reject) => {
+            let e = config.images[i]
+            let myImg = new Image()
+            myImg.src = e.url
+            let temp = 0
+            myImg.onload = (imgObject) => {
+              let newWidth = imgObject.target.width
+              let newHeight = imgObject.target.height
+              if (tempHeight === 0 || tempHeight > newHeight) {
+                tempWidth = newWidth
+                tempHeight = newHeight
+              }
+              resolve(this.stripHeight)
+            }
+          }).then((res) => {
+            this.stripHeight =
+              (tempHeight * (this.frameWidth * config.imageRate)) / tempWidth
+          })
+        }
+        // **** 获取图片最小高度 End ****
+
         this.stripLeftMax = this.frameWidth - this.stripWidth
         this.stripUnitStyleWidth = unitWidth
       },
@@ -239,7 +296,6 @@
 </script>
 
 <style lang="scss" scoped>
-  // @import "public.less";
   /* prettier-ignore */
   .img-frame {
   width: 100%;
@@ -252,29 +308,28 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.5s;
-      background-color: rgba(255, 255, 255, 0.3);
       .img-block {
-        position: relative;
+        width: 100%;
         img {
           display: block;
           width: 100%;
         }
-        .img-item-info {
+      }
+      .img-item-info {
+        width: 100%;
+        position: absolute;
+        padding: 0rem 12PX 12PX;
+        left: 0PX;
+        bottom: 0PX;
+        color: white;
+        .title {
           width: 100%;
-          position: absolute;
-          padding: 0rem 12PX 12PX;
-          left: 0PX;
-          bottom: 0PX;
-          color: white;
-          .title {
-            width: 100%;
-            margin-right: 1rem;
-          }
-          .icon {
-            img {
-              width: 2rem;
-              height: 2rem;
-            }
+          margin-right: 1rem;
+        }
+        .icon {
+          img {
+            width: 2rem;
+            height: 2rem;
           }
         }
       }
