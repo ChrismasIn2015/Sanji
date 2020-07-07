@@ -1,15 +1,6 @@
 export default {
   myPersonalSchedule: [
     {
-      time: ['09:00', '20:00'],
-      affair: [
-        { name: '* 章密：CMS 新增富文本组件', done: 0 },
-        { name: '* 章密：CMS 对接有赞数据', done: 0 },
-        { name: '* 王鑫：综合信息管理C端', done: 0 },
-      ],
-      style: { 'background-color': 'rgb(208,255,0)' },
-    },
-    {
       time: ['07:00', '12:00'],
       affair: [
         { name: '■ ■ Politics', done: 0 },

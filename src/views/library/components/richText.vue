@@ -11,7 +11,7 @@
         contenteditable="true"
         v-html="content"
         @keydown="keyListen"
-        @blur="saveAction"
+        @blur.capture.stop="saveAction"
       ></div>
     </div>
   </div>
