@@ -164,19 +164,19 @@ body,
   border: 1px solid $common-tip;
   background-color: $common-white;
   &:hover {
-    color: rgb(0, 144, 255);
-    border: 1px solid rgb(0, 144, 255);
+    color: rgb(0, 112, 255);
+    border: 1px solid rgb(0, 112, 255);
     background-color: $common-white;
   }
 }
 .blue {
   color: $common-white;
-  border: 1px solid rgb(0, 144, 255);
-  background-color: rgb(0, 144, 255);
+  border: 1px solid rgb(0, 112, 255);
+  background-color: rgb(0, 112, 255);
   &:hover {
     color: $common-white;
-    border: 1px solid rgb(55, 115, 172);
-    background-color: rgb(55, 115, 172);
+    border: 1px solid rgb(0, 94, 218);
+    background-color: rgb(0, 94, 218);
   }
 }
 .orange-on {
