@@ -30,6 +30,11 @@ const routes = [
     name: 'colorBoard',
     component: () => import('../views/colorBoard/colorBoard.vue'),
   },
+  {
+    path: '/stockBoard',
+    name: 'stockBoard',
+    component: () => import('../views/stockBoard/stockBoard.vue'),
+  },
 ]
 
 const router = new VueRouter({

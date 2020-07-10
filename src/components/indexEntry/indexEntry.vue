@@ -1,15 +1,20 @@
 <template>
   <div class="index-entry flex-y">
+    <div class="common-btn red" @click.stop="openMyDevTool">打开控制台</div>
     <div v-show="nowRoutePathName !== 'library'" class="common-btn" @click.stop="toLibrary">笔记系统</div>
-    <div v-show="nowRoutePathName !== 'history'" class="common-btn blue" @click.stop="toHistory">日历</div>
     <div v-show="nowRoutePathName !== 'uiBoard'" class="common-btn orange" @click.stop="toUI">sjUI</div>
     <div
       v-show="nowRoutePathName !== 'colorBoard'"
       class="common-btn pink"
       @click.stop="toColor"
     >Color</div>
+    <div v-show="nowRoutePathName !== 'history'" class="common-btn blue" @click.stop="toHistory">日历</div>
+    <div
+      v-show="nowRoutePathName !== 'stockBoard'"
+      class="common-btn deep-green"
+      @click.stop="toStock"
+    >StockStore</div>
     <div v-show="nowRoutePathName !== 'index'" class="common-btn toggle" @click.stop="toIndex">首页</div>
-    <div class="common-btn toggle" @click.stop="openMyDevTool">打开控制台</div>
   </div>
 </template>
 
@@ -26,6 +31,9 @@ export default {
   methods: {
     toIndex() {
       this.$router.push({ name: "index" });
+    },
+    toStock() {
+      this.$router.push({ name: "stockBoard" });
     },
     toUI() {
       this.$router.push({ name: "uiBoard" });
