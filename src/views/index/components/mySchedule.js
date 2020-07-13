@@ -39,4 +39,16 @@ export default {
       style: { 'background-color': 'rgb(125, 255, 194)' },
     },
   ],
+  yjySchedule: [
+    {
+      time: ['09:00', '18:00'],
+      affair: [
+        { name: '综合信息管理 C端页面', done: 0 },
+        { name: 'CMS功能链接/搜索 Bar变更 (目的地)', done: 0 },
+        { name: 'CMS图片广告 图片宽度变更', done: 0 },
+        { name: 'CMS Tab推荐位 导航条样式变更 (待定)', done: 0 },
+      ],
+      style: { 'background-color': 'rgb(123, 125, 212)' },
+    },
+  ],
 }
