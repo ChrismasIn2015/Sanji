@@ -4,8 +4,7 @@ export function getYYMMDD(mills) {
   // 传入的是毫秒
   let time = new Date(mills)
   let year = time.getFullYear()
-  let month =
-    time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
+  let month = time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
   let day = time.getDate() < 10 ? '0' + time.getDate() : time.getDate()
   return String(year) + '-' + String(month) + '-' + String(day)
 }
@@ -14,8 +13,7 @@ export function getYYMMDD(mills) {
 export function getMM(mills) {
   // 传入的是毫秒
   let time = new Date(mills)
-  let month =
-    time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
+  let month = time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
   return String(month)
 }
 
@@ -64,10 +62,30 @@ export function getCalendarMatrix(startMills, endMills) {
     let monthValue = calendarMatrix.get(yearKey).get(monthKey)
     if (!monthValue) calendarMatrix.get(yearKey).set(monthKey, [])
     // 往月份数组里添加日期
+    let myDay = getDD(nowDayMill)
+    // **** 使得月份数组首位总为星期一 ****
+    if (myDay === '01') {
+      let weekValue = `${yearKey}-${monthKey}-01`
+      let weekDay = new Date(weekValue).getDay() - 1
+      if (weekDay === -1) weekDay = 6
+      for (let weekDayCount = 0; weekDayCount < weekDay; weekDayCount++) {
+        calendarMatrix
+          .get(yearKey)
+          .get(monthKey)
+          .push({
+            year: yearKey,
+            month: monthKey,
+            day: '32',
+            past: nowDayMill < Date.now(),
+            disable: true,
+          })
+      }
+    }
+    // **** 使得月份数组首位总为星期一 End ****
     let dateEntry = {
       year: yearKey,
       month: monthKey,
-      day: getDD(nowDayMill),
+      day: myDay,
       past: nowDayMill < Date.now(),
     }
     calendarMatrix
@@ -75,7 +93,6 @@ export function getCalendarMatrix(startMills, endMills) {
       .get(monthKey)
       .push(dateEntry)
   }
-  console.log(calendarMatrix)
   return calendarMatrix
 }
 

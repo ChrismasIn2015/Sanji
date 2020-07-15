@@ -23,7 +23,7 @@
                 class="common-btn orange-on"
                 v-for="(date, index) in monthEntry[1]"
                 :key="index"
-                :class="{ orange: date.past }"
+                :class="{ orange: date.past, disable: date.disable }"
               >{{ date.day }}</div>
             </div>
           </div>
