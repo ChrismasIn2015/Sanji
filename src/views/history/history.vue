@@ -11,20 +11,22 @@
         <h1>{{ yearEntry[0] }}</h1>
         <!-- 月份 -->
         <div class="flex-wrap">
-          <div
-            style="width: 27rem;"
-            v-for="(monthEntry, monthIndex) in yearEntry[1]"
-            :key="monthIndex"
-          >
+          <div style="width: 27rem;" v-for="(monthEntry, monthIndex) in yearEntry[1]" :key="monthIndex">
             <h2>{{ monthEntry[0] }}</h2>
+            <div class="flex">
+              <div class="common-btn disable">一</div>
+              <div class="common-btn disable">二</div>
+              <div class="common-btn disable">三</div>
+              <div class="common-btn disable">四</div>
+              <div class="common-btn disable">五</div>
+              <div class="common-btn disable">六</div>
+              <div class="common-btn disable">日</div>
+            </div>
             <!-- 日期 -->
             <div class="flex-wrap">
-              <div
-                class="common-btn orange-on"
-                v-for="(date, index) in monthEntry[1]"
-                :key="index"
-                :class="{ orange: date.past, disable: date.disable }"
-              >{{ date.day }}</div>
+              <div class="common-btn orange-on" v-for="(date, index) in monthEntry[1]" :key="index" :class="{ orange: date.past, disable: date.disable }">
+                {{ date.disable ? '' : date.day }}
+              </div>
             </div>
           </div>
         </div>
@@ -36,35 +38,32 @@
 </template>
 
 <script>
-import indexEntry from "@/components/indexEntry/indexEntry.vue";
-import { getCalendarMatrix } from "@/utils/utils.js";
-export default {
-  data() {
-    return {
-      calendarMap: new Map()
-    };
-  },
-  mounted() {
-    this.renderCalendar();
-  },
-  components: {
-    indexEntry
-  },
-  methods: {
-    renderCalendar() {
-      let map = getCalendarMatrix(
-        Date.parse("2020-06-01"),
-        Date.parse("2020-12-20")
-      );
-      this.calendarMap = map;
+  import indexEntry from '@/components/indexEntry/indexEntry.vue'
+  import { getCalendarMatrix } from '@/utils/utils.js'
+  export default {
+    data() {
+      return {
+        calendarMap: new Map(),
+      }
     },
-    toIndex() {
-      this.$router.push({ name: "index" });
-    }
+    mounted() {
+      this.renderCalendar()
+    },
+    components: {
+      indexEntry,
+    },
+    methods: {
+      renderCalendar() {
+        let map = getCalendarMatrix(Date.parse('2020-06-01'), Date.parse('2020-12-20'))
+        this.calendarMap = map
+      },
+      toIndex() {
+        this.$router.push({ name: 'index' })
+      },
+    },
   }
-};
 </script>
 
 <style lang="scss" scoped>
-@import "./styles/history.scss";
+  @import './styles/history.scss';
 </style>

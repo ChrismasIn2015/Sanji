@@ -12,12 +12,9 @@
     margin: 0.5rem 0rem;
     background-color: $common-tip-lower;
     .common-btn {
+      text-align: center;
+      width: 3.3rem;
       margin: 0.2rem;
-    }
-  }
-  .line-now {
-    .common-btn {
-      margin-right: 0.5rem;
     }
   }
 }

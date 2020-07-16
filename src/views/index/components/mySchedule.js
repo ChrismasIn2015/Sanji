@@ -1,10 +1,9 @@
 export default {
   myPersonalSchedule: [
     {
-      time: ['07:00', '12:00'],
+      time: ['10:00', '12:00'],
       affair: [
-        { name: '■ ■ Politics', done: 0 },
-        { name: '■ ■ Calculus', done: 0 },
+        { name: '■ ■', done: 0 },
         { name: '一元函数微分', done: 0 },
         { name: '一元函数积分', done: 0 },
         { name: '向量代数与空间解析几何', done: 0 },
@@ -16,9 +15,9 @@ export default {
       style: { 'background-color': 'rgb(255, 125, 212)' },
     },
     {
-      time: ['14:00', '18:00'],
+      time: ['14:00', '17:00'],
       affair: [
-        { name: '■ ■ ■ ■', done: 0 },
+        { name: '■ ■ ■', done: 0 },
         { name: '计算机组成原理', done: 0 },
         { name: '操作系统', done: 0 },
         { name: '计算机网络', done: 0 },
@@ -28,15 +27,6 @@ export default {
         { name: 'C++ / WebServer', done: 0 },
       ],
       style: { 'background-color': 'rgb(125, 229, 255)' },
-    },
-    {
-      time: ['21:00', '00:00'],
-      affair: [
-        { name: '■ ■ ■ Comprehension', done: 0 },
-        { name: '■ ■ ■ Writing', done: 0 },
-        { name: '■ ■ ■ sjUI / erpUI', done: 0 },
-      ],
-      style: { 'background-color': 'rgb(125, 255, 194)' },
     },
     {
       time: ['09:00', '18:00'],
@@ -80,6 +70,16 @@ export default {
         { name: '■ ■ ■ ■ 7.24提测 ■ ■ ■ ■', done: 0 },
       ],
       style: { 'background-color': 'rgb(255,0,32)' },
+    },
+    {
+      time: ['22:00', '00:00'],
+      affair: [
+        { name: '■ ■', done: 0 },
+        { name: 'Writing', done: 0 },
+        { name: 'Comprehension', done: 0 },
+        { name: 'Personal Brand', done: 0 },
+      ],
+      style: { 'background-color': 'rgb(125, 255, 194)' },
     },
   ],
 }
