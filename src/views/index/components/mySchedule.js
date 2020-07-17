@@ -36,6 +36,8 @@ export default {
         { name: '首页：图文导航图片宽度自定义', done: 1 },
         { name: '首页：支持右下角图片', done: 1 },
         { name: '首页：跳转美味不用等', done: 1 },
+        { name: '7.16新增：轮播图流畅度优化', done: 1 },
+        { name: '7.16新增：Tab资讯样式优化', done: 1 },
         { name: '■ ■ ■ ■ 7.14提测 ■ ■ ■ ■', done: 0 },
         { name: 'C端 x 综合信息管理', done: 1 },
         { name: '■ ■ ■ ■ 7.24提测 ■ ■ ■ ■', done: 0 },
