@@ -5,24 +5,14 @@
     <!-- UI展示 -->
     <h2>目前PC常用UI</h2>
     <div class="board-ad flex">
-      <div
-        class="ad flex-middle-y"
-        v-for="(item, index) in pcUIList"
-        :key="index"
-        @click.stop="copyURL(item.url)"
-      >
+      <div class="ad flex-middle-y" v-for="(item, index) in pcUIList" :key="index" @click.stop="copyURL(item.url)">
         <img :src="item.icon" alt />
         <span>{{ item.name }}</span>
       </div>
     </div>
     <h2>目前移动端常用UI</h2>
     <div class="board-ad flex">
-      <div
-        class="ad flex-middle-y"
-        v-for="(item, index) in mobileUIList"
-        :key="index"
-        @click.stop="copyURL(item.url)"
-      >
+      <div class="ad flex-middle-y" v-for="(item, index) in mobileUIList" :key="index" @click.stop="copyURL(item.url)">
         <img :src="item.icon" alt />
         <span>{{ item.name }}</span>
       </div>
@@ -67,9 +57,7 @@
     </div>
     <h2>* 表单</h2>
     <div class="board-mine flex">
-      <sjInput
-        :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }"
-      />
+      <sjInput :state="{ holder: '默认输入框不允许为空', icon: pcUIList[0].icon }" />
       <sjCalendar />
       <sjInput :state="{ holder: '文本框', type: 'textarea' }" />
     </div>
@@ -100,14 +88,12 @@
           },
           {
             name: 'React Antd',
-            icon:
-              'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+            icon: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
             url: 'https://ant.design/index-cn',
           },
           {
             name: 'Jquery Bs',
-            icon:
-              'https://v4.bootcss.com/docs/assets/img/favicons/apple-touch-icon.png',
+            icon: 'https://v4.bootcss.com/docs/assets/img/favicons/apple-touch-icon.png',
             url: 'https://v4.bootcss.com/',
           },
           {
@@ -125,8 +111,7 @@
           },
           {
             name: 'Vue CubeUI',
-            icon:
-              'https://webapp.didistatic.com/static/webapp/shield/Cube-UI_logo.ico',
+            icon: 'https://webapp.didistatic.com/static/webapp/shield/Cube-UI_logo.ico',
             url: 'https://didi.github.io/cube-ui/#/zh-CN',
           },
           {
@@ -143,28 +128,24 @@
           auto: 0,
           images: [
             {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
+              url: 'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
               '3d': 0,
               title: '暂时只支持文字A',
 
               mediaShow: 1,
             },
             {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
+              url: 'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
               '3d': 0,
               title: '暂时只支持文字A',
             },
             {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-22/jtour_op_sys_1590111262923.png',
+              url: 'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-22/jtour_op_sys_1590111262923.png',
               '3d': 0,
               title: '暂时只支持文字A',
             },
             {
-              url:
-                'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
+              url: 'http://pic.lvmama.com/uploads/pc/place2/jtour/2020-05-28/jtour_op_sys_1590635334878.jpg',
               '3d': 0,
               title: '暂时只支持文字A',
             },
@@ -182,19 +163,16 @@
     methods: {
       copyURL(url) {
         mouseCopy(url, (res) => {
-          this.$confirm({ title: '', content: `复制成功 ${url}` }, null)
+          this.$invoker.openBrower(url)
         })
       },
       toIndex() {
         this.$router.push({ name: 'index' })
       },
       showConfirm() {
-        this.$confirm(
-          { title: '自定义标题', content: '在main.js中进行了全局挂载' },
-          (res) => {
-            console.log(`点击了 ${res ? '确定' : '取消'}`)
-          }
-        )
+        this.$confirm({ title: '自定义标题', content: '在main.js中进行了全局挂载' }, (res) => {
+          console.log(`点击了 ${res ? '确定' : '取消'}`)
+        })
       },
       showTip() {
         this.$tip('这是一条系统提示')

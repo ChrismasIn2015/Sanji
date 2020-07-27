@@ -17,8 +17,12 @@ Vue.prototype.$tip = $sjTip
 import Vue from 'vue'
 import App from './App.vue'
 Vue.config.productionTip = false
-new Vue({
+const vm = new Vue({
   router,
   store,
   render: (h) => h(App),
 }).$mount('#app')
+
+// 5.封装Node主进程方法
+import Invoker from './ipc/ipc_Invoker.js'
+Vue.prototype.$invoker = new Invoker(vm)
