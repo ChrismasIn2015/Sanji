@@ -29,7 +29,7 @@ export default {
                 { name: 'Sanji *进销存', done: 0 },
                 { name: 'Sanji *UI', done: 0 },
             ],
-            style: { 'background-color': 'rgb(125, 229, 255)' },
+            style: { 'background-color': 'rgb(0,255,160)' },
         },
         {
             time: ['09:00', '18:00'],
@@ -48,7 +48,6 @@ export default {
                 { name: '链接', done: 1 },
                 { name: '多媒体富文本', done: 1 },
                 { name: '0724 CMS *酒店搜索组件', done: 1 },
-                { name: '0731 黟县 景区指南H5', done: 1 },
                 { name: '推迟 0731 CMS接口 *获取当前可跳转的 "目的地" 列表', done: 0 },
                 { name: '推迟 0731 CMS接口 *获取当前模板页面的 "目的地"', done: 0 },
                 { name: '推迟 0731 CMS *目的地功能', done: 0 },
@@ -58,6 +57,14 @@ export default {
                 { name: '0807 CMSv1.3 *图片广告 支持 x1/3d/1.3/1.5/1.7/2.0/2.5/3.0张 样式', done: 1 },
             ],
             style: { 'background-color': 'rgb(0,176,255)' },
+        },
+        {
+            time: ['09:00', '18:00'],
+            affair: [
+                { name: '0815 黟县 景区指南H5', done: 1 },
+                { name: '0815 黟县 文旅资讯H5', done: 0 },
+            ],
+            style: { 'background-color': 'rgb(255,0,160)' },
         },
     ],
 }
