@@ -1,7 +1,7 @@
 export default {
     myPersonalSchedule: [
         {
-            time: ['10:00', '12:00'],
+            time: null,
             affair: [
                 { name: '■ ■', done: 0 },
                 { name: '一元函数微分', done: 0 },
@@ -15,7 +15,7 @@ export default {
             style: { 'background-color': 'rgb(255,112,0)' },
         },
         {
-            time: ['14:00', '17:00'],
+            time: null,
             affair: [
                 { name: '■ ■ ■', done: 0 },
                 { name: '计算机组成原理', done: 0 },
@@ -47,24 +47,28 @@ export default {
                 { name: '多项选择', done: 1 },
                 { name: '链接', done: 1 },
                 { name: '多媒体富文本', done: 1 },
-                { name: '0724 CMS *酒店搜索组件', done: 1 },
-                { name: '推迟 0731 CMS接口 *获取当前可跳转的 "目的地" 列表', done: 0 },
-                { name: '推迟 0731 CMS接口 *获取当前模板页面的 "目的地"', done: 0 },
-                { name: '推迟 0731 CMS *目的地功能', done: 0 },
-                { name: '0807 CMSv1.3 *Tab推荐位 支持列表切换', done: 1 },
-                { name: '0807 CMSv1.3 *Tab推荐位 小图/大图/列表/瀑布流/反列表样式', done: 1 },
-                { name: '0807 CMSv1.3 *Tab列表 支持反列表样式', done: 1 },
-                { name: '0807 CMSv1.3 *图片广告 支持 x1/3d/1.3/1.5/1.7/2.0/2.5/3.0张 样式', done: 1 },
             ],
-            style: { 'background-color': 'rgb(0,176,255)' },
+            style: { 'background-color': 'rgb(255,0,160)' },
         },
         {
             time: ['09:00', '18:00'],
             affair: [
+                { name: '0724 CMS *酒店搜索组件', done: 1 },
+                { name: '推迟 0731 CMS接口 *获取当前可跳转的 "目的地" 列表', done: 0 },
+                { name: '推迟 0731 CMS接口 *获取当前模板页面的 "目的地"', done: 0 },
+                { name: '推迟 0731 CMS *目的地功能', done: 0 },
+                { name: '*优先 0804 图片广告新增样式', done: 1 },
+                { name: '*优先 0804 CMS跳转地图APP/地图', done: 1 },
+                { name: '0807 CMSv1.3 *Tab推荐位 支持列表切换', done: 1 },
+                { name: '0807 CMSv1.3 *Tab推荐位 小图/大图/列表/瀑布流/反列表样式', done: 1 },
+                { name: '0807 CMSv1.3 *Tab列表 支持反列表样式', done: 1 },
+                { name: '0807 CMSv1.3 *图片广告 支持 x1/3d/1.3/1.5/1.7/2.0/2.5/3.0张 样式', done: 1 },
                 { name: '0815 黟县 景区指南H5', done: 1 },
+                { name: '0815 黟县 景区指南H5 徐洋吴樾接口', done: 0 },
                 { name: '0815 黟县 文旅资讯H5', done: 0 },
+                { name: '0815 黟县 景区指南H5 王鑫接口', done: 0 },
             ],
-            style: { 'background-color': 'rgb(255,0,160)' },
+            style: { 'background-color': 'rgb(0,176,255)' },
         },
     ],
 }

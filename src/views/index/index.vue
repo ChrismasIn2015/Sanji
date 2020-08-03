@@ -17,22 +17,28 @@ import mySchedule from "./components/mySchedule.js";
 export default {
   data() {
     return {
-      mySchedule: {}
+      mySchedule: {},
     };
   },
   mounted() {
+    //
     this.mySchedule = Object.assign({}, mySchedule);
   },
   components: {
     planBoard,
-    indexEntry
+    indexEntry,
   },
-  methods: {}
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 .index {
   padding: 0.5rem;
+  .index-time {
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    font-size: 1.5rem;
+  }
 }
 </style>
