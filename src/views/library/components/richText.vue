@@ -22,7 +22,7 @@ export default {
   props: {
     width: { type: String, default: "auto" },
     height: { type: String, default: "auto" },
-    content: { type: String, default: "" }
+    content: { type: String, default: "" },
   },
   data() {
     return {};
@@ -50,19 +50,19 @@ export default {
       if (event.keyCode === 9) {
         document.execCommand("insertText", false, "    ");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .rich {
-  background-color: $common-tip-lower;
+  background-color: $sj-tip-lower;
   padding: 0.5rem;
   max-width: 100%;
   .rich-nav {
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid $common-tip;
+    border-bottom: 1px solid $sj-tip;
     .nav-item {
       margin-right: 0.5rem;
       text-align: center;
@@ -71,9 +71,9 @@ export default {
       // width: 2rem;
       height: 2rem;
       padding: 0rem 0.5rem;
-      background-color: $common-tip;
+      background-color: $sj-tip;
       &:hover {
-        background-color: $common-white;
+        background-color: $sj-white;
       }
     }
   }

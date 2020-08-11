@@ -21,115 +21,115 @@
       maxlength="50"
     />
     <div class="input-warn" v-show="inputWarn">{{ inputWarn }}</div>
-    <img v-show="state.icon" class="input-icon" :src="state.icon" alt="" />
+    <img v-show="state.icon" class="input-icon" :src="state.icon" alt />
   </div>
 </template>
 
 <script>
-  export default {
-    props: {
-      state: {
-        type: Object,
-        default: () => {
-          return {
-            type: 'none',
-            holder: '',
-            value: '', // 编辑值
-            rule: '', // 自定义规则
-            icon: '',
-          }
-        },
+export default {
+  props: {
+    state: {
+      type: Object,
+      default: () => {
+        return {
+          type: "none",
+          holder: "",
+          value: "", // 编辑值
+          rule: "", // 自定义规则
+          icon: "",
+        };
       },
     },
-    data() {
-      return {
-        // 表单值
-        inputValue: this.state.value ? this.state.value : '',
-        inputWarn: '',
-        // 验证码
-        countTimer: null,
-        count: 60,
+  },
+  data() {
+    return {
+      // 表单值
+      inputValue: this.state.value ? this.state.value : "",
+      inputWarn: "",
+      // 验证码
+      countTimer: null,
+      count: 60,
+    };
+  },
+  computed: {
+    tagSwitch() {
+      switch (this.state.type) {
+        case "textarea":
+          return "textarea";
+        default:
+          return "input";
       }
     },
-    computed: {
-      tagSwitch() {
-        switch (this.state.type) {
-          case 'textarea':
-            return 'textarea'
-          default:
-            return 'input'
+  },
+  methods: {
+    inputVerify() {
+      // 不允许为空
+      if (this.emptyCheck()) return this.inputWarn;
+
+      // 数字至少为1
+      if (this.state.type === "number") {
+        if (this.state.rule !== "needZero") {
+          this.inputValue = Number.parseInt(this.inputValue);
         }
-      },
+        if (this.inputValue < 1) {
+          this.inputWarn = "请输入大于 0 的数字";
+          return this.inputWarn;
+        }
+      }
+
+      // 验证密码
+      if (this.state.type === "password") {
+        if (this.inputValue.length < 6 || /^\d+$/.test(this.inputValue)) {
+          this.inputWarn = "请输入至少6位数字+字母";
+        }
+      }
+
+      // 验证手机号
+      if (this.state.rule === "phone") {
+        if (!/^1[3456789]\d{9}$/.test(this.inputValue)) {
+          this.inputWarn = "请输入11位手机号";
+        }
+      }
+
+      // 验证日期
+      if (this.state.rule === "date") {
+        if (this.inputValue.length !== 10) {
+          return (this.inputWarn = "格式 YYYY-MM-DD");
+        }
+        // 七天之内
+        let date = new Date(this.inputValue).getTime();
+        let today = new Date().getTime();
+        let gap = date - today;
+        if (!isNaN(date) && gap < 86400000 * 7 && gap > 0) {
+          // console.log("七天之内");
+        } else {
+          return (this.inputWarn = "请输入七天内日期");
+        }
+      }
+
+      // 验证频率
+      if (this.state.rule === "tempNumber") {
+        if (this.inputValue > 180 && this.inputValue <= 500) {
+          this.inputWarn = "频率过高";
+          return "";
+        }
+        if (this.inputValue > 500) this.inputWarn = "频率最大为500";
+      }
+
+      // # 外部验证需要返回值
+      return this.inputWarn;
     },
-    methods: {
-      inputVerify() {
-        // 不允许为空
-        if (this.emptyCheck()) return this.inputWarn
-
-        // 数字至少为1
-        if (this.state.type === 'number') {
-          if (this.state.rule !== 'needZero') {
-            this.inputValue = Number.parseInt(this.inputValue)
-          }
-          if (this.inputValue < 1) {
-            this.inputWarn = '请输入大于 0 的数字'
-            return this.inputWarn
-          }
-        }
-
-        // 验证密码
-        if (this.state.type === 'password') {
-          if (this.inputValue.length < 6 || /^\d+$/.test(this.inputValue)) {
-            this.inputWarn = '请输入至少6位数字+字母'
-          }
-        }
-
-        // 验证手机号
-        if (this.state.rule === 'phone') {
-          if (!/^1[3456789]\d{9}$/.test(this.inputValue)) {
-            this.inputWarn = '请输入11位手机号'
-          }
-        }
-
-        // 验证日期
-        if (this.state.rule === 'date') {
-          if (this.inputValue.length !== 10) {
-            return (this.inputWarn = '格式 YYYY-MM-DD')
-          }
-          // 七天之内
-          let date = new Date(this.inputValue).getTime()
-          let today = new Date().getTime()
-          let gap = date - today
-          if (!isNaN(date) && gap < 86400000 * 7 && gap > 0) {
-            // console.log("七天之内");
-          } else {
-            return (this.inputWarn = '请输入七天内日期')
-          }
-        }
-
-        // 验证频率
-        if (this.state.rule === 'tempNumber') {
-          if (this.inputValue > 180 && this.inputValue <= 500) {
-            this.inputWarn = '频率过高'
-            return ''
-          }
-          if (this.inputValue > 500) this.inputWarn = '频率最大为500'
-        }
-
-        // # 外部验证需要返回值
-        return this.inputWarn
-      },
-      emptyCheck() {
-        if (this.state.rule === 'empty') return false // 允许为空
-        String(this.inputValue).replace(/ /g, '')
-        if (this.inputValue.length === 0) {
-          this.inputWarn = '不允许为空'
-          return true
-        }
-        return false
-      },
+    emptyCheck() {
+      if (this.state.rule === "empty") return false; // 允许为空
+      String(this.inputValue).replace(/ /g, "");
+      if (this.inputValue.length === 0) {
+        this.inputWarn = "不允许为空";
+        return true;
+      }
+      return false;
     },
-  }
+  },
+};
 </script>
 
 <style lang="scss">
@@ -139,20 +139,20 @@
     textarea {
       font-family: 'Microsoft YaHei';
       font-size: 1rem;
-      border: 1px solid $common-tip-lower;
+      border: 1px solid $sj-tip-lower;
       transition: all 0.2s;
       padding: 0.5rem;
       width: 100%;
       // line-height: 1.5rem;
       height: 3.125rem;
       &:focus {
-        border: 1px solid $common-main;
-        box-shadow: 0px 0px 1px 0px $common-main;
+        border: 1px solid $sj-main;
+        box-shadow: 0px 0px 1px 0px $sj-main;
         outline: 0rem;
       }
       &:hover {
-        border: 1px solid $common-main;
-        box-shadow: 0px 0px 1px 0px $common-main;
+        border: 1px solid $sj-main;
+        box-shadow: 0px 0px 1px 0px $sj-main;
       }
     }
     textarea {

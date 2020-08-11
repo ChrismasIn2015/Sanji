@@ -1,113 +1,113 @@
 .library {
-  padding: 0.5rem;
-  height: 100%;
-  // 1
-  .library-nav {
-    margin-bottom: 1rem;
-    .common-btn {
-      margin-right: 0.5rem;
-    }
-    .left {
-      width: 100%;
-      .common-btn {
-        position: relative;
-      }
-      .nav-tip {
-        color: $common-tip-higher;
-      }
-    }
-    .right {
-      min-width: 24rem;
-      align-items: flex-start;
-      .common-btn {
-        &:nth-child(1) {
-          margin-right: 0rem;
-        }
-      }
-    }
-  }
-  // 2
-  .library-block {
-    background-color: $common-tip;
-    height: 100%;
     padding: 0.5rem;
-    .shelf-block {
-      min-width: 28rem;
-      max-width: 28rem;
-      max-height: 100%;
-      position: relative;
-      background-color: $common-tip-lower;
-      .shelfs {
-        overflow-y: auto;
-        max-height: 92%;
-        .shelf {
-          .common-btn {
-            margin: 0.5rem;
-            margin-bottom: 0rem;
-            text-align: left;
-            position: relative;
-          }
-          .books {
-            background-color: rgb(248, 248, 248);
-            margin: 0.5rem;
-            margin-bottom: 0rem;
-            padding-bottom: 0.5rem;
-            .common-btn {
-              position: relative;
-            }
-            .book-admin {
-              margin-top: 3rem;
-              .common-btn {
-                text-align: center;
-                width: 50%;
-              }
-            }
-          }
-        }
-      }
-      .shelf-tip {
-        padding-top: 2rem;
-        text-align: center;
-        color: $common-tip-higher;
-      }
-      .shelf-admin {
-        margin-top: auto;
-        margin-bottom: 0.5rem;
+    height: 100%;
+    // 1
+    .library-nav {
+        margin-bottom: 1rem;
         .common-btn {
-          margin: 0rem 0.5rem;
-          width: 50%;
+            margin-right: 0.5rem;
         }
-      }
+        .left {
+            width: 100%;
+            .common-btn {
+                position: relative;
+            }
+            .nav-tip {
+                color: $sj-tip-higher;
+            }
+        }
+        .right {
+            min-width: 24rem;
+            align-items: flex-start;
+            .common-btn {
+                &:nth-child(1) {
+                    margin-right: 0rem;
+                }
+            }
+        }
     }
-    .block-book {
-      width: 100%;
-      height: 100%;
-      //   overflow-y: auto;
-      margin-left: 0.5rem;
-      .book {
-        // height: 100%;
-        // overflow-y: auto;
-      }
+    // 2
+    .library-block {
+        background-color: $sj-tip;
+        height: 100%;
+        padding: 0.5rem;
+        .shelf-block {
+            min-width: 28rem;
+            max-width: 28rem;
+            max-height: 100%;
+            position: relative;
+            background-color: $sj-tip-lower;
+            .shelfs {
+                overflow-y: auto;
+                max-height: 92%;
+                .shelf {
+                    .common-btn {
+                        margin: 0.5rem;
+                        margin-bottom: 0rem;
+                        text-align: left;
+                        position: relative;
+                    }
+                    .books {
+                        background-color: rgb(248, 248, 248);
+                        margin: 0.5rem;
+                        margin-bottom: 0rem;
+                        padding-bottom: 0.5rem;
+                        .common-btn {
+                            position: relative;
+                        }
+                        .book-admin {
+                            margin-top: 3rem;
+                            .common-btn {
+                                text-align: center;
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+            .shelf-tip {
+                padding-top: 2rem;
+                text-align: center;
+                color: $sj-tip-higher;
+            }
+            .shelf-admin {
+                margin-top: auto;
+                margin-bottom: 0.5rem;
+                .common-btn {
+                    margin: 0rem 0.5rem;
+                    width: 50%;
+                }
+            }
+        }
+        .block-book {
+            width: 100%;
+            height: 100%;
+            //   overflow-y: auto;
+            margin-left: 0.5rem;
+            .book {
+                // height: 100%;
+                // overflow-y: auto;
+            }
+        }
     }
-  }
-  // *
-  .pot {
-    position: absolute;
-    text-align: center;
-    right: -0.5rem;
-    top: -0.5rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.5rem;
-    color: white;
-    border-radius: 1rem;
-    background-color: red;
-  }
-  .pot-edit {
-    left: -0.5rem;
-    top: -0.5rem;
-    color: $common-tip;
-    border: 1px solid $common-tip;
-    background-color: white;
-  }
+    // *
+    .pot {
+        position: absolute;
+        text-align: center;
+        right: -0.5rem;
+        top: -0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        color: white;
+        border-radius: 1rem;
+        background-color: red;
+    }
+    .pot-edit {
+        left: -0.5rem;
+        top: -0.5rem;
+        color: $sj-tip;
+        border: 1px solid $sj-tip;
+        background-color: white;
+    }
 }

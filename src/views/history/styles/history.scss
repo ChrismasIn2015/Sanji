@@ -1,20 +1,20 @@
 .history-line {
-  padding: 0.5rem;
-  height: 100%;
-  .line-nav {
-    .common-btn {
-      margin-right: 0.5rem;
-    }
-  }
-  .line-content {
+    padding: 0.5rem;
     height: 100%;
-    overflow: auto;
-    margin: 0.5rem 0rem;
-    background-color: $common-tip-lower;
-    .common-btn {
-      text-align: center;
-      width: 3.3rem;
-      margin: 0.2rem;
+    .line-nav {
+        .common-btn {
+            margin-right: 0.5rem;
+        }
     }
-  }
+    .line-content {
+        height: 100%;
+        overflow: auto;
+        margin: 0.5rem 0rem;
+        background-color: $sj-tip-lower;
+        .common-btn {
+            text-align: center;
+            width: 3.3rem;
+            margin: 0.2rem;
+        }
+    }
 }

@@ -60,7 +60,7 @@ import sjInput from "@/utils/sanJi-UI/sjInput.vue";
 import indexEntry from "@/components/indexEntry/indexEntry.vue";
 import {
   get_stockTypeMap,
-  add_stock
+  add_stock,
 } from "@/utils/lowDB/control/stockStoreApi.js";
 
 export default {
@@ -71,12 +71,12 @@ export default {
       blockMapKeyList: [],
       //
       nowAddStockType: "",
-      addStockShow: false
+      addStockShow: false,
     };
   },
   components: {
     indexEntry,
-    sjInput
+    sjInput,
   },
   mounted() {
     this.blockMap = Object.assign({}, get_stockTypeMap());
@@ -88,7 +88,7 @@ export default {
       let params = {
         code: this.$refs.myStockCode.inputValue,
         name: this.$refs.myStockName.inputValue,
-        type: this.nowAddStockType
+        type: this.nowAddStockType,
       };
       add_stock(params);
       this.addStockShow = false;
@@ -108,17 +108,17 @@ export default {
       this.$confirm(
         {
           title: "update all StockStore?",
-          content: "将会耗费一定时间"
+          content: "将会耗费一定时间",
         },
-        res => {
+        (res) => {
           if (res) {
             let ipc = require("electron").ipcRenderer;
             ipc.send("getStockById", { next: 123 });
           }
         }
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -145,9 +145,9 @@ export default {
         text-align: center;
         margin-right: 1rem;
         cursor: pointer;
-        border: 1px solid $common-tip;
+        border: 1px solid $sj-tip;
         &:hover {
-          background-color: $common-white;
+          background-color: $sj-white;
         }
       }
     }
