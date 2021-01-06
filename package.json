@@ -12,7 +12,7 @@
   },
   "main": "background.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "lowdb": "^1.0.0",
     "node-sass": "^4.14.0",
